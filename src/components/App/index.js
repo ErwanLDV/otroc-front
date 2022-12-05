@@ -1,11 +1,14 @@
-import reactLogo from './react-logo.svg';
-import './styles.scss';
+import Footer from '../Footer';
+import Header from '../Header';
+import SearchBar from '../SearchBar';
+import './style.scss';
 
 function App() {
   return (
     <div className="app">
-      <img src={reactLogo} alt="react logo" />
-      <h1>Composant : App</h1>
+      <Header />
+      <SearchBar />
+      <Footer />
     </div>
   );
 }
