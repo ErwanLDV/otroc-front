@@ -1,3 +1,16 @@
-header {
+.header {
   background-color: grey;
+  text-align: center;
+
+  &-nav {
+    display: flex;
+    justify-content: space-between;
+  }
 }
+
+img {
+  width: 40%;
+  
+}
+
+
