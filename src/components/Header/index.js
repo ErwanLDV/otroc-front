@@ -1,5 +1,6 @@
 import './style.scss';
 import logo from '../../assets/images/OTROC-logo.png';
+import FormLogin from './FormLogin';
 
 function Header() {
   return (
@@ -9,6 +10,7 @@ function Header() {
         <button type="button"> Nav</button>
         <button type="button"> Se connecter / s'inscrire</button>
       </div>
+      <FormLogin />
     </header>
   );
 }
