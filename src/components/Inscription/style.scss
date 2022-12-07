@@ -5,7 +5,11 @@
   flex-direction: column;  
   align-items: center;
   border: 1px solid rgba(128,128,128,0.4);
-  padding: 1.5em 0 1.5em 0;
+  padding: 1.5em 0 1.5em 0;  
+
+  &-p {
+    padding: 1em;
+  }
 }
 
 button, input {
