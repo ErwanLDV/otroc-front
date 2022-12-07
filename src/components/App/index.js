@@ -5,6 +5,7 @@ import LegalNotice from '../Footer/LegalNotice';
 import GCU from '../Footer/GCU';
 import Contact from '../Footer/Contact';
 import About from '../Footer/About';
+import FormLogin from '../FormLogin';
 import Header from '../Header';
 import SearchBar from '../SearchBar';
 import './style.scss';
@@ -21,6 +22,7 @@ function App() {
         <Route path="/contact" element=<Contact /> />
         <Route path="/a-propos" element=<About /> />
       </Routes>
+      <FormLogin />
       <Footer />
     </div>
   );

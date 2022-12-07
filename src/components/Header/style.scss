@@ -1,5 +1,7 @@
+@use '../../styles/vars';
+
 .header {
-  background-color: grey;
+  background-color: vars.$main-color;
   text-align: center;
 
   &-nav {

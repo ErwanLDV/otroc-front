@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { actionChangeCustomInput } from '../../../actions/user';
-import CustomInput from '../../CustomInput';
+import { actionChangeCustomInput } from '../../actions/user';
+import CustomInput from '../CustomInput';
 
 function FormLogin() {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ function FormLogin() {
     event.preventDefault();
   };
   return (
-    <form className="header-form" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <CustomInput name="email" type="email" placeholder="email" value={email} onChange={handleChangeInput} />
       <CustomInput name="password" type="password" placeholder="Mot de passe" value={password} onChange={handleChangeInput} />
       <button type="submit">Connexion</button>
