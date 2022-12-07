@@ -1,7 +1,9 @@
-.app {
-  
-  width: 96%;  
+.app {  
   margin: 1em auto;
+  padding-bottom: 5em;
   text-align: center;
+  width: 96%;
+  min-height: calc(100vh - 2em);
+  position: relative;
 }
 
