@@ -1,4 +1,6 @@
+@use '../../styles/vars';
+
 .footer {
-  background-color: grey;
+  background-color: vars.$main-color;
   margin-top: 200px;
 }
