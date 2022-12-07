@@ -3,4 +3,7 @@
 .footer {
   background-color: vars.$main-color;
   margin-top: 200px;
+  display: flex;
+  justify-content: space-around;
+  padding: 1em;
 }
