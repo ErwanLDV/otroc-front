@@ -40,9 +40,9 @@ function Inscription() {
       <CustomInput onChange={handleChangeInput} value={pseudo} name="pseudo" type="text" placeholder="Pseudo" required />
       <CustomInput onChange={handleChangeInput} value={email} name="email" type="email" placeholder="Votre adresse email" required />
       <CustomInput onChange={handleChangeInput} value={password} name="password" type="text" placeholder="Mot de passe" required />
-      <CustomInput onChange={handleChangeInput} value={zipcode} name="zipcode" type="text" placeholder="Code postal" required />
+      <CustomInput onChange={handleChangeInput} value={zipcode} name="zipcode" maxLength="5" type="text" placeholder="Code postal" required />
       <div>
-        <CustomInput onChange={handleChangeInput} value={phoneNumber} name="phone-number" type="text" placeholder="Numero de telephone*" />
+        <CustomInput onChange={handleChangeInput} value={phoneNumber} name="phoneNumber" maxLength="10" type="text" placeholder="Numero de telephone*" />
       </div>
       <button type="submit">Valider</button>
       <p className="form-inscription-p">*non obligatoire</p>

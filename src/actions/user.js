@@ -42,25 +42,8 @@ export function actionLogout() {
   };
 }
 
-export function actionUserIncscription(
-  firstname,
-  lastname,
-  pseudo,
-  email,
-  password,
-  zipcode,
-  phoneNumber,
-) {
+export function actionUserIncscription() {
   return {
     type: USER_INSCRIPTION,
-    payload: {
-      firstname,
-      lastname,
-      pseudo,
-      email,
-      password,
-      zipcode,
-      phoneNumber,
-    },
   };
 }

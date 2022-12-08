@@ -6,35 +6,40 @@ import {
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case CHECK_LOGIN: {
-      // const { user } = store.getState();
-      // TODO Compléter avec l'adresse API et Tester
-      // axios.post(
-      //   'http://localhost:3001/login',
-      //   {
-      //     username: user.email,
-      //     password: user.password,
-      //   },
-      // ).then((result) => {
-      //   store.dispatch(actionAuthentSuccess(result.data.token));
-      // }).catch(() => {
-      //   store.dispatch(actionAuthentError());
-      // });
+      const { user } = store.getState();
+      axios.post(
+        'http://yann-lebouc.vpnuser.lan:8081/api/login_check',
+        {
+          username: user.email,
+          password: user.password,
+        },
+      ).then((result) => {
+        store.dispatch(actionAuthentSuccess(result.data.token));
+      }).catch((error) => {
+        store.dispatch(actionAuthentError());
+        console.log('Check Login ', error);
+      });
 
       break;
     }
     case USER_INSCRIPTION: {
-      // const { user } = store.getState();
-      // TODO Requete AXIOS ICI
-      // {
-      // firstname: action.payload.firstname,
-      // lastname: action.payload.lastname,
-      // pseudo: action.payload.pseudo,
-      // email: action.payload.email,
-      // password: action.payload.password,
-      // zipcode: action.payload.zipcode,
-      // phoneNumber: action.payload.phoneNumber,
-      // }
-      //  )
+      const { user } = store.getState();
+      axios.post(
+        'http://yann-lebouc.vpnuser.lan:8081/api/users',
+        {
+          email: user.email,
+          password: user.password,
+          alias: user.pseudo,
+          zipcode: Number(user.zipcode),
+          firstname: user.firstname,
+          lastname: user.lastname,
+          phoneNumber: user.phoneNumber,
+        },
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('user inscription ', error);
+      });
       break;
     }
     default:
