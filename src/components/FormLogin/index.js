@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { actionChangeCustomInput } from '../../actions/user';
 import CustomInput from '../CustomInput';
 
@@ -19,7 +20,7 @@ function FormLogin() {
       <CustomInput name="email" type="email" placeholder="email" value={email} onChange={handleChangeInput} />
       <CustomInput name="password" type="password" placeholder="Mot de passe" value={password} onChange={handleChangeInput} />
       <button type="submit">Connexion</button>
-      <p>Pas encore inscrit ? <a href="#">Cliquez ici</a></p>
+      <p>Pas encore inscrit ? <Link to="/inscription">Cliquez ici</Link></p>
     </form>
   );
 }
