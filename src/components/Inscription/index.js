@@ -8,8 +8,8 @@ function Inscription() {
         <input name="firstname" type="text" placeholder="Prénom" required />
         <input name="lastname" type="text" placeholder="Nom" required />
       </div>
-      <input name="username" type="text" placeholder="Pseudo" required />
-      <input name="login" type="email" placeholder="Votre adresse email" required />
+      <input name="pseudo" type="text" placeholder="Pseudo" required />
+      <input name="email" type="email" placeholder="Votre adresse email" required />
       <input name="password" type="text" placeholder="Mot de passe" required />
       <input name="zipcode" type="text" placeholder="Code postal" required />
       <div>
