@@ -1,3 +1,19 @@
-header {
-  background-color: grey;
+@use '../../styles/vars';
+
+.header {
+  background-color: vars.$main-color;
+  text-align: center;
+
+  &-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
+
+img {
+  width: 40%;
+  
+}
+
+

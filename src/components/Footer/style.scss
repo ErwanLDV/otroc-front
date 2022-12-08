@@ -1,4 +1,36 @@
+@use '../../styles/vars';
+
 .footer {
-  background-color: grey;
+  background-color: vars.$main-color;
   margin-top: 200px;
+  display: flex;
+  justify-content: space-around;
+  padding: 1em;
+  bottom: 0px;
+  position: absolute;
+  width: 100%;
+
+  &-h1 {
+    font-size: 2.3em;
+    font-weight: bold;
+    margin: 1em;
+  }
+
+  &-h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 1em;
+  }
+
+  &-h3 {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 1em;
+  }
+
+  &-p {
+    margin: 1em;
+    text-align: justify;
+    text-align: center;
+  }
 }
