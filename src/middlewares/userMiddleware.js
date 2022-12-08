@@ -3,12 +3,15 @@ import {
   actionAuthentError, actionAuthentSuccess, CHECK_LOGIN, USER_INSCRIPTION,
 } from '../actions/user';
 
+// For tests
+const baseURL = 'http://yann-lebouc.vpnuser.lan:8081';
+
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case CHECK_LOGIN: {
       const { user } = store.getState();
       axios.post(
-        'http://yann-lebouc.vpnuser.lan:8081/api/login_check',
+        `${baseURL}/api/login_check`,
         {
           username: user.email,
           password: user.password,
@@ -25,7 +28,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case USER_INSCRIPTION: {
       const { user } = store.getState();
       axios.post(
-        'http://yann-lebouc.vpnuser.lan:8081/api/users',
+        `${baseURL}/api/users`,
         {
           email: user.email,
           password: user.password,
