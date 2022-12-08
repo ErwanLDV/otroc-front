@@ -1,0 +1,64 @@
+@use '../../../styles/vars';
+
+a {
+  text-decoration: none;
+}
+
+nav {
+	font-family: monospace;  
+}
+
+ul {
+  background: grey;
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+li {
+  flex-grow: 1;
+	color: #fff;
+  background: #fff;
+	display: block;
+	float: left;
+	padding: 1rem;
+	position: relative;
+	text-decoration: none;
+  transition-duration: 0.1s;
+  // //pour rendre la nav sur le long du header
+  // width: 100%;
+}
+  
+li a {
+  color: black;  
+}
+
+li:hover {
+	background: vars.$main-color;
+	cursor: pointer;
+}
+
+ul li ul {
+	background: vars.$main-color;
+	visibility: hidden;
+  opacity: 0;
+  min-width: 5rem;
+	position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+	left: 0;
+  display: none;
+}
+
+ul li:hover > ul,
+ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+ul li ul li {
+  width: 100%;
+}
