@@ -3,12 +3,16 @@ import {
 } from '../actions/user';
 
 export const initialState = {
-  email: 'toto@supermail.com',
-  password: 'tatatata',
+  email: '',
+  password: '',
   token: null,
-  pseudo: 'TotoBoGosseDu75',
-  isLogged: true,
+  pseudo: '',
+  isLogged: false,
   message: '',
+  firstname: '',
+  lastname: '',
+  zipcode: '',
+  phoneNumber: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -21,12 +25,15 @@ const reducer = (state = initialState, action = {}) => {
     case AUTHENT_SUCCESS:
       return {
         ...state,
+        isLogged: true,
+        password: '',
+        email: '',
         token: action.payload.token,
       };
     case AUTHENT_ERROR:
       return {
         ...state,
-        message: 'Erreur lors de l\'identification',
+        message: "Erreur lors de l'identification",
       };
     case LOGOUT:
       return {
