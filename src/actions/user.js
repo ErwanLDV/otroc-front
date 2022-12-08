@@ -3,6 +3,7 @@ export const CHECK_LOGIN = 'CHECK_LOGIN';
 export const AUTHENT_SUCCESS = 'AUTHENT_SUCCESS';
 export const AUTHENT_ERROR = 'AUTHENT_ERROR';
 export const LOGOUT = 'LOGOUT';
+export const USER_INSCRIPTION = 'USER_INSCRIPTION';
 
 export function actionChangeCustomInput(newValue, inputName) {
   return {
@@ -38,5 +39,28 @@ export function actionAuthentError() {
 export function actionLogout() {
   return {
     type: LOGOUT,
+  };
+}
+
+export function actionUserIncscription(
+  firstname,
+  lastname,
+  pseudo,
+  email,
+  password,
+  zipcode,
+  phoneNumber,
+) {
+  return {
+    type: USER_INSCRIPTION,
+    payload: {
+      firstname,
+      lastname,
+      pseudo,
+      email,
+      password,
+      zipcode,
+      phoneNumber,
+    },
   };
 }

@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { actionAuthentError, actionAuthentSuccess, CHECK_LOGIN } from '../actions/user';
+import {
+  actionAuthentError, actionAuthentSuccess, CHECK_LOGIN, USER_INSCRIPTION,
+} from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -18,6 +20,21 @@ const userMiddleware = (store) => (next) => (action) => {
       //   store.dispatch(actionAuthentError());
       // });
 
+      break;
+    }
+    case USER_INSCRIPTION: {
+      // const { user } = store.getState();
+      // TODO Requete AXIOS ICI
+      // {
+      // firstname: action.payload.firstname,
+      // lastname: action.payload.lastname,
+      // pseudo: action.payload.pseudo,
+      // email: action.payload.email,
+      // password: action.payload.password,
+      // zipcode: action.payload.zipcode,
+      // phoneNumber: action.payload.phoneNumber,
+      // }
+      //  )
       break;
     }
     default:

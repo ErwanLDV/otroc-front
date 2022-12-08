@@ -9,6 +9,10 @@ export const initialState = {
   pseudo: 'TotoBoGosseDu75',
   isLogged: true,
   message: '',
+  firstname: '',
+  lastname: '',
+  zipcode: '',
+  phoneNumber: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
