@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { actionChangeCustomInput } from '../../actions/user';
+import { actionChangeCustomInput, actionCheckLogin, actionLogout } from '../../actions/user';
 import CustomInput from '../CustomInput';
 
 function FormLogin() {
@@ -14,12 +14,19 @@ function FormLogin() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(actionCheckLogin());
   };
+
+  const handleLogout = () => {
+    dispatch(actionLogout());
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <CustomInput name="email" type="email" placeholder="email" value={email} onChange={handleChangeInput} />
       <CustomInput name="password" type="password" placeholder="Mot de passe" value={password} onChange={handleChangeInput} />
       <button type="submit">Connexion</button>
+      <button type="button" onClick={handleLogout}>Déconnexion</button>
       <p>Pas encore inscrit ? <Link to="/inscription">Cliquez ici</Link></p>
     </form>
   );
