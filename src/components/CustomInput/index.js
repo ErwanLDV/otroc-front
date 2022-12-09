@@ -9,8 +9,24 @@ function CustomInput({
   required,
   maxLength,
 }) {
+  const specialType = (inputValue) => {
+    console.log(inputValue);
+    switch (type) {
+      case 'zipcode':
+      case 'phone': {
+        if (inputValue.match(`^[0-9]{1,${maxLength}}$`)) {
+          return inputValue
+        }
+        break;
+      }
+      default:
+        return inputValue;
+    }
+  };
+
   const handleChange = (event) => {
-    onChange(event.target.value, name);
+    const specialInput = specialType(event.target.value);
+    onChange(specialInput, name);
   };
 
   return (
