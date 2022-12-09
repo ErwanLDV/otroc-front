@@ -8,25 +8,28 @@ function CustomInput({
   onChange,
   required,
   maxLength,
+  className,
 }) {
   const specialType = (inputValue) => {
-    console.log(inputValue);
     switch (type) {
       case 'zipcode':
       case 'phone': {
-        if (inputValue.match(`^[0-9]{1,${maxLength}}$`)) {
-          return inputValue
+        if (!inputValue.match(`^[0-9]{1,${maxLength}}$`)) {
+          return inputValue.replace(/\D+/g, '');
         }
         break;
       }
       default:
-        return inputValue;
+        break;
     }
+    return inputValue;
   };
 
   const handleChange = (event) => {
     const specialInput = specialType(event.target.value);
-    onChange(specialInput, name);
+    if (specialInput <= maxLength) {
+      onChange(specialInput, name);
+    }
   };
 
   return (
@@ -38,6 +41,7 @@ function CustomInput({
       onChange={handleChange}
       required={required}
       maxLength={maxLength}
+      className={className}
     />
   );
 }
@@ -46,10 +50,11 @@ CustomInput.propTypes = {
   value: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
   maxLength: PropTypes.string,
+  className: PropTypes.string,
 };
 
 CustomInput.defaultProps = {
@@ -57,6 +62,8 @@ CustomInput.defaultProps = {
   type: 'text',
   required: false,
   maxLength: '',
+  placeholder: '',
+  className: '',
 };
 
 export default CustomInput;
