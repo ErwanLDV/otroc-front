@@ -4,6 +4,7 @@ export const AUTHENT_SUCCESS = 'AUTHENT_SUCCESS';
 export const AUTHENT_ERROR = 'AUTHENT_ERROR';
 export const LOGOUT = 'LOGOUT';
 export const USER_INSCRIPTION = 'USER_INSCRIPTION';
+export const GET_USER_PROFIL = 'GET_USER_PROFIL';
 
 export function actionChangeCustomInput(newValue, inputName) {
   return {
@@ -45,5 +46,11 @@ export function actionLogout() {
 export function actionUserIncscription() {
   return {
     type: USER_INSCRIPTION,
+  };
+}
+
+export function actionGetUserProfil() {
+  return {
+    type: GET_USER_PROFIL,
   };
 }

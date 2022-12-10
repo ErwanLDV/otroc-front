@@ -9,6 +9,13 @@ import Header from '../Header';
 import SearchBar from '../SearchBar';
 import './style.scss';
 import Inscription from '../Inscription';
+import Profil from '../Profil';
+import PersonalInformation from '../Profil/PersonalInformation';
+import MyOffers from '../Profil/MyOffers';
+import MyRequests from '../Profil/MyRequests';
+import MyHistory from '../Profil/MyHistory';
+import Error from '../Error';
+import AddAnnouncement from '../Profil/AddAnnouncement';
 
 function App() {
   return (
@@ -22,6 +29,13 @@ function App() {
         <Route path="/contact" element=<Contact /> />
         <Route path="/a-propos" element=<About /> />
         <Route path="/inscription" element=<Inscription /> />
+        <Route path="/profil" element=<Profil /> />
+        <Route path="/profil/mes-informations" element=<PersonalInformation /> />
+        <Route path="/profil/mes-offres" element=<MyOffers /> />
+        <Route path="/profil/mes-demandes" element=<MyRequests /> />
+        <Route path="/profil/historique" element=<MyHistory /> />
+        <Route path="/annonces/ajouter" element=<AddAnnouncement /> />
+        <Route path="*" element=<Error /> />
       </Routes>
       <Footer />
     </div>

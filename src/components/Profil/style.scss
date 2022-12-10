@@ -1,0 +1,39 @@
+.Profil-container {
+  width: 70%;
+  margin: auto;
+
+
+  &-user {
+    border: 1px solid rgba(128,128,128,0.4);    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 2em;
+    margin-top: 1em;
+    
+    
+
+    &-img {
+      width: 10%;
+    }    
+    &-input {
+      margin-left: 5em;
+      border: 1px solid rgba(128,128,128,0.4);
+      border-radius: 10px;
+      background-color:rgba(225, 222, 222, 0.4);
+
+    }
+  }
+  &-button {
+    border-radius: 10px;
+    background-color:rgba(225, 222, 222, 0.4);
+    border: 1px solid rgba(128,128,128,0.4);
+    width: 45%;
+    padding: 2em;
+    margin: 1em;
+  }
+}
+
+
+
