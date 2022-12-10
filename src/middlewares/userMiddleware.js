@@ -4,7 +4,7 @@ import {
 } from '../actions/user';
 
 // For tests
-const baseURL = 'http://yann-lebouc.vpnuser.lan:8081';
+const baseURL = 'http://yannlebouc-server.eddi.cloud/projet-11-o-troc-back/public';
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
