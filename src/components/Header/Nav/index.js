@@ -1,6 +1,16 @@
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import './style.scss';
 
 function Nav() {
+  const categoriesArray = useSelector((state) => state.categories.categoriesArray);
+  console.log(categoriesArray);
+  useEffect(() => {
+    categoriesArray.map((category) => {
+      console.log(category, 'toto');
+    });
+  }, [categoriesArray]);
+  
   return (
     <div>
       <nav role="navigation">

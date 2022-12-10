@@ -6,13 +6,17 @@
 
   &-nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+  }
+  &-Link {
+    
   }
 }
 
 img {
-  width: 40%;
+  max-width: 40%;
+  height: auto;
   
 }
 

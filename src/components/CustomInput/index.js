@@ -10,6 +10,12 @@ function CustomInput({
   maxLength,
   className,
 }) {
+  /**
+   * Function that processes the value of an input according to the custom type: zpicode & phone
+   * Only digit and limit max length
+   * @param {string} inputValue
+   * @returns string processed
+   */
   const specialType = (inputValue) => {
     switch (type) {
       case 'zipcode':
@@ -27,21 +33,22 @@ function CustomInput({
 
   const handleChange = (event) => {
     const specialInput = specialType(event.target.value);
-    if (specialInput <= maxLength) {
+    // If maxLength is set, specialInput cannot exceed it OR maxLength is null
+    if ((specialInput.length <= maxLength && maxLength !== null) || maxLength === null) {
       onChange(specialInput, name);
     }
   };
 
   return (
     <input
+      className={className}
       name={name}
       type={type}
       placeholder={placeholder}
       value={value}
       onChange={handleChange}
-      required={required}
       maxLength={maxLength}
-      className={className}
+      required={required}
     />
   );
 }
@@ -61,9 +68,9 @@ CustomInput.defaultProps = {
   value: '',
   type: 'text',
   required: false,
-  maxLength: '',
-  placeholder: '',
-  className: '',
+  maxLength: null,
+  placeholder: null,
+  className: null,
 };
 
 export default CustomInput;

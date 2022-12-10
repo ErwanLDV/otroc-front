@@ -3,8 +3,8 @@ import {
 } from '../actions/user';
 
 export const initialState = {
-  email: '',
-  password: '',
+  email: 'otroc1@oclock.io',
+  password: 'otroc',
   token: null,
   pseudo: '',
   isLogged: false,
