@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  actionAuthentError, actionAuthentSuccess, CHECK_LOGIN, USER_INSCRIPTION,
+  actionAuthentError, actionAuthentSuccess, CHECK_LOGIN, GET_USER_PROFIL, USER_INSCRIPTION,
 } from '../actions/user';
 
 // For tests
@@ -45,6 +45,16 @@ const userMiddleware = (store) => (next) => (action) => {
       });
       break;
     }
+    case GET_USER_PROFIL:
+      axios.get(
+        `${baseURL}/api.user/pseudo`,
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('get user profil ', error);
+      });
+      break;
+
     default:
       break;
   }

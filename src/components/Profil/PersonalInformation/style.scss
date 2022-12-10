@@ -1,0 +1,18 @@
+@use '../../../styles/vars';
+
+.PersonalInformation-form {
+  border: 1px solid vars.$border-color;
+  border-radius: 10px;
+  width: 70%;
+  margin: auto;
+  margin-top: 2em;
+  padding: 1em;
+  background-color: vars.$background-color;
+
+
+  &-input {
+    border-radius: 10px;
+  }
+}
+
+

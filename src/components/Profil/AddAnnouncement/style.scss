@@ -1,6 +1,6 @@
+@use '../../../styles/vars';
 
-.form-inscription {
-  margin-top: 2em;
+.addAnnouncement-form {  
   display: flex;
   flex-direction: column;  
   align-items: center;
@@ -9,15 +9,12 @@
   width: 50%;
   margin: auto;
   background-color:rgba(225, 222, 222, 0.4);
+  margin-top: 2em;
 
-  &-p {
-    padding: 1em;
-  }
 }
 
-button, input {
-  outline: 0;
-  margin: 0.5em;
-  padding: 0.5em;
-}
+.textarea {
+  resize: none;
+  border-radius: 7px;
 
+}
