@@ -9,7 +9,8 @@ import { actionGetAllCategories } from '../../actions/categories';
 
 function Header() {
   const dispatch = useDispatch();
-
+  const categoriesArray = useSelector((state) => state.categories.categoriesArray);
+  const categoriesLoaded = useSelector((state) => state.categories.categoriesLoaded);
   useEffect(() => {
     dispatch(actionGetAllCategories());
   }, []);
@@ -21,7 +22,7 @@ function Header() {
         <Link className="header-Link" to="/"><img src={logo} alt="Logo OTroc" /></Link>
         {location.pathname === '/inscription' || <FormLogin />}
       </div>
-      <Nav />
+      { categoriesLoaded && <Nav categoriesArray={categoriesArray} /> }
     </header>
   );
 }

@@ -1,7 +1,8 @@
-import { SAVE_ALL_CATEGORIES } from '../actions/categories';
+import { SAVE_ALL_CATEGORIES, CATEGORIES_LOADED } from '../actions/categories';
 
 export const initialState = {
   categoriesArray: [],
+  categoriesLoaded: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -10,6 +11,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         categoriesArray: action.payload,
+      };
+
+    case CATEGORIES_LOADED:
+      return {
+        ...state,
+        categoriesLoaded: action.payload,
       };
 
     default:

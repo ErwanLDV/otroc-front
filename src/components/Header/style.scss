@@ -3,6 +3,9 @@
 .header {
   background-color: vars.$main-color;
   text-align: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
 
   &-nav {
     display: flex;

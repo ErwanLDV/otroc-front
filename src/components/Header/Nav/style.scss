@@ -15,6 +15,7 @@ ul {
 	padding-left: 0;
   display: flex;
   justify-content: space-between;
+  
 }
 
 li {
@@ -27,17 +28,21 @@ li {
 	position: relative;
 	text-decoration: none;
   transition-duration: 0.1s;
-  // //pour rendre la nav sur le long du header
-  // width: 100%;
 }
   
 li a {
-  color: black;  
+  color: black;
+  display: block;
+}
+
+li a:hover {
+  font-weight: bold;
+  color: #F0F
 }
 
 li:hover {
 	background: vars.$main-color;
-	cursor: pointer;
+	cursor: pointer; 
 }
 
 ul li ul {
