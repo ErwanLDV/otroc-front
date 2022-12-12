@@ -1,8 +1,16 @@
+import AnnoucementCard from '../AnnoucementCard/AnnoucementCard';
 import './style.scss';
 
 function Home() {
   return (
-    <section>Home</section>
+    <section>
+      <AnnoucementCard />
+      <AnnoucementCard />
+      <AnnoucementCard />
+      <AnnoucementCard />
+      <AnnoucementCard />
+      <AnnoucementCard />
+    </section>
   );
 }
 
