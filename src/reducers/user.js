@@ -1,5 +1,5 @@
 import {
-  AUTHENT_ERROR, AUTHENT_SUCCESS, CHANGE_CUSTOM_INPUT, LOGOUT,
+  AUTHENT_ERROR, AUTHENT_SUCCESS, CHANGE_CUSTOM_INPUT, LOGOUT, SAVE_USER_PROFIL,
 } from '../actions/user';
 
 export const initialState = {
@@ -13,6 +13,7 @@ export const initialState = {
   lastname: '',
   zipcode: '',
   phoneNumber: '',
+  profil: {},
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -44,6 +45,11 @@ const reducer = (state = initialState, action = {}) => {
         isLogged: false,
         message: '',
         pseudo: '',
+      };
+    case SAVE_USER_PROFIL:
+      return {
+        ...state,
+        profil: action.payload,
       };
     default:
       return state;

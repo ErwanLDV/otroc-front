@@ -12,12 +12,12 @@ function PersonalInformation() {
     dispatch(actionGetUserProfil());
   }, []);
 
-  const firstname = useSelector((state) => state.user.firstname);
-  const lastname = useSelector((state) => state.user.lastname);
-  const pseudo = useSelector((state) => state.user.pseudo);
-  const email = useSelector((state) => state.user.email);
-  const zipcode = useSelector((state) => state.user.zipcode);
-  const phoneNumber = useSelector((state) => state.user.phoneNumber);
+  const firstname = useSelector((state) => state.user.profil.firstname);
+  const lastname = useSelector((state) => state.user.profil.lastname);
+  const pseudo = useSelector((state) => state.user.profil.alias);
+  const email = useSelector((state) => state.user.profil.email);
+  const zipcode = useSelector((state) => state.user.profil.zipcode);
+  const phoneNumber = useSelector((state) => state.user.profil.phoneNumber);
 
   const handleChangeInput = (newValue, inputName) => {
     dispatch(actionChangeCustomInput(newValue, inputName));
