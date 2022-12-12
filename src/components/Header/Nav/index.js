@@ -16,7 +16,7 @@ function Nav({ categoriesArray }) {
           </li>
           {
             categoriesArray.map((mainCategory) => (
-              <li className="test">
+              <li className="test" key={`${mainCategory.id}`}>
                 <NavLink
                   to={mainCategory.slug}
                   key={`${mainCategory.id}`}
@@ -26,9 +26,9 @@ function Nav({ categoriesArray }) {
                 <ul className="dropdown">
                   {
                     mainCategory.categories.map((category) => (
-                      <li>
+                      <li key={`${mainCategory.id}-${category.id}`}>
                         <NavLink
-                          to={category.name}
+                          to={category.slug}
                           key={`${mainCategory.id}-${category.id}`}
                         >
                           {category.name}
