@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  actionAuthentError, actionAuthentSuccess, CHECK_LOGIN, GET_USER_PROFIL, USER_INSCRIPTION,
+  actionAuthentError, actionAuthentSuccess, actionSaveUserProfil, CHECK_LOGIN, GET_USER_PROFIL, USER_INSCRIPTION,
 } from '../actions/user';
 
 // For tests
@@ -45,16 +45,22 @@ const userMiddleware = (store) => (next) => (action) => {
       });
       break;
     }
-    case GET_USER_PROFIL:
+    case GET_USER_PROFIL: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
       axios.get(
-        `${baseURL}/api.user/pseudo`,
+        `${baseURL}/api/users/current/profile`,
+        config,
       ).then((result) => {
         console.log(result);
+        store.dispatch(actionSaveUserProfil(result.data));
       }).catch((error) => {
         console.log('get user profil ', error);
       });
       break;
-
+    }
     default:
       break;
   }

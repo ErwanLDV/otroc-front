@@ -3,16 +3,23 @@
 .header {
   background-color: vars.$main-color;
   text-align: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
 
   &-nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+  }
+  &-Link {
+    
   }
 }
 
 img {
-  width: 40%;
+  max-width: 40%;
+  height: auto;
   
 }
 

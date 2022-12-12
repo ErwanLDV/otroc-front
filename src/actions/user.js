@@ -5,6 +5,7 @@ export const AUTHENT_ERROR = 'AUTHENT_ERROR';
 export const LOGOUT = 'LOGOUT';
 export const USER_INSCRIPTION = 'USER_INSCRIPTION';
 export const GET_USER_PROFIL = 'GET_USER_PROFIL';
+export const SAVE_USER_PROFIL = 'SAVE_USER_PROFIL';
 
 export function actionChangeCustomInput(newValue, inputName) {
   return {
@@ -52,5 +53,12 @@ export function actionUserIncscription() {
 export function actionGetUserProfil() {
   return {
     type: GET_USER_PROFIL,
+  };
+}
+
+export function actionSaveUserProfil(profil) {
+  return {
+    type: SAVE_USER_PROFIL,
+    payload: profil,
   };
 }

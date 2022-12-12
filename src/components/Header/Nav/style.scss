@@ -9,42 +9,55 @@ nav {
 }
 
 ul {
-  background: grey;
+	background-color: #FFF;
 	list-style: none;
 	margin: 0;
 	padding-left: 0;
   display: flex;
   justify-content: space-between;
+  
 }
 
 li {
   flex-grow: 1;
 	color: #fff;
   background: #fff;
-	display: block;
+	// display: block;
 	float: left;
-	padding: 1rem;
+	// padding: 1rem;
 	position: relative;
 	text-decoration: none;
   transition-duration: 0.1s;
-  // //pour rendre la nav sur le long du header
-  // width: 100%;
+  padding-bottom: 1rem;
+	padding-top: 1rem;
 }
   
 li a {
-  color: black;  
+  color: #000;
+	display: block;
+	// width: 100%;
+	padding-top: 1.25em;
+	margin-top: -1.25em;
+	padding-bottom: 1.2em;
+	margin-bottom: -1.2em;
+
+}
+
+li a:hover {
+  font-weight: bold;
+  color: rgb(2, 114, 179);
 }
 
 li:hover {
 	background: vars.$main-color;
-	cursor: pointer;
+	cursor: pointer; 
 }
 
 ul li ul {
 	background: vars.$main-color;
 	visibility: hidden;
   opacity: 0;
-  min-width: 5rem;
+  min-width: 100%;
 	position: absolute;
   transition: all 0.5s ease;
   margin-top: 1rem;
