@@ -1,15 +1,10 @@
-import AnnoucementCard from '../AnnoucementCard/AnnoucementCard';
+import AnnouncementPage from '../AnnoucementPage';
 import './style.scss';
 
 function Home() {
   return (
     <section>
-      <AnnoucementCard />
-      <AnnoucementCard />
-      <AnnoucementCard />
-      <AnnoucementCard />
-      <AnnoucementCard />
-      <AnnoucementCard />
+      <AnnouncementPage />
     </section>
   );
 }

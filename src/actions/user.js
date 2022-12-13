@@ -6,13 +6,20 @@ export const LOGOUT = 'LOGOUT';
 export const USER_INSCRIPTION = 'USER_INSCRIPTION';
 export const GET_USER_PROFIL = 'GET_USER_PROFIL';
 export const SAVE_USER_PROFIL = 'SAVE_USER_PROFIL';
+export const PUT_USER_PROFIL = 'PUT_USER_PROFIL';
+export const GET_USER_OFFERS = 'GET_USER_OFFERS';
+export const SAVE_USER_OFFERS = 'SAVE_USER_OFFERS';
+export const GET_USER_WISHES = 'GET_USER_WISHES';
+export const SAVE_USER_WISHES = 'SAVE_USER_WISHES';
+export const GET_USER_HISTORY = 'GET_USER_HISTORY';
 
-export function actionChangeCustomInput(newValue, inputName) {
+export function actionChangeCustomInput(newValue, inputName, parentObject = null) {
   return {
     type: CHANGE_CUSTOM_INPUT,
     payload: {
       newValue,
       inputName,
+      parentObject,
     },
   };
 }
@@ -60,5 +67,43 @@ export function actionSaveUserProfil(profil) {
   return {
     type: SAVE_USER_PROFIL,
     payload: profil,
+  };
+}
+
+export function actionPutUserProfil() {
+  return {
+    type: PUT_USER_PROFIL,
+  };
+}
+
+export function actionGetUserOffers() {
+  return {
+    type: GET_USER_OFFERS,
+  };
+}
+
+export function actionSaveUserOffers(arrayDataOffers) {
+  return {
+    type: SAVE_USER_OFFERS,
+    payload: arrayDataOffers,
+  };
+}
+
+export function actionGetUserWishes() {
+  return {
+    type: GET_USER_WISHES,
+  };
+}
+
+export function actionSaveUserWishes(arrayDataWishes) {
+  return {
+    type: SAVE_USER_WISHES,
+    payload: arrayDataWishes,
+  };
+}
+
+export function actionGetUserHistory() {
+  return {
+    type: GET_USER_HISTORY,
   };
 }

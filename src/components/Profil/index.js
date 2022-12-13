@@ -1,15 +1,18 @@
 import './style.scss';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import avatarIMG from '../../assets/images/avatar.jpg';
 
 function Profil() {
+  const pseudo = useSelector((state) => state.user.currentUserProfil.alias);
+  const picture = useSelector((state) => state.user.currentUserProfil.picture);
   return (
     <section className="Profil-section">
       <h2>Profil</h2>
       <div className="Profil-container">
         <div className="Profil-container-user">
-          <img className="Profil-container-user-img" src={avatarIMG} alt="avatar" />
-          <span className="Profil-container-user-span">Pseudo</span>
+          <img className="Profil-container-user-img" src={picture || avatarIMG} alt="avatar" />
+          <span className="Profil-container-user-span">{pseudo}</span>
           <div className="Profil-container-user-input">
             <label htmlFor="picture">
               <input

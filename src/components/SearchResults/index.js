@@ -1,8 +1,12 @@
 import './style.scss';
+import AnnoucementCard from '../AnnoucementCard';
 
 function Profil() {
   return (
-    <section>Résultats de la recherche</section>
+    <section>
+      <h2>Résultats de la recherche</h2>
+      <AnnoucementCard />
+    </section>
   );
 }
 

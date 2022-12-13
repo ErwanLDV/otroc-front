@@ -1,5 +1,11 @@
 import {
-  AUTHENT_ERROR, AUTHENT_SUCCESS, CHANGE_CUSTOM_INPUT, LOGOUT, SAVE_USER_PROFIL,
+  AUTHENT_ERROR,
+  AUTHENT_SUCCESS,
+  CHANGE_CUSTOM_INPUT,
+  LOGOUT,
+  SAVE_USER_OFFERS,
+  SAVE_USER_PROFIL,
+  SAVE_USER_WISHES,
 } from '../actions/user';
 
 export const initialState = {
@@ -13,12 +19,23 @@ export const initialState = {
   lastname: '',
   zipcode: '',
   phoneNumber: '',
-  profil: {},
+  currentUserProfil: {},
+  currentUserOffers: [],
+  currentUserWishes: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_CUSTOM_INPUT:
+      if (action.payload.parentObject) {
+        return {
+          ...state,
+          [action.payload.parentObject]: {
+            ...state[action.payload.parentObject],
+            [action.payload.inputName]: action.payload.newValue,
+          },
+        };
+      }
       return {
         ...state,
         [action.payload.inputName]: action.payload.newValue,
@@ -49,7 +66,17 @@ const reducer = (state = initialState, action = {}) => {
     case SAVE_USER_PROFIL:
       return {
         ...state,
-        profil: action.payload,
+        currentUserProfil: action.payload,
+      };
+    case SAVE_USER_OFFERS:
+      return {
+        ...state,
+        currentUserOffers: action.payload,
+      };
+    case SAVE_USER_WISHES:
+      return {
+        ...state,
+        currentUserWishes: action.payload,
       };
     default:
       return state;

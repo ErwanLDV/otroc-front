@@ -8,6 +8,7 @@
   padding: 1em;
   border-radius: 10px;
   background-color: vars.$background-color;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   
 
   &-card {
@@ -39,7 +40,7 @@
   &-content {
     width: 80%;
     border-right: 2px solid vars.$border-color;
-    height: 6.15em;
+    
   }
   &-buttons {
 

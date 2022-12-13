@@ -1,7 +1,12 @@
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { actionChangeCustomInput, actionCheckLogin, actionLogout } from '../../actions/user';
+import {
+  actionChangeCustomInput,
+  actionCheckLogin,
+  actionGetUserProfil,
+  actionLogout,
+} from '../../actions/user';
 import CustomInput from '../CustomInput';
 
 function FormLogin() {
@@ -12,7 +17,6 @@ function FormLogin() {
 
   const handleChangeInput = (newValue, inputName) => {
     dispatch(actionChangeCustomInput(newValue, inputName));
-    console.log('test');
   };
 
   const handleSubmit = (event) => {
@@ -22,6 +26,10 @@ function FormLogin() {
 
   const handleLogout = () => {
     dispatch(actionLogout());
+  };
+
+  const handleClickProfil = () => {
+    dispatch(actionGetUserProfil());
   };
 
   return (
@@ -40,7 +48,7 @@ function FormLogin() {
               <p>Pas encore inscrit?<Link to="/inscription">Cliquez ici</Link></p>
             </>
           )
-          : (<div className="formLogin-buttons"><Link to="/profil"><button className="formLogin-buttons-myProfil" type="button">Mon profil</button></Link><button className="formLogin-buttons-disconnect" type="button" onClick={handleLogout}>Déconnexion</button></div>)
+          : (<div className="formLogin-buttons"><Link to="/profil"><button className="formLogin-buttons-myProfil" type="button" onClick={handleClickProfil}>Mon profil</button></Link><button className="formLogin-buttons-disconnect" type="button" onClick={handleLogout}>Déconnexion</button></div>)
       }
     </form>
   );
