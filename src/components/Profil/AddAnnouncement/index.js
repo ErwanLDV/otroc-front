@@ -7,14 +7,16 @@ import {
   actionChangeCustomInputAnnoucement,
   actionChangeSelectCategoriesAnnoucement,
   actionChangeTextAreaAnnoucement,
+  actionUdateWishAnnoucement,
 } from '../../../actions/annoucements';
 
 function AddAnnouncement() {
   const dispatch = useDispatch();
+  const modeEdit = useSelector((state) => state.annoucements.modeEdit);
   const title = useSelector((state) => state.annoucements.addOrEditAnnoucement.title);
   const description = useSelector((state) => state.annoucements.addOrEditAnnoucement.description);
   const zipcode = useSelector((state) => state.annoucements.addOrEditAnnoucement.zipcode);
-  const type = useSelector((state) => state.annoucements.addOrEditAnnoucement.type);
+  const annoucementType = useSelector((state) => state.annoucements.annoucementType);
 
   const handleChangeInput = (newValue, inputName) => {
     dispatch(actionChangeCustomInputAnnoucement(newValue, inputName, 'addOrEditAnnoucement'));
@@ -28,18 +30,36 @@ function AddAnnouncement() {
     dispatch(actionChangeSelectCategoriesAnnoucement(event.target.value));
   };
 
+  const handleChangeInputRadio = (newValue, inputName) => {
+    dispatch(actionChangeCustomInputAnnoucement(newValue, inputName));
+  };
+
   const handleSubmitFormAddAnnoucement = (event) => {
     console.log('test submit form');
     event.preventDefault();
-    switch (type) {
-      case 'offer':
-        dispatch(actionAddNewOfferAnnoucement());
-        break;
-      case 'wish':
-        dispatch(actionAddNewWishAnnoucement());
-        break;
-      default:
-        break;
+    if (modeEdit) {
+      switch (annoucementType) {
+        case 'offer':
+          dispatch();
+          break;
+        case 'wish':
+          dispatch(actionUdateWishAnnoucement());
+          break;
+        default:
+          break;
+      }
+    }
+    else {
+      switch (annoucementType) {
+        case 'offer':
+          dispatch(actionAddNewOfferAnnoucement());
+          break;
+        case 'wish':
+          dispatch(actionAddNewWishAnnoucement());
+          break;
+        default:
+          break;
+      }
     }
   };
 
@@ -47,14 +67,17 @@ function AddAnnouncement() {
     <section>
       <h2>Nouvelle Annonce</h2>
       <form className="addAnnouncement-form" onSubmit={handleSubmitFormAddAnnoucement}>
-        <div>
-          <label htmlFor="type">Offre
-            <CustomInput className="" value="offer" name="type" type="radio" onChange={handleChangeInput} />
-          </label>
-          <label htmlFor="type">Demande
-            <CustomInput className="" value="wish" name="type" type="radio" onChange={handleChangeInput} />
-          </label>
-        </div>
+        { !modeEdit
+        && (
+            <div>
+              <label htmlFor="annoucementType">Offre
+                <CustomInput className="" value="offer" name="annoucementType" type="radio" onChange={handleChangeInputRadio} />
+              </label>
+              <label htmlFor="annoucementType">Demande
+                <CustomInput className="" value="wish" name="annoucementType" type="radio" onChange={handleChangeInputRadio} />
+              </label>
+            </div>
+        )}
         <div>
           <label htmlFor="title">Titre*
             <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" value={title} type="text" name="title" placeholder="Titre de l'annonce" />

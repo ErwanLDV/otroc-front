@@ -14,6 +14,9 @@ export const SAVE_WISHES_ANNOUCEMENTS = 'SAVE_WISHES_ANNOUCEMENTS';
 export const GET_ONE_WISH_ANNOUCEMENT = 'GET_ONE_WISH_ANNOUCEMENT';
 export const SAVE_ONE_WISH_ANNOUCEMENT = 'SAVE_ONE_WISH_ANNOUCEMENT';
 export const ADD_NEW_WISH_ANNOUCEMENT = 'ADD_NEW_WISH_ANNOUCEMENT';
+export const GET_EDIT_WISH_ANNOUCEMENT = 'GET_EDIT_WISH_ANNOUCEMENT';
+export const SAVE_EDIT_WISH_ANNOUCEMENT = 'SAVE_EDIT_WISH_ANNOUCEMENT';
+export const UPDATE_WISH_ANNOUCEMENT = 'UPDATE_WISH_ANNOUCEMENT';
 
 export function actionChangeCustomInputAnnoucement(newValue, inputName, parentObject = null) {
   return {
@@ -107,5 +110,25 @@ export function actionSaveOneWishAnnoucement(wish) {
 export function actionAddNewWishAnnoucement() {
   return {
     type: ADD_NEW_WISH_ANNOUCEMENT,
+  };
+}
+
+export function actionGetEditWishAnnoucement(id) {
+  return {
+    type: GET_EDIT_WISH_ANNOUCEMENT,
+    payload: id,
+  };
+}
+
+export function actionSaveEditWishAnnoucement(wish) {
+  return {
+    type: SAVE_EDIT_WISH_ANNOUCEMENT,
+    payload: wish,
+  };
+}
+
+export function actionUdateWishAnnoucement() {
+  return {
+    type: UPDATE_WISH_ANNOUCEMENT,
   };
 }

@@ -22,6 +22,8 @@ function MyRequests() {
             title={item.title}
             content={item.description}
             img={item.picture}
+            id={item.id}
+            type="wish"
           />
         ))
       }

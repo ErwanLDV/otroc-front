@@ -35,6 +35,7 @@ function App() {
         <Route path="/profil/mes-demandes" element=<MyRequests /> />
         <Route path="/profil/historique" element=<MyHistory /> />
         <Route path="/annonces/ajouter" element=<AddAnnouncement /> />
+        <Route path="/annonces/editer" element=<AddAnnouncement /> />
         <Route path="*" element=<Error /> />
       </Routes>
       <Footer />

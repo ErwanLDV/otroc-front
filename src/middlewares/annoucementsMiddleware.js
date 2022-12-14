@@ -1,15 +1,18 @@
 import axios from 'axios';
 import {
+  actionSaveEditWishAnnoucement,
   actionSaveOffersAnnoucements,
   actionSaveOneOfferAnnoucement,
   actionSaveOneWishAnnoucement,
   actionSaveWishesAnnoucements,
   ADD_NEW_OFFER_ANNOUCEMENT,
   ADD_NEW_WISH_ANNOUCEMENT,
+  GET_EDIT_WISH_ANNOUCEMENT,
   GET_OFFERS_ANNOUCEMENTS,
   GET_ONE_OFFER_ANNOUCEMENT,
   GET_ONE_WISH_ANNOUCEMENT,
   GET_WISHES_ANNOUCEMENTS,
+  UPDATE_WISH_ANNOUCEMENT,
 } from '../actions/annoucements';
 
 // For tests
@@ -107,6 +110,41 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         console.log(result);
       }).catch((error) => {
         console.log('add new wish annoucement ', error);
+      });
+      break;
+    }
+
+    case GET_EDIT_WISH_ANNOUCEMENT:
+      axios.get(`${baseURL}/api/wishes/${action.payload}`)
+        .then((result) => {
+          store.dispatch(actionSaveEditWishAnnoucement(result.data));
+        })
+        .catch((error) => {
+          console.log('GET_EDIT_WISH_ANNOUCEMENT', error);
+        });
+      break;
+
+    case UPDATE_WISH_ANNOUCEMENT: {
+      const { addOrEditAnnoucement } = store.getState().annoucements;
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.put(
+        `${baseURL}/api/wishes/${addOrEditAnnoucement.id}`,
+        {
+          title: addOrEditAnnoucement.title,
+          zipcode: Number(addOrEditAnnoucement.zipcode),
+          description: addOrEditAnnoucement.description,
+          isActive: true,
+          type: addOrEditAnnoucement.type,
+          categories: addOrEditAnnoucement.categories,
+        },
+        config,
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('UPDATE_WISH_ANNOUCEMENT ', error);
       });
       break;
     }

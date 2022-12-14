@@ -6,12 +6,15 @@ import {
   CHANGE_CUSTOM_INPUT_ANNOUCEMENT,
   CHANGE_TEXT_AREA_ANNOUCEMENT,
   CHANGE_SELECT_CATEGORIES_ANNOUCEMENT,
+  SAVE_EDIT_WISH_ANNOUCEMENT,
 } from '../actions/annoucements';
 
 export const initialState = {
   inputSearchBar: '',
   annoucementsArray: [],
   currentAnnoucement: {},
+  annoucementType: '',
+  modeEdit: false,
   addOrEditAnnoucement: {},
 };
 
@@ -67,6 +70,14 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         currentAnnoucement: action.payload,
+      };
+
+    case SAVE_EDIT_WISH_ANNOUCEMENT:
+      return {
+        ...state,
+        modeEdit: true,
+        annoucementType: 'wish',
+        addOrEditAnnoucement: action.payload,
       };
 
     default:
