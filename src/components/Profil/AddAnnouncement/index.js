@@ -1,7 +1,13 @@
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomInput from '../../CustomInput';
-import { actionAddNewOfferAnnoucement, actionAddNewWishAnnoucement, actionChangeCustomInputAnnoucement, actionChangeSelectCategoriesAnnoucement, actionChangeTextAreaAnnoucement } from '../../../actions/annoucements';
+import {
+  actionAddNewOfferAnnoucement,
+  actionAddNewWishAnnoucement,
+  actionChangeCustomInputAnnoucement,
+  actionChangeSelectCategoriesAnnoucement,
+  actionChangeTextAreaAnnoucement,
+} from '../../../actions/annoucements';
 
 function AddAnnouncement() {
   const dispatch = useDispatch();
@@ -50,11 +56,11 @@ function AddAnnouncement() {
           </label>
         </div>
         <div>
-          <label htmlFor="title">Titre
-            <CustomInput onChange={handleChangeInput} className="" value={title} type="text" name="title" placeholder="Titre de l'annonce" />
+          <label htmlFor="title">Titre*
+            <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" value={title} type="text" name="title" placeholder="Titre de l'annonce" />
           </label>
         </div>
-        <label htmlFor="mainCategory">Choisir une categorie:
+        <label htmlFor="mainCategory">Choisir une categorie*
           <select name="mainCategory" onChange={handleChangeSelect}>
             <option value="">liste des catégories</option>
             <option value="1">Maison</option>
@@ -72,10 +78,12 @@ function AddAnnouncement() {
             accept="image/png, image/jpeg"
           />
         </label>
-        <CustomInput onChange={handleChangeInput} className="" maxLength="5" value={zipcode} type="zipcode" name="zipcode" placeholder="code postal" />
+        <label htmlFor="title">Code Postal*
+          <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" maxLength="5" value={zipcode} type="zipcode" name="zipcode" placeholder="Code postal" />
+        </label>
         <div>
-          <label htmlFor="content">Contenu
-            <textarea onChange={handleChangeTextArea} value={description} className="textarea" rows="5" cols="50" name="description" placeholder="Contenu de l'annonce" />
+          <label htmlFor="content">Contenu*
+            <textarea onChange={handleChangeTextArea} value={description} className="addAnnouncement-form-textarea" rows="5" cols="50" name="description" placeholder="Contenu de l'annonce" />
           </label>
         </div>
         <button type="submit">Envoyer</button>
