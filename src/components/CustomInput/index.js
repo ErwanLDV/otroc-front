@@ -45,7 +45,7 @@ function CustomInput({
       name={name}
       type={type}
       placeholder={placeholder}
-      value={value}
+      value={value || ''}
       onChange={handleChange}
       maxLength={maxLength}
       required={required}
@@ -54,7 +54,10 @@ function CustomInput({
 }
 
 CustomInput.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
@@ -65,7 +68,7 @@ CustomInput.propTypes = {
 };
 
 CustomInput.defaultProps = {
-  value: '',
+  value: null,
   type: 'text',
   required: false,
   maxLength: null,

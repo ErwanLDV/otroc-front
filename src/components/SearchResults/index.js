@@ -2,7 +2,10 @@ import './style.scss';
 
 function Profil() {
   return (
-    <section>Résultats de la recherche</section>
+    <section>
+      <h2>Résultats de la recherche</h2>
+
+    </section>
   );
 }
 

@@ -1,6 +1,17 @@
 import axios from 'axios';
 import {
-  actionAuthentError, actionAuthentSuccess, actionSaveUserProfil, CHECK_LOGIN, GET_USER_PROFIL, USER_INSCRIPTION,
+  actionAuthentError,
+  actionAuthentSuccess,
+  actionSaveUserOffers,
+  actionSaveUserProfil,
+  actionSaveUserWishes,
+  CHECK_LOGIN,
+  GET_USER_HISTORY,
+  GET_USER_OFFERS,
+  GET_USER_PROFIL,
+  GET_USER_WISHES,
+  PUT_USER_PROFIL,
+  USER_INSCRIPTION,
 } from '../actions/user';
 
 // For tests
@@ -58,6 +69,78 @@ const userMiddleware = (store) => (next) => (action) => {
         store.dispatch(actionSaveUserProfil(result.data));
       }).catch((error) => {
         console.log('get user profil ', error);
+      });
+      break;
+    }
+    case PUT_USER_PROFIL: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.put(
+        `${baseURL}/api/users/current`,
+        {
+          email: user.currentUserProfil.email,
+          password: user.currentUserProfil.password,
+          alias: user.currentUserProfil.alias,
+          zipcode: Number(user.currentUserProfil.zipcode),
+          firstname: user.currentUserProfil.firstname,
+          lastname: user.currentUserProfil.lastname,
+          phoneNumber: user.currentUserProfil.phoneNumber,
+        },
+        config,
+      ).then((result) => {
+        console.log(result);
+        store.dispatch(actionSaveUserProfil(result.data));
+      }).catch((error) => {
+        console.log('put user profil ', error);
+      });
+      break;
+    }
+    case GET_USER_OFFERS: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.get(
+        `${baseURL}/api/users/current/offers`,
+        config,
+      ).then((result) => {
+        console.log(result);
+        store.dispatch(actionSaveUserOffers(result.data));
+      }).catch((error) => {
+        console.log('get user offers ', error);
+      });
+      break;
+    }
+    case GET_USER_WISHES: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.get(
+        `${baseURL}/api/users/current/wishes`,
+        config,
+      ).then((result) => {
+        console.log(result);
+        store.dispatch(actionSaveUserWishes(result.data));
+      }).catch((error) => {
+        console.log('get user offers ', error);
+      });
+      break;
+    }
+    case GET_USER_HISTORY: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.get(
+        `${baseURL}/`,
+        config,
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('get user offers ', error);
       });
       break;
     }

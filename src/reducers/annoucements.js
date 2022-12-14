@@ -6,6 +6,7 @@ import {
 } from '../actions/annoucements';
 
 export const initialState = {
+  inputSearchBar: '',
   annoucementsArray: [],
   currentAnnoucement: {},
   addOrEditOffer: {},
