@@ -7,8 +7,8 @@ function AnnouncementPage() {
         Annoucement
       </div>
       <div className="annoucementPage-container-img">
-        <div>
-          <img className="annoucementPage-container-img-photo" src="https://www.assuronline.com/wp-content/uploads/2022/01/103948580_l-scaled.jpg" alt="voiture" />
+        <div className="annoucementPage-container-img-photo">
+          <img className="image" src="https://www.assuronline.com/wp-content/uploads/2022/01/103948580_l-scaled.jpg" alt="voiture" />
         </div>
         <div className="annoucementPage-container-user">
           informations troqueur

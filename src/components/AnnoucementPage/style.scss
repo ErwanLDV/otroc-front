@@ -1,24 +1,21 @@
 @use '../../styles/vars';
 .annoucementPage-container {
-  width: 100%;
+  width: 50%;
   margin: auto;
   display: flex;
   flex-direction: column;
-  margin-top: 2em;
+  margin-top: 1em;
 
   &-img {
-    width: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: row;    
+    width: 100%;
     
 
 
     &-photo {
-      width: 100%;
-      height: 20em;
-      border-top-left-radius: 20px;
-      // border-bottom-left-radius: 20px;
+      width: 150%;      
+      border-top-left-radius: 20px;      
       border: 1px solid vars.$border-color;
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
     }
@@ -26,25 +23,60 @@
   }
   &-user {
     font-weight: bold;
-    border: 1px solid vars.$border-color;
-    height: 20em;
-    width: 20%;
+    border: 1px solid vars.$border-color;    
+    width: 100%;
     margin-left: 0.6em;
-    // border-radius: 10px;
-    border-top-right-radius: 20px;
-    // border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;    
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   }
 
   &-content {
-    width: 52.3%;
-    height: 20em;
-    border: 1px solid vars.$border-color;
-    // border-radius: 15px;
+    width: 100%;
+    height: 15em;
+    border: 1px solid vars.$border-color;    
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-    margin: 0.5em auto;
+    margin: 0.55em auto;
   }
   
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .annoucementPage-container{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+
+    &-img {      
+      flex-direction: column;      
+      &-photo {
+        width: 100%;        
+        border-top-right-radius: 20px;        
+      }
+    }
+
+    &-user {
+      margin: auto;
+      border-radius: none;
+      border-top-right-radius: 0px;
+      margin-top: 0.55em;
+      height: 5em;
+    }
+    
+
+  }
+  .image {
+    // width: 100%;
+    // height: 100%;
+    border-top-right-radius: 20px;
+  }
 }

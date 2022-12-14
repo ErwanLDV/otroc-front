@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import CustomInput from '../../CustomInput';
-import { actionChangeCustomInput, actionGetUserProfil, actionPutUserProfil } from '../../../actions/user';
+import { actionChangeCustomInput, actionPutUserProfil } from '../../../actions/user';
 import './style.scss';
 
 function PersonalInformation() {
