@@ -1,8 +1,9 @@
-import { SAVE_ALL_CATEGORIES, CATEGORIES_LOADED } from '../actions/categories';
+import { SAVE_ALL_CATEGORIES, CATEGORIES_LOADED, NAVBAR_RERENDER } from '../actions/categories';
 
 export const initialState = {
   categoriesArray: [],
   categoriesLoaded: false,
+  navBarRerender: true,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -17,6 +18,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         categoriesLoaded: action.payload,
+      };
+
+    case NAVBAR_RERENDER:
+      return {
+        ...state,
+        navBarRerender: action.payload,
       };
 
     default:

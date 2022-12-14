@@ -11,6 +11,7 @@ function Header() {
   const dispatch = useDispatch();
   const categoriesArray = useSelector((state) => state.categories.categoriesArray);
   const categoriesLoaded = useSelector((state) => state.categories.categoriesLoaded);
+  const navBarRerender = useSelector((state) => state.categories.navBarRerender);
   useEffect(() => {
     dispatch(actionGetAllCategories());
   }, []);
@@ -22,7 +23,10 @@ function Header() {
         <Link className="header-Link" to="/"><img src={logo} alt="Logo OTroc" /></Link>
         {location.pathname === '/inscription' || <FormLogin />}
       </div>
-      { categoriesLoaded && <Nav categoriesArray={categoriesArray} /> }
+      {
+        categoriesLoaded
+        && <Nav categoriesArray={categoriesArray} navBarRerender={navBarRerender} />
+      }
     </header>
   );
 }

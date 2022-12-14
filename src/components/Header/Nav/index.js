@@ -1,46 +1,53 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './style.scss';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { actionNavbarRerender } from '../../../actions/categories';
 
-function Nav({ categoriesArray }) {
+function Nav({ categoriesArray, navBarRerender }) {
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect(() => {
+    dispatch(actionNavbarRerender(false));
+    setTimeout(() => {
+      dispatch(actionNavbarRerender(true));
+    }, 100);
+  }, [location]);
   return (
     <div>
-      <nav role="navigation">
-        <ul>
-          <li>
-            <NavLink
-              to="/"
-            >
-              Accueil
-            </NavLink>
+      <nav className="menu">
+        <ol>
+          <li className="menu-item">
+            <NavLink to="/">Home</NavLink>
           </li>
           {
             categoriesArray.map((mainCategory) => (
-              <li className="test">
+              <li className="menu-item" key={`${mainCategory.id}`}>
                 <NavLink
                   to={mainCategory.slug}
                   key={`${mainCategory.id}`}
                 >
                   {mainCategory.name}
                 </NavLink>
-                <ul className="dropdown">
-                  {
-                    mainCategory.categories.map((category) => (
-                      <li>
+                <ol className="sub-menu">
+                  { navBarRerender
+                    && mainCategory.categories.map((category) => (
+                      <li className="menu-item" key={`${mainCategory.id}-${category.id}`}>
                         <NavLink
-                          to={category.name}
+                          to={category.slug}
                           key={`${mainCategory.id}-${category.id}`}
                         >
                           {category.name}
                         </NavLink>
                       </li>
-                    ))
-                  }
-                </ul>
+                    ))}
+                </ol>
               </li>
             ))
           }
-        </ul>
+        </ol>
       </nav>
     </div>
   );
@@ -48,6 +55,7 @@ function Nav({ categoriesArray }) {
 
 Nav.propTypes = {
   categoriesArray: PropTypes.array.isRequired,
+  navBarRerender: PropTypes.bool.isRequired,
 };
 
 export default Nav;
