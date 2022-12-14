@@ -6,7 +6,9 @@ import {
   CHANGE_CUSTOM_INPUT_ANNOUCEMENT,
   CHANGE_TEXT_AREA_ANNOUCEMENT,
   CHANGE_SELECT_CATEGORIES_ANNOUCEMENT,
+  SAVE_EDIT_OFFER_ANNOUCEMENT,
   SAVE_EDIT_WISH_ANNOUCEMENT,
+  CHANGE_MODE_EDIT,
 } from '../actions/annoucements';
 
 export const initialState = {
@@ -53,12 +55,13 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
-    case SAVE_OFFERS_ANNOUCEMENTS:
+    case CHANGE_MODE_EDIT:
       return {
         ...state,
-        annoucementsArray: action.payload,
+        modeEdit: action.payload,
       };
 
+    case SAVE_OFFERS_ANNOUCEMENTS:
     case SAVE_WISHES_ANNOUCEMENTS:
       return {
         ...state,
@@ -77,6 +80,14 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         modeEdit: true,
         annoucementType: 'wish',
+        addOrEditAnnoucement: action.payload,
+      };
+
+    case SAVE_EDIT_OFFER_ANNOUCEMENT:
+      return {
+        ...state,
+        modeEdit: true,
+        annoucementType: 'offer',
         addOrEditAnnoucement: action.payload,
       };
 

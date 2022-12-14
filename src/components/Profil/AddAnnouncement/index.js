@@ -1,5 +1,7 @@
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import CustomInput from '../../CustomInput';
 import {
   actionAddNewOfferAnnoucement,
@@ -7,7 +9,9 @@ import {
   actionChangeCustomInputAnnoucement,
   actionChangeSelectCategoriesAnnoucement,
   actionChangeTextAreaAnnoucement,
-  actionUdateWishAnnoucement,
+  actionUpdateWishAnnoucement,
+  actionUpdateOfferAnnoucement,
+  actionChangeModeEdit,
 } from '../../../actions/annoucements';
 
 function AddAnnouncement() {
@@ -18,6 +22,18 @@ function AddAnnouncement() {
   const zipcode = useSelector((state) => state.annoucements.addOrEditAnnoucement.zipcode);
   const annoucementType = useSelector((state) => state.annoucements.annoucementType);
 
+  const location = useLocation();
+  useEffect(() => {
+    switch (location.pathname) {
+      case '/annonces/ajouter':
+        dispatch(actionChangeModeEdit(false));
+        break;
+      default:
+        dispatch(actionChangeModeEdit(true));
+        break;
+    }
+  }, [location]);
+  console.log(modeEdit);
   const handleChangeInput = (newValue, inputName) => {
     dispatch(actionChangeCustomInputAnnoucement(newValue, inputName, 'addOrEditAnnoucement'));
   };
@@ -40,10 +56,10 @@ function AddAnnouncement() {
     if (modeEdit) {
       switch (annoucementType) {
         case 'offer':
-          dispatch();
+          dispatch(actionUpdateOfferAnnoucement());
           break;
         case 'wish':
-          dispatch(actionUdateWishAnnoucement());
+          dispatch(actionUpdateWishAnnoucement());
           break;
         default:
           break;
@@ -101,6 +117,14 @@ function AddAnnouncement() {
             accept="image/png, image/jpeg"
           />
         </label>
+        <div>
+              <label htmlFor="type">Permanent
+                <CustomInput className="" value="permanent" name="type" type="radio" onChange={handleChangeInputRadio} />
+              </label>
+              <label htmlFor="type">Temporaire
+                <CustomInput className="" value="temporaire" name="type" type="radio" onChange={handleChangeInputRadio} />
+              </label>
+            </div>
         <label htmlFor="title">Code Postal*
           <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" maxLength="5" value={zipcode} type="zipcode" name="zipcode" placeholder="Code postal" />
         </label>
