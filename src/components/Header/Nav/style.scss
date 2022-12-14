@@ -1,88 +1,7 @@
 @use '../../../styles/vars';
 
-// a {
-//   text-decoration: none;
-// }
-
-// nav {
-// 	font-family: monospace;  
-// }
-
-// ul {
-// 	background-color: #FFF;
-// 	list-style: none;
-// 	margin: 0;
-// 	padding-left: 0;
-//   display: flex;
-//   justify-content: space-between;
-  
-// }
-
-// li {
-//   flex-grow: 1;
-// 	color: #fff;
-//   background: #fff;
-// 	// display: block;
-// 	float: left;
-// 	// padding: 1rem;
-// 	position: relative;
-// 	text-decoration: none;
-//   transition-duration: 0.1s;
-//   padding-bottom: 1rem;
-// 	padding-top: 1rem;
-// }
-  
-// li a {
-//   color: #000;
-// 	display: block;
-// 	// width: 100%;
-// 	padding-top: 1.25em;
-// 	margin-top: -1.25em;
-// 	padding-bottom: 1.2em;
-// 	margin-bottom: -1.2em;
-
-// }
-
-// li a:hover {
-//   font-weight: bold;
-//   color: rgb(2, 114, 179);
-// }
-
-// li:hover {
-// 	background: vars.$main-color;
-// 	cursor: pointer; 
-// }
-
-// ul li ul {
-// 	background: vars.$main-color;
-// 	visibility: hidden;
-//   opacity: 0;
-//   min-width: 100%;
-// 	position: absolute;
-//   transition: all 0.5s ease;
-//   margin-top: 1rem;
-// 	left: 0;
-//   display: none;
-// }
-
-// ul li:hover > ul,
-// ul li ul:hover {
-//   visibility: visible;
-//   opacity: 1;
-//   display: block;
-// }
-
-// ul li ul li {
-//   width: 100%;
-// }
-
-// ========== NAV EXPERIMENTAL
-
-$gradient-start :#ed6ea0;
-$gradient-end :#ec8c69;
-
 $gradient-end :#6e7bed;
-$gradient-start :#c269ec;
+$gradient-start :#ad69ec;
 
 // body{
 //     display: flex;
@@ -98,7 +17,7 @@ $gradient-start :#c269ec;
 .menu{
   background-image: linear-gradient(to right, $gradient-start 0%, $gradient-end 100%);
   border-radius:0.5rem;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   box-shadow: inset 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.15);
   a{
     color: #fff;
@@ -123,8 +42,7 @@ $gradient-start :#c269ec;
   .menu{
     > ol{
       justify-content: space-around;
-      &:hover,
-      &:focus-within{
+      &:hover{
         > li:first-child{
           > a{
               opacity:0.6;
@@ -143,7 +61,7 @@ $gradient-start :#c269ec;
           background: rgba(0, 0, 0, 0.1);
           border-radius: 0.5rem;
           z-index: 0;    
-          transition: 350ms cubic-bezier(1, 0.49, 0.09, 1.29) all;
+          transition: 350ms cubic-bezier(1, 0.49, 0.09, 1) all;
           pointer-events: none;
         }
         @for $i from 1 to 12 {
@@ -155,24 +73,18 @@ $gradient-start :#c269ec;
           &:first-child:nth-last-child( #{$i} ),
           &:first-child:nth-last-child( #{$i} ) ~ li{          
             @for $j from 1 to $i {
-              &:nth-child( #{$j} ):hover,
-              &:nth-child( #{$j} ):focus,
-              &:nth-child( #{$j} ):focus-within{     
+              &:nth-child( #{$j} ):hover{     
                 ~ li:last-child:after{
                   right: 50% + 100% * ($i - $j);
                 }
                 > ol a{
                   box-shadow: inset 0 0 0 3rem rgba(0, 0, 0, 0), inset 0 0 0 3rem rgba(237, 110, 160, calc(1 - calc(1/$i)*$j));
-                  &:hover,
-                  &:focus,
-                  &:focus-within{
+                  &:hover{
                   box-shadow: inset 0 0 0 3rem rgba(0, 0, 0, 0.1), inset 0 0 0 3rem rgba(237, 110, 160, calc(1 - calc(1/$i)*$j));
                   }
                 }
               } 
-              &:last-child:hover:after,
-              &:last-child:focus:after,
-              &:last-child:focus-within:after{
+              &:last-child:hover:after{
                 right: 50%;
               }
             }
@@ -185,8 +97,7 @@ $gradient-start :#c269ec;
         }
         > a{
           padding: .5rem 0;
-          font-size: 1.6vw;
-          position: relative;
+          font-size: 1.2rem;
           width: 100%;
           text-align: center;
           z-index: 1;
@@ -203,27 +114,24 @@ $gradient-start :#c269ec;
             margin-top:0.5rem;
             transition: 250ms cubic-bezier(0.42, 0.83, 0.49, 1.35) transform;
             transform: scale(0);
-            > a{            
+            > a{
               display: block;
               text-align: center;
               border-radius: 0.2rem;
               padding: .5rem 0.5rem;
-              font-size: 1.4vw;
+              font-size: 1rem;
               background: $gradient-end;
-              color: rgba(255,255,255,0.6);
+              color: rgba(255,255,255,0.7);
               transition: 250ms ease all;
-              &:hover,
-              &:focus,
-              &:focus-within{
+              &:hover{
                 box-shadow: inset 0 0 0 3rem rgba(0,0,0,0.1);
                 color: rgba(255,255,255,1);
+                transform: scale(1.05);
               }
             }
           }
         }
-        &:hover,
-        &:focus,
-        &:focus-within{
+        &:hover{
             > a{
               opacity: 1 !important;
             }
@@ -237,7 +145,7 @@ $gradient-start :#c269ec;
               }
               @for $k from 1 to 12 {
                 > li:nth-child( #{$k} ){ 
-                  transition-delay: 150ms * $k;
+                  transition-delay: 50ms * $k;
                 }
               }
             }
