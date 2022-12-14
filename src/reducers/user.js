@@ -1,7 +1,7 @@
 import {
   AUTHENT_ERROR,
   AUTHENT_SUCCESS,
-  CHANGE_CUSTOM_INPUT,
+  CHANGE_CUSTOM_INPUT_USER,
   LOGOUT,
   SAVE_USER_OFFERS,
   SAVE_USER_PROFIL,
@@ -26,7 +26,7 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case CHANGE_CUSTOM_INPUT:
+    case CHANGE_CUSTOM_INPUT_USER:
       if (action.payload.parentObject) {
         return {
           ...state,

@@ -1,4 +1,4 @@
-export const CHANGE_CUSTOM_INPUT = 'CHANGE_CUSTOM_INPUT';
+export const CHANGE_CUSTOM_INPUT_USER = 'CHANGE_CUSTOM_INPUT_USER';
 export const CHECK_LOGIN = 'CHECK_LOGIN';
 export const AUTHENT_SUCCESS = 'AUTHENT_SUCCESS';
 export const AUTHENT_ERROR = 'AUTHENT_ERROR';
@@ -13,9 +13,9 @@ export const GET_USER_WISHES = 'GET_USER_WISHES';
 export const SAVE_USER_WISHES = 'SAVE_USER_WISHES';
 export const GET_USER_HISTORY = 'GET_USER_HISTORY';
 
-export function actionChangeCustomInput(newValue, inputName, parentObject = null) {
+export function actionChangeCustomInputUser(newValue, inputName, parentObject = null) {
   return {
-    type: CHANGE_CUSTOM_INPUT,
+    type: CHANGE_CUSTOM_INPUT_USER,
     payload: {
       newValue,
       inputName,

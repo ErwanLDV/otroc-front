@@ -4,6 +4,8 @@ import {
   actionSaveOneOfferAnnoucement,
   actionSaveOneWishAnnoucement,
   actionSaveWishesAnnoucements,
+  ADD_NEW_OFFER_ANNOUCEMENT,
+  ADD_NEW_WISH_ANNOUCEMENT,
   GET_OFFERS_ANNOUCEMENTS,
   GET_ONE_OFFER_ANNOUCEMENT,
   GET_ONE_WISH_ANNOUCEMENT,
@@ -37,6 +39,31 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         });
       break;
 
+    case ADD_NEW_OFFER_ANNOUCEMENT: {
+      const { addOrEditAnnoucement } = store.getState().annoucements;
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.post(
+        `${baseURL}/api/offers`,
+        {
+          title: addOrEditAnnoucement.title,
+          zipcode: Number(addOrEditAnnoucement.zipcode),
+          description: addOrEditAnnoucement.description,
+          isActive: true,
+          type: addOrEditAnnoucement.type,
+          categories: addOrEditAnnoucement.categories,
+        },
+        config,
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('add new offer annoucement ', error);
+      });
+      break;
+    }
+
     // WISHES -------------------------------------------------------------
     case GET_WISHES_ANNOUCEMENTS:
       axios.get(`${baseURL}/api/wishes`)
@@ -58,6 +85,31 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
           console.log('GET_ONE_WISH_ANNOUCEMENT', error);
         });
       break;
+
+    case ADD_NEW_WISH_ANNOUCEMENT: {
+      const { addOrEditAnnoucement } = store.getState().annoucements;
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.post(
+        `${baseURL}/api/wishes`,
+        {
+          title: addOrEditAnnoucement.title,
+          zipcode: Number(addOrEditAnnoucement.zipcode),
+          description: addOrEditAnnoucement.description,
+          isActive: true,
+          type: addOrEditAnnoucement.type,
+          categories: addOrEditAnnoucement.categories,
+        },
+        config,
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('add new wish annoucement ', error);
+      });
+      break;
+    }
 
     default:
       break;

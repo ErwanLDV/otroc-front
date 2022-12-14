@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useDispatch, useSelector } from 'react-redux';
 import CustomInput from '../../CustomInput';
-import { actionChangeCustomInput, actionPutUserProfil } from '../../../actions/user';
+import { actionChangeCustomInputUser, actionPutUserProfil } from '../../../actions/user';
 import './style.scss';
 
 function PersonalInformation() {
@@ -15,7 +15,7 @@ function PersonalInformation() {
   const phoneNumber = useSelector((state) => state.user.currentUserProfil.phoneNumber);
 
   const handleChangeInput = (newValue, inputName) => {
-    dispatch(actionChangeCustomInput(newValue, inputName, 'currentUserProfil'));
+    dispatch(actionChangeCustomInputUser(newValue, inputName, 'currentUserProfil'));
     console.log('change');
   };
 

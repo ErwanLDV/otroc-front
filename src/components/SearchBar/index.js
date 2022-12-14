@@ -1,7 +1,7 @@
 import './style.scss';
 import { useDispatch } from 'react-redux';
 import CustomInput from '../CustomInput';
-import { actionChangeCustomInput } from '../../actions/user';
+import { actionChangeCustomInputAnnoucement } from '../../actions/annoucements';
 
 function SearchBar() {
   const dispatch = useDispatch();
