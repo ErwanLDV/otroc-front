@@ -150,7 +150,7 @@ function AddAnnouncement() {
         </label>
         <div>
           <label htmlFor="content">Contenu*
-            <textarea onChange={handleChangeTextArea} value={addOrEditAnnoucement.description} className="addAnnouncement-form-textarea" rows="5" cols="50" name="description" placeholder="Contenu de l'annonce" />
+            <textarea onChange={handleChangeTextArea} value={addOrEditAnnoucement.description || ''} className="addAnnouncement-form-textarea" rows="5" cols="50" name="description" placeholder="Contenu de l'annonce" />
           </label>
         </div>
         <button type="submit">Envoyer</button>
