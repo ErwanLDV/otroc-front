@@ -8,7 +8,8 @@ import {
   CHANGE_SELECT_CATEGORIES_ANNOUCEMENT,
   SAVE_EDIT_OFFER_ANNOUCEMENT,
   SAVE_EDIT_WISH_ANNOUCEMENT,
-  CHANGE_MODE_EDIT,
+  ENABLE_MODE_EDIT,
+  DISABLE_MODE_EDIT,
 } from '../actions/annoucements';
 
 export const initialState = {
@@ -17,6 +18,7 @@ export const initialState = {
   currentAnnoucement: {},
   annoucementType: '',
   modeEdit: false,
+  editLoaded: false,
   addOrEditAnnoucement: {},
 };
 
@@ -55,10 +57,18 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
-    case CHANGE_MODE_EDIT:
+    case ENABLE_MODE_EDIT:
       return {
         ...state,
-        modeEdit: action.payload,
+        modeEdit: true,
+      };
+
+    case DISABLE_MODE_EDIT:
+      return {
+        ...state,
+        editLoaded: false,
+        modeEdit: false,
+        addOrEditAnnoucement: {},
       };
 
     case SAVE_OFFERS_ANNOUCEMENTS:
@@ -79,6 +89,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         modeEdit: true,
+        editLoaded: true,
         annoucementType: 'wish',
         addOrEditAnnoucement: action.payload,
       };
@@ -87,6 +98,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         modeEdit: true,
+        editLoaded: true,
         annoucementType: 'offer',
         addOrEditAnnoucement: action.payload,
       };

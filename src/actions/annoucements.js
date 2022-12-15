@@ -3,7 +3,8 @@ export const CHANGE_TEXT_AREA_ANNOUCEMENT = 'CHANGE_TEXT_AREA_ANNOUCEMENT';
 export const CHANGE_SELECT_CATEGORIES_ANNOUCEMENT = 'CHANGE_SELECT_CATEGORIES_ANNOUCEMENT';
 
 // Mode Edit -------------------------------------------------------------
-export const CHANGE_MODE_EDIT = 'CHANGE_MODE_EDIT';
+export const ENABLE_MODE_EDIT = 'ENABLE_MODE_EDIT';
+export const DISABLE_MODE_EDIT = 'DISABLE_MODE_EDIT';
 
 // OFFERS ----------------------------------------------------------------
 export const GET_OFFERS_ANNOUCEMENTS = 'GET_OFFERS_ANNOUCEMENTS';
@@ -52,10 +53,15 @@ export function actionChangeSelectCategoriesAnnoucement(newValue) {
 
 // Mode Edit -------------------------------------------------------------
 
-export function actionChangeModeEdit(bool) {
+export function actionEnableModeEdit() {
   return {
-    type: CHANGE_MODE_EDIT,
-    payload: bool,
+    type: ENABLE_MODE_EDIT,
+  };
+}
+
+export function actionDisableModeEdit() {
+  return {
+    type: DISABLE_MODE_EDIT,
   };
 }
 

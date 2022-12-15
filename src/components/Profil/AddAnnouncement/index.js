@@ -11,7 +11,8 @@ import {
   actionChangeTextAreaAnnoucement,
   actionUpdateWishAnnoucement,
   actionUpdateOfferAnnoucement,
-  actionChangeModeEdit,
+  actionDisableModeEdit,
+  actionEnableModeEdit,
 } from '../../../actions/annoucements';
 
 function AddAnnouncement() {
@@ -20,20 +21,21 @@ function AddAnnouncement() {
   const addOrEditAnnoucement = useSelector((state) => state.annoucements.addOrEditAnnoucement);
   const annoucementType = useSelector((state) => state.annoucements.annoucementType);
   const categoriesArray = useSelector((state) => state.categories.categoriesArray);
-
+  const editLoaded = useSelector((state) => state.annoucements.editLoaded);
   const location = useLocation();
   useEffect(() => {
     switch (location.pathname) {
       case '/annonces/ajouter':
-        dispatch(actionChangeModeEdit(false));
+        dispatch(actionDisableModeEdit());
         break;
       default:
-        dispatch(actionChangeModeEdit(true));
+        dispatch(actionEnableModeEdit());
         break;
     }
   }, [location]);
 
   console.log(modeEdit);
+  console.log(addOrEditAnnoucement.categories);
   const handleChangeInput = (newValue, inputName) => {
     dispatch(actionChangeCustomInputAnnoucement(newValue, inputName, 'addOrEditAnnoucement'));
   };
@@ -104,11 +106,21 @@ function AddAnnouncement() {
             <option hidden>Liste des catégories</option>
             {categoriesArray.map((mainCategory) => (
               <optgroup label={mainCategory.name} key={mainCategory.id} value={mainCategory.id}>
-                {mainCategory.categories.map((category) => (
+                {editLoaded && addOrEditAnnoucement.categories[0]
+                && mainCategory.categories.map((category) => (
                   <option
                     key={category.id}
                     value={category.id}
-                    // selected={(typeof addOrEditAnnoucement.categories[0].id) === 'undefined' ? false : category.id === addOrEditAnnoucement.categories[0].id}
+                    selected={category.id === addOrEditAnnoucement.categories[0].id}
+                  >
+                    {category.name}
+                  </option>
+                )) }
+                {(!editLoaded || !addOrEditAnnoucement.categories[0])
+                && mainCategory.categories.map((category) => (
+                  <option
+                    key={category.id}
+                    value={category.id}
                   >
                     {category.name}
                   </option>
