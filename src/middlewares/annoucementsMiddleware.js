@@ -11,7 +11,7 @@ import {
 } from '../actions/annoucements';
 
 // For tests
-const baseURL = 'http://yannlebouc-server.eddi.cloud/projet-11-o-troc-back/public';
+const baseURL = process.env.BACK_API_BASE_URL;
 
 const annoucementsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -51,7 +51,6 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
     case GET_ONE_WISH_ANNOUCEMENT:
       axios.get(`${baseURL}/api/wishes/${action.payload}`)
         .then((result) => {
-          console.log(result.data);
           store.dispatch(actionSaveOneWishAnnoucement(result.data));
         })
         .catch((error) => {

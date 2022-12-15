@@ -14,8 +14,7 @@ import {
   USER_INSCRIPTION,
 } from '../actions/user';
 
-// For tests
-const baseURL = 'http://yannlebouc-server.eddi.cloud/projet-11-o-troc-back/public';
+const baseURL = process.env.BACK_API_BASE_URL;
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {

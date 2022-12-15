@@ -9,7 +9,7 @@ function Home() {
   const dispatch = useDispatch();
 
   const annoucementsArray = useSelector((state) => state.annoucements.currentAnnoncement);
-  console.log(annoucementsArray);
+  // console.log(annoucementsArray);
   useEffect(() => {
     dispatch(actionGetOneWishAnnoucement(5));
   }, []);

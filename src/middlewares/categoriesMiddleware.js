@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GET_ALL_CATEGORIES, actionSaveAllCategories, actionCategoriesLoaded } from '../actions/categories';
 
-const baseURL = 'http://yannlebouc-server.eddi.cloud/projet-11-o-troc-back/public';
+const baseURL = process.env.BACK_API_BASE_URL;
 
 const categoriesMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
