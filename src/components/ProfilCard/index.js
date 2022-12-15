@@ -5,7 +5,13 @@ import { useDispatch } from 'react-redux';
 import imgBase from '../../assets/images/image-default.png';
 import { actionGetEditOfferAnnoucement, actionGetEditWishAnnoucement } from '../../actions/annoucements';
 
-function ProfilCard({ title, content, img, id, type }) {
+function ProfilCard({
+  title,
+  content,
+  img,
+  id,
+  type,
+}) {
   const dispatch = useDispatch();
   const handleEditAnnoucement = () => {
     switch (type) {
@@ -47,8 +53,8 @@ ProfilCard.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   img: PropTypes.string,
-  id: PropTypes.number,
 };
 
 ProfilCard.defaultProps = {
