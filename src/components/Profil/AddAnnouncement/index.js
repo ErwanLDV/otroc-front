@@ -118,11 +118,11 @@ function AddAnnouncement() {
           />
         </label>
         <div>
-              <label htmlFor="type">Permanent
-                <CustomInput className="" value="permanent" name="type" type="radio" onChange={handleChangeInputRadio} />
+              <label htmlFor="test">Permanent
+                <CustomInput className="" value="permanent" name="test" type="radio" onChange={handleChangeInputRadio} />
               </label>
-              <label htmlFor="type">Temporaire
-                <CustomInput className="" value="temporaire" name="type" type="radio" onChange={handleChangeInputRadio} />
+              <label htmlFor="test">Temporaire
+                <CustomInput className="" value="temporaire" name="test" type="radio" onChange={handleChangeInputRadio} />
               </label>
             </div>
         <label htmlFor="title">Code Postal*

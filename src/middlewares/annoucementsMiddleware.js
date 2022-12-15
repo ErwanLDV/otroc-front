@@ -73,6 +73,7 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
     case GET_EDIT_OFFER_ANNOUCEMENT:
       axios.get(`${baseURL}/api/offers/${action.payload}`)
         .then((result) => {
+          console.log(result.data);
           store.dispatch(actionSaveEditOfferAnnoucement(result.data));
         })
         .catch((error) => {

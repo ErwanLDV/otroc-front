@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import imgBase from '../../assets/images/image-default.png';
-import { actionGetEditWishAnnoucement } from '../../actions/annoucements';
+import { actionGetEditOfferAnnoucement, actionGetEditWishAnnoucement } from '../../actions/annoucements';
 
 function ProfilCard({ title, content, img, id, type }) {
   const dispatch = useDispatch();
   const handleEditAnnoucement = () => {
     switch (type) {
       case 'offer':
-        dispatch();
+        dispatch(actionGetEditOfferAnnoucement(id));
         break;
       case 'wish':
         dispatch(actionGetEditWishAnnoucement(id));

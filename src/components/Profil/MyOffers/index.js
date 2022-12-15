@@ -21,9 +21,9 @@ function MyOffers() {
         <button className="add-newOffer" type="button">Ajouter une offre</button>
       </Link>
       {
-        offersArray.map((item, index) => (
+        offersArray.map((item) => (
           <ProfilCard
-            key={index}
+            key={item.id}
             title={item.title}
             content={item.description}
             img={item.picture}

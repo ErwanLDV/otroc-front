@@ -114,7 +114,6 @@ export function actionUpdateOfferAnnoucement() {
   };
 }
 
-
 // WISHES ----------------------------------------------------------------
 
 export function actionGetWishesAnnoucements() {
