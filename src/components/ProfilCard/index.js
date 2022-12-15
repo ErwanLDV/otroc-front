@@ -7,6 +7,7 @@ import { actionGetEditOfferAnnoucement, actionGetEditWishAnnoucement } from '../
 
 function ProfilCard({ title, content, img, id, type }) {
   const dispatch = useDispatch();
+
   const handleEditAnnoucement = () => {
     switch (type) {
       case 'offer':

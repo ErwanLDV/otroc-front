@@ -17,10 +17,9 @@ import {
 function AddAnnouncement() {
   const dispatch = useDispatch();
   const modeEdit = useSelector((state) => state.annoucements.modeEdit);
-  const title = useSelector((state) => state.annoucements.addOrEditAnnoucement.title);
-  const description = useSelector((state) => state.annoucements.addOrEditAnnoucement.description);
-  const zipcode = useSelector((state) => state.annoucements.addOrEditAnnoucement.zipcode);
+  const addOrEditAnnoucement = useSelector((state) => state.annoucements.addOrEditAnnoucement);
   const annoucementType = useSelector((state) => state.annoucements.annoucementType);
+  const categoriesArray = useSelector((state) => state.categories.categoriesArray);
 
   const location = useLocation();
   useEffect(() => {
@@ -33,6 +32,7 @@ function AddAnnouncement() {
         break;
     }
   }, [location]);
+
   console.log(modeEdit);
   const handleChangeInput = (newValue, inputName) => {
     dispatch(actionChangeCustomInputAnnoucement(newValue, inputName, 'addOrEditAnnoucement'));
@@ -85,28 +85,36 @@ function AddAnnouncement() {
       <form className="addAnnouncement-form" onSubmit={handleSubmitFormAddAnnoucement}>
         { !modeEdit
         && (
-            <div>
-              <label htmlFor="annoucementType">Offre
-                <CustomInput className="" value="offer" name="annoucementType" type="radio" onChange={handleChangeInputRadio} />
-              </label>
-              <label htmlFor="annoucementType">Demande
-                <CustomInput className="" value="wish" name="annoucementType" type="radio" onChange={handleChangeInputRadio} />
-              </label>
-            </div>
+          <div>
+            <label htmlFor="annoucementType">Offre
+              <CustomInput className="" value="offer" name="annoucementType" type="radio" onChange={handleChangeInputRadio} />
+            </label>
+            <label htmlFor="annoucementType">Demande
+              <CustomInput className="" value="wish" name="annoucementType" type="radio" onChange={handleChangeInputRadio} />
+            </label>
+          </div>
         )}
         <div>
           <label htmlFor="title">Titre*
-            <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" value={title} type="text" name="title" placeholder="Titre de l'annonce" />
+            <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" value={addOrEditAnnoucement.title} type="text" name="title" placeholder="Titre de l'annonce" />
           </label>
         </div>
         <label htmlFor="mainCategory">Choisir une categorie*
           <select name="mainCategory" onChange={handleChangeSelect}>
-            <option value="">liste des catégories</option>
-            <option value="1">Maison</option>
-            <option value="2">Mode</option>
-            <option value="3">Multimedia</option>
-            <option value="4">Loisirs</option>
-            <option value="5">Divers</option>
+            <option hidden>Liste des catégories</option>
+            {categoriesArray.map((mainCategory) => (
+              <optgroup label={mainCategory.name} key={mainCategory.id} value={mainCategory.id}>
+                {mainCategory.categories.map((category) => (
+                  <option
+                    key={category.id}
+                    value={category.id}
+                    // selected={(typeof addOrEditAnnoucement.categories[0].id) === 'undefined' ? false : category.id === addOrEditAnnoucement.categories[0].id}
+                  >
+                    {category.name}
+                  </option>
+                )) }
+              </optgroup>
+            ))}
           </select>
         </label>
         <label htmlFor="picture">Ajouter une photo:
@@ -118,19 +126,19 @@ function AddAnnouncement() {
           />
         </label>
         <div>
-              <label htmlFor="test">Permanent
-                <CustomInput className="" value="permanent" name="test" type="radio" onChange={handleChangeInputRadio} />
-              </label>
-              <label htmlFor="test">Temporaire
-                <CustomInput className="" value="temporaire" name="test" type="radio" onChange={handleChangeInputRadio} />
-              </label>
-            </div>
+          <label htmlFor="type">Permanent
+            <CustomInput className="" value="permanent" name="type" type="radio" onChange={handleChangeInputRadio} />
+          </label>
+          <label htmlFor="type">Temporaire
+            <CustomInput className="" value="temporaire" name="type" type="radio" onChange={handleChangeInputRadio} />
+          </label>
+        </div>
         <label htmlFor="title">Code Postal*
-          <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" maxLength="5" value={zipcode} type="zipcode" name="zipcode" placeholder="Code postal" />
+          <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" maxLength="5" value={addOrEditAnnoucement.zipcode} type="zipcode" name="zipcode" placeholder="Code postal" />
         </label>
         <div>
           <label htmlFor="content">Contenu*
-            <textarea onChange={handleChangeTextArea} value={description} className="addAnnouncement-form-textarea" rows="5" cols="50" name="description" placeholder="Contenu de l'annonce" />
+            <textarea onChange={handleChangeTextArea} value={addOrEditAnnoucement.description} className="addAnnouncement-form-textarea" rows="5" cols="50" name="description" placeholder="Contenu de l'annonce" />
           </label>
         </div>
         <button type="submit">Envoyer</button>
