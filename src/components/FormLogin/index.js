@@ -2,7 +2,7 @@ import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
-  actionChangeCustomInput,
+  actionChangeCustomInputUser,
   actionCheckLogin,
   actionGetUserProfil,
   actionLogout,
@@ -16,7 +16,7 @@ function FormLogin() {
   const isLogged = useSelector((state) => state.user.isLogged);
 
   const handleChangeInput = (newValue, inputName) => {
-    dispatch(actionChangeCustomInput(newValue, inputName));
+    dispatch(actionChangeCustomInputUser(newValue, inputName));
   };
 
   const handleSubmit = (event) => {

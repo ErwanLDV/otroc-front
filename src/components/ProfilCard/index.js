@@ -1,8 +1,24 @@
 import './style.scss';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import imgBase from '../../assets/images/image-default.png';
+import { actionGetEditWishAnnoucement } from '../../actions/annoucements';
 
-function ProfilCard({ title, content, img }) {
+function ProfilCard({ title, content, img, id, type }) {
+  const dispatch = useDispatch();
+  const handleEditAnnoucement = () => {
+    switch (type) {
+      case 'offer':
+        dispatch();
+        break;
+      case 'wish':
+        dispatch(actionGetEditWishAnnoucement(id));
+        break;
+      default:
+        break;
+    }
+  };
   return (
     <div className="Profil-offers-container">
       <div className="Profil-offers-container-card">
@@ -14,7 +30,9 @@ function ProfilCard({ title, content, img }) {
           <div className="Profil-offers-container-content-buttons">
             <div className="Profil-offers-container-content">{content}</div>
             <div className="Profil-offers-container-buttons">
-              <button className="Profil-offers-container-button" type="button">Modifier</button>
+              <Link to="/annonces/editer">
+                <button className="Profil-offers-container-button" type="button" onClick={handleEditAnnoucement}>Modifier</button>
+              </Link>
               <button className="Profil-offers-container-button" type="button">Supprimmer</button>
               <button className="Profil-offers-container-button" type="button">Désactiver</button>
             </div>
@@ -28,7 +46,9 @@ function ProfilCard({ title, content, img }) {
 ProfilCard.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   img: PropTypes.string,
+  id: PropTypes.number,
 };
 
 ProfilCard.defaultProps = {

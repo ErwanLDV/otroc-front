@@ -1,7 +1,7 @@
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomInput from '../CustomInput';
-import { actionChangeCustomInput, actionUserIncscription } from '../../actions/user';
+import { actionChangeCustomInputUser, actionUserIncscription } from '../../actions/user';
 
 function Inscription() {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ function Inscription() {
   const phoneNumber = useSelector((state) => state.user.phoneNumber);
 
   const handleChangeInput = (newValue, inputName) => {
-    dispatch(actionChangeCustomInput(newValue, inputName));
+    dispatch(actionChangeCustomInputUser(newValue, inputName));
   };
 
   const handleSubmit = (event) => {
