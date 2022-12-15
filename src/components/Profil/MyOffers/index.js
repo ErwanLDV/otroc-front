@@ -9,7 +9,6 @@ function MyOffers() {
   const dispatch = useDispatch();
 
   const offersArray = useSelector((state) => state.user.currentUserOffers);
-  console.log(offersArray);
 
   useEffect(() => {
     dispatch(actionGetUserOffers());

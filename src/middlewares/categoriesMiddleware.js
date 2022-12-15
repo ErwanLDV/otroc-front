@@ -7,7 +7,7 @@ const categoriesMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_ALL_CATEGORIES: {
       store.dispatch(actionCategoriesLoaded(false));
-      axios.get(`${baseURL}/api/maincategories/`)
+      axios.get(`${baseURL}/api/maincategories/categories`)
         .then((result) => {
           store.dispatch(actionSaveAllCategories(result.data));
         })

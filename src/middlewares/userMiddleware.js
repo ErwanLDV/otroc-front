@@ -105,8 +105,7 @@ const userMiddleware = (store) => (next) => (action) => {
         `${baseURL}/api/users/current/offers`,
         config,
       ).then((result) => {
-        console.log(result);
-        store.dispatch(actionSaveUserOffers(result.data));
+        store.dispatch(actionSaveUserOffers(result.data[0].offer));
       }).catch((error) => {
         console.log('get user offers ', error);
       });
@@ -122,7 +121,7 @@ const userMiddleware = (store) => (next) => (action) => {
         config,
       ).then((result) => {
         console.log(result);
-        store.dispatch(actionSaveUserWishes(result.data));
+        store.dispatch(actionSaveUserWishes(result.data[0].wish));
       }).catch((error) => {
         console.log('get user offers ', error);
       });
