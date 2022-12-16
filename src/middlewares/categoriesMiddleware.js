@@ -10,12 +10,10 @@ const categoriesMiddleware = (store) => (next) => (action) => {
       axios.get(`${baseURL}/api/maincategories/categories`)
         .then((result) => {
           store.dispatch(actionSaveAllCategories(result.data));
+          store.dispatch(actionCategoriesLoaded(true));
         })
         .catch((error) => {
           console.log('GET_ALL_CATEGORIES : ', error);
-        })
-        .finally(() => {
-          store.dispatch(actionCategoriesLoaded(true));
         });
       break;
     }
@@ -27,9 +25,6 @@ const categoriesMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log('GET_CATEGORY_RESULTS : ', error);
-        })
-        .finally(() => {
-          store.dispatch(actionCategoriesLoaded(true));
         });
       break;
 
@@ -39,10 +34,7 @@ const categoriesMiddleware = (store) => (next) => (action) => {
           store.dispatch(actionSaveMainCategoriesResultForCards(result.data[0].categories));
         })
         .catch((error) => {
-          console.log('GET_CATEGORY_RESULTS : ', error);
-        })
-        .finally(() => {
-          store.dispatch(actionCategoriesLoaded(true));
+          console.log('GET_MAIN_CATEGORY_RESULTS : ', error);
         });
       break;
 

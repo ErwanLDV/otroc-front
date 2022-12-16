@@ -5,6 +5,8 @@ export const CHANGE_SELECT_CATEGORIES_ANNOUCEMENT = 'CHANGE_SELECT_CATEGORIES_AN
 // Mode Edit -------------------------------------------------------------
 export const CHANGE_MODE_EDIT = 'CHANGE_MODE_EDIT';
 
+// Function cleanup ------------------------------------------------------
+export const CLEANUP_ANNOUCEMENT_PAGE = 'CLEANUP_ANNOUCEMENT_PAGE';
 // OFFERS ----------------------------------------------------------------
 export const GET_OFFERS_ANNOUCEMENTS = 'GET_OFFERS_ANNOUCEMENTS';
 export const SAVE_OFFERS_ANNOUCEMENTS = 'SAVE_OFFERS_ANNOUCEMENTS';
@@ -166,5 +168,13 @@ export function actionSaveEditWishAnnoucement(wish) {
 export function actionUpdateWishAnnoucement() {
   return {
     type: UPDATE_WISH_ANNOUCEMENT,
+  };
+}
+
+// Function cleanup ------------------------------------------------------
+
+export function actionCleanupAnnoucementPage() {
+  return {
+    type: CLEANUP_ANNOUCEMENT_PAGE,
   };
 }

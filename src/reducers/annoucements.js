@@ -9,6 +9,7 @@ import {
   SAVE_EDIT_OFFER_ANNOUCEMENT,
   SAVE_EDIT_WISH_ANNOUCEMENT,
   CHANGE_MODE_EDIT,
+  CLEANUP_ANNOUCEMENT_PAGE,
 } from '../actions/annoucements';
 
 export const initialState = {
@@ -89,6 +90,12 @@ const reducer = (state = initialState, action = {}) => {
         modeEdit: true,
         annoucementType: 'offer',
         addOrEditAnnoucement: action.payload,
+      };
+
+    case CLEANUP_ANNOUCEMENT_PAGE:
+      return {
+        ...state,
+        currentAnnoucement: {},
       };
 
     default:
