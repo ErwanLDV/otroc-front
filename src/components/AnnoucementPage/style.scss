@@ -28,6 +28,11 @@
     margin-left: 0.6em;
     border-top-right-radius: 20px;    
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+
+      &_image {
+        max-width: 10em;
+        max-height: 10em;
+      }
   }
 
   &-content {

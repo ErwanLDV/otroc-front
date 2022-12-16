@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ALL_CATEGORIES, actionSaveAllCategories, actionCategoriesLoaded } from '../actions/categories';
+import { GET_ALL_CATEGORIES, actionSaveAllCategories, actionCategoriesLoaded, GET_CATEGORY_RESULTS, actionSaveCategoryResults, GET_MAIN_CATEGORY_RESULTS, actionSaveMainCategoriesResultForCards } from '../actions/categories';
 
 const baseURL = process.env.BACK_API_BASE_URL;
 
@@ -12,13 +12,40 @@ const categoriesMiddleware = (store) => (next) => (action) => {
           store.dispatch(actionSaveAllCategories(result.data));
         })
         .catch((error) => {
-          console.log('GET_OFFERS_ANNOUCEMENTS : ', error);
+          console.log('GET_ALL_CATEGORIES : ', error);
         })
         .finally(() => {
           store.dispatch(actionCategoriesLoaded(true));
         });
       break;
     }
+
+    case GET_CATEGORY_RESULTS:
+      axios.get(`${baseURL}/api/categories/${action.payload}/advertisements`)
+        .then((result) => {
+          store.dispatch(actionSaveCategoryResults(result.data));
+        })
+        .catch((error) => {
+          console.log('GET_CATEGORY_RESULTS : ', error);
+        })
+        .finally(() => {
+          store.dispatch(actionCategoriesLoaded(true));
+        });
+      break;
+
+    case GET_MAIN_CATEGORY_RESULTS:
+      axios.get(`${baseURL}/api/maincategories/${action.payload}/categories/advertisements`)
+        .then((result) => {
+          store.dispatch(actionSaveMainCategoriesResultForCards(result.data[0].categories));
+        })
+        .catch((error) => {
+          console.log('GET_CATEGORY_RESULTS : ', error);
+        })
+        .finally(() => {
+          store.dispatch(actionCategoriesLoaded(true));
+        });
+      break;
+
     default:
       break;
   }

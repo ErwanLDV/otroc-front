@@ -12,6 +12,7 @@ function AnnoucementCard({
   profilImage,
   pseudo,
   createdAt,
+  logo,
 }) {
   return (
     <div className="card">
@@ -37,8 +38,8 @@ function AnnoucementCard({
           </div>
         </div>
         <div className="card-body-logo">
-          <img src={logoWish} alt="logo-demande" />
-          <img src={logoOffer} alt="logo-offre" />
+          {logo === 'wish' && <img src={logoWish} alt="logo-demande" />}
+          {logo === 'offer' && <img src={logoOffer} alt="logo-offre" />}
         </div>
       </div>
     </div>

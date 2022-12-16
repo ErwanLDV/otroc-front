@@ -16,6 +16,9 @@ import MyRequests from '../Profil/MyRequests';
 import MyHistory from '../Profil/MyHistory';
 import Error from '../Error';
 import AddAnnouncement from '../Profil/AddAnnouncement';
+import SearchResults from '../SearchResults';
+import MainCategoriesListPage from '../MainCategoriesListPage';
+import AnnouncementPage from '../AnnoucementPage';
 
 function App() {
   return (
@@ -24,6 +27,10 @@ function App() {
       <SearchBar />
       <Routes>
         <Route path="/" element=<Home /> />
+        <Route path="/categorie/:slug" element=<SearchResults /> />
+        <Route path="/annonces/offers/:id" element=<AnnouncementPage /> />
+        <Route path="/annonces/wishes/:id" element=<AnnouncementPage /> />
+        <Route path="/:slug" element=<MainCategoriesListPage /> />
         <Route path="/mentions-legales" element=<LegalNotice /> />
         <Route path="/cgu" element=<GCU /> />
         <Route path="/contact" element=<Contact /> />
