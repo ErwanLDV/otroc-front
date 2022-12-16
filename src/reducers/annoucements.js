@@ -16,10 +16,11 @@ export const initialState = {
   inputSearchBar: '',
   annoucementsArray: [],
   currentAnnoucement: {},
-  annoucementType: '',
+  annoucementType: 'offer',
   modeEdit: false,
-  editLoaded: false,
-  addOrEditAnnoucement: {},
+  addOrEditAnnoucement: {
+    type: 'permanent',
+  },
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -66,9 +67,10 @@ const reducer = (state = initialState, action = {}) => {
     case DISABLE_MODE_EDIT:
       return {
         ...state,
-        editLoaded: false,
         modeEdit: false,
-        addOrEditAnnoucement: {},
+        addOrEditAnnoucement: {
+          type: 'permanent',
+        },
       };
 
     case SAVE_OFFERS_ANNOUCEMENTS:
@@ -89,7 +91,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         modeEdit: true,
-        editLoaded: true,
         annoucementType: 'wish',
         addOrEditAnnoucement: action.payload,
       };
@@ -98,7 +99,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         modeEdit: true,
-        editLoaded: true,
         annoucementType: 'offer',
         addOrEditAnnoucement: action.payload,
       };

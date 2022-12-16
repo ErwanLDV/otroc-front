@@ -73,7 +73,8 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
     case GET_EDIT_OFFER_ANNOUCEMENT:
       axios.get(`${baseURL}/api/offers/${action.payload}`)
         .then((result) => {
-          console.log(result.data);
+          const categories = result.data.categories.map((categoryId) => categoryId.id);
+          result.data.categories = categories;
           store.dispatch(actionSaveEditOfferAnnoucement(result.data));
         })
         .catch((error) => {
@@ -155,6 +156,8 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
     case GET_EDIT_WISH_ANNOUCEMENT:
       axios.get(`${baseURL}/api/wishes/${action.payload}`)
         .then((result) => {
+          const categories = result.data.categories.map((categoryId) => categoryId.id);
+          result.data.categories = categories;
           store.dispatch(actionSaveEditWishAnnoucement(result.data));
         })
         .catch((error) => {

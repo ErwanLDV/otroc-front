@@ -14,6 +14,7 @@ import {
   actionDisableModeEdit,
   actionEnableModeEdit,
 } from '../../../actions/annoucements';
+import CustomSelect from '../../CustomSelect';
 
 function AddAnnouncement() {
   const dispatch = useDispatch();
@@ -21,7 +22,6 @@ function AddAnnouncement() {
   const addOrEditAnnoucement = useSelector((state) => state.annoucements.addOrEditAnnoucement);
   const annoucementType = useSelector((state) => state.annoucements.annoucementType);
   const categoriesArray = useSelector((state) => state.categories.categoriesArray);
-  const editLoaded = useSelector((state) => state.annoucements.editLoaded);
   const location = useLocation();
   useEffect(() => {
     switch (location.pathname) {
@@ -34,8 +34,6 @@ function AddAnnouncement() {
     }
   }, [location]);
 
-  console.log(modeEdit);
-  console.log(addOrEditAnnoucement.categories);
   const handleChangeInput = (newValue, inputName) => {
     dispatch(actionChangeCustomInputAnnoucement(newValue, inputName, 'addOrEditAnnoucement'));
   };
@@ -44,16 +42,19 @@ function AddAnnouncement() {
     dispatch(actionChangeTextAreaAnnoucement(event.target.value));
   };
 
-  const handleChangeSelect = (event) => {
-    dispatch(actionChangeSelectCategoriesAnnoucement(event.target.value));
+  const handleChangeSelect = (newValue) => {
+    dispatch(actionChangeSelectCategoriesAnnoucement(newValue));
   };
 
-  const handleChangeInputRadio = (newValue, inputName) => {
+  const handleChangeInputRadioType = (newValue, inputName) => {
+    dispatch(actionChangeCustomInputAnnoucement(newValue, inputName, 'addOrEditAnnoucement'));
+  };
+
+  const handleChangeInputRadioAnnoucementType = (newValue, inputName) => {
     dispatch(actionChangeCustomInputAnnoucement(newValue, inputName));
   };
 
   const handleSubmitFormAddAnnoucement = (event) => {
-    console.log('test submit form');
     event.preventDefault();
     if (modeEdit) {
       switch (annoucementType) {
@@ -89,10 +90,10 @@ function AddAnnouncement() {
         && (
           <div>
             <label htmlFor="annoucementType">Offre
-              <CustomInput className="" value="offer" name="annoucementType" type="radio" onChange={handleChangeInputRadio} />
+              <CustomInput className="" value="offer" name="annoucementType" type="radio" onChange={handleChangeInputRadioAnnoucementType} checked={annoucementType === 'offer'} />
             </label>
             <label htmlFor="annoucementType">Demande
-              <CustomInput className="" value="wish" name="annoucementType" type="radio" onChange={handleChangeInputRadio} />
+              <CustomInput className="" value="wish" name="annoucementType" type="radio" onChange={handleChangeInputRadioAnnoucementType} checked={annoucementType === 'wish'} />
             </label>
           </div>
         )}
@@ -102,32 +103,24 @@ function AddAnnouncement() {
           </label>
         </div>
         <label htmlFor="mainCategory">Choisir une categorie*
-          <select name="mainCategory" onChange={handleChangeSelect}>
-            <option hidden>Liste des catégories</option>
-            {categoriesArray.map((mainCategory) => (
-              <optgroup label={mainCategory.name} key={mainCategory.id} value={mainCategory.id}>
-                {editLoaded && addOrEditAnnoucement.categories[0]
-                && mainCategory.categories.map((category) => (
-                  <option
-                    key={category.id}
-                    value={category.id}
-                    selected={category.id === addOrEditAnnoucement.categories[0].id}
-                  >
-                    {category.name}
-                  </option>
-                )) }
-                {(!editLoaded || !addOrEditAnnoucement.categories[0])
-                && mainCategory.categories.map((category) => (
-                  <option
-                    key={category.id}
-                    value={category.id}
-                  >
-                    {category.name}
-                  </option>
-                )) }
-              </optgroup>
-            ))}
-          </select>
+          {addOrEditAnnoucement.categories
+            ? (
+              <CustomSelect
+                name="mainCategory"
+                onChange={handleChangeSelect}
+                optionsArray={categoriesArray}
+                value={addOrEditAnnoucement.categories[0]}
+                optionTitle="Liste des catégories"
+              />
+            )
+            : (
+              <CustomSelect
+                name="mainCategory"
+                onChange={handleChangeSelect}
+                optionsArray={categoriesArray}
+                optionTitle="Liste des catégories"
+              />
+            )}
         </label>
         <label htmlFor="picture">Ajouter une photo:
 
@@ -139,10 +132,10 @@ function AddAnnouncement() {
         </label>
         <div>
           <label htmlFor="type">Permanent
-            <CustomInput className="" value="permanent" name="type" type="radio" onChange={handleChangeInputRadio} />
+            <CustomInput className="" value="permanent" name="type" type="radio" onChange={handleChangeInputRadioType} checked={addOrEditAnnoucement.type === 'permanent'} defaultValue />
           </label>
           <label htmlFor="type">Temporaire
-            <CustomInput className="" value="temporaire" name="type" type="radio" onChange={handleChangeInputRadio} />
+            <CustomInput className="" value="temporaire" name="type" type="radio" onChange={handleChangeInputRadioType} checked={addOrEditAnnoucement.type === 'temporaire'} />
           </label>
         </div>
         <label htmlFor="title">Code Postal*
