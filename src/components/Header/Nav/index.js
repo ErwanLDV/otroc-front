@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './style.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { actionNavbarRerender } from '../../../actions/categories';
+import { actionGetCategoryResults, actionGetMainCategoryResults, actionNavbarRerender } from '../../../actions/categories';
 
 function Nav({ categoriesArray, navBarRerender }) {
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ function Nav({ categoriesArray, navBarRerender }) {
       dispatch(actionNavbarRerender(true));
     }, 100);
   }, [location]);
+
   return (
     <div>
       <nav className="menu">
@@ -36,7 +37,7 @@ function Nav({ categoriesArray, navBarRerender }) {
                     && mainCategory.categories.map((category) => (
                       <li className="menu-item" key={`${mainCategory.id}-${category.id}`}>
                         <NavLink
-                          to={category.slug}
+                          to={`categorie/${category.slug}`}
                           key={`${mainCategory.id}-${category.id}`}
                         >
                           {category.name}

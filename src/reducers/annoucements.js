@@ -8,6 +8,7 @@ import {
   CHANGE_SELECT_CATEGORIES_ANNOUCEMENT,
   SAVE_EDIT_OFFER_ANNOUCEMENT,
   SAVE_EDIT_WISH_ANNOUCEMENT,
+  CLEANUP_ANNOUCEMENT_PAGE,
   ENABLE_MODE_EDIT,
   DISABLE_MODE_EDIT,
 } from '../actions/annoucements';
@@ -101,6 +102,12 @@ const reducer = (state = initialState, action = {}) => {
         modeEdit: true,
         annoucementType: 'offer',
         addOrEditAnnoucement: action.payload,
+      };
+
+    case CLEANUP_ANNOUCEMENT_PAGE:
+      return {
+        ...state,
+        currentAnnoucement: {},
       };
 
     default:

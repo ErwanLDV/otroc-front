@@ -28,6 +28,11 @@
     margin-left: 0.6em;
     border-top-right-radius: 20px;    
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+
+      &-image {
+        max-width: 15%;
+        // max-height: 10em;
+      }
   }
 
   &-content {
@@ -48,7 +53,7 @@
   border-top-left-radius: 20px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 720px) {
   .annoucementPage-container{
     width: 50%;
     margin: auto;
