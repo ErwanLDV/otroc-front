@@ -13,6 +13,7 @@ function ProfilCard({
   type,
 }) {
   const dispatch = useDispatch();
+
   const handleEditAnnoucement = () => {
     switch (type) {
       case 'offer':

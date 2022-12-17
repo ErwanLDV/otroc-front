@@ -11,29 +11,29 @@ import {
   actionChangeTextAreaAnnoucement,
   actionUpdateWishAnnoucement,
   actionUpdateOfferAnnoucement,
-  actionChangeModeEdit,
+  actionDisableModeEdit,
+  actionEnableModeEdit,
 } from '../../../actions/annoucements';
+import CustomSelect from '../../CustomSelect';
 
 function AddAnnouncement() {
   const dispatch = useDispatch();
   const modeEdit = useSelector((state) => state.annoucements.modeEdit);
-  const title = useSelector((state) => state.annoucements.addOrEditAnnoucement.title);
-  const description = useSelector((state) => state.annoucements.addOrEditAnnoucement.description);
-  const zipcode = useSelector((state) => state.annoucements.addOrEditAnnoucement.zipcode);
+  const addOrEditAnnoucement = useSelector((state) => state.annoucements.addOrEditAnnoucement);
   const annoucementType = useSelector((state) => state.annoucements.annoucementType);
-
+  const categoriesArray = useSelector((state) => state.categories.categoriesArray);
   const location = useLocation();
   useEffect(() => {
     switch (location.pathname) {
       case '/annonces/ajouter':
-        dispatch(actionChangeModeEdit(false));
+        dispatch(actionDisableModeEdit());
         break;
       default:
-        dispatch(actionChangeModeEdit(true));
+        dispatch(actionEnableModeEdit());
         break;
     }
   }, [location]);
-  console.log(modeEdit);
+
   const handleChangeInput = (newValue, inputName) => {
     dispatch(actionChangeCustomInputAnnoucement(newValue, inputName, 'addOrEditAnnoucement'));
   };
@@ -42,16 +42,19 @@ function AddAnnouncement() {
     dispatch(actionChangeTextAreaAnnoucement(event.target.value));
   };
 
-  const handleChangeSelect = (event) => {
-    dispatch(actionChangeSelectCategoriesAnnoucement(event.target.value));
+  const handleChangeSelect = (newValue) => {
+    dispatch(actionChangeSelectCategoriesAnnoucement(newValue));
   };
 
-  const handleChangeInputRadio = (newValue, inputName) => {
+  const handleChangeInputRadioType = (newValue, inputName) => {
+    dispatch(actionChangeCustomInputAnnoucement(newValue, inputName, 'addOrEditAnnoucement'));
+  };
+
+  const handleChangeInputRadioAnnoucementType = (newValue, inputName) => {
     dispatch(actionChangeCustomInputAnnoucement(newValue, inputName));
   };
 
   const handleSubmitFormAddAnnoucement = (event) => {
-    console.log('test submit form');
     event.preventDefault();
     if (modeEdit) {
       switch (annoucementType) {
@@ -85,29 +88,39 @@ function AddAnnouncement() {
       <form className="addAnnouncement-form" onSubmit={handleSubmitFormAddAnnoucement}>
         { !modeEdit
         && (
-            <div>
-              <label htmlFor="annoucementType">Offre
-                <CustomInput className="" value="offer" name="annoucementType" type="radio" onChange={handleChangeInputRadio} />
-              </label>
-              <label htmlFor="annoucementType">Demande
-                <CustomInput className="" value="wish" name="annoucementType" type="radio" onChange={handleChangeInputRadio} />
-              </label>
-            </div>
+          <div>
+            <label>Offre
+              <CustomInput className="" value="offer" name="annoucementType" type="radio" onChange={handleChangeInputRadioAnnoucementType} checked={annoucementType === 'offer'} />
+            </label>
+            <label>Demande
+              <CustomInput className="" value="wish" name="annoucementType" type="radio" onChange={handleChangeInputRadioAnnoucementType} checked={annoucementType === 'wish'} />
+            </label>
+          </div>
         )}
         <div>
-          <label htmlFor="title">Titre*
-            <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" value={title} type="text" name="title" placeholder="Titre de l'annonce" />
+          <label>Titre*
+            <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" value={addOrEditAnnoucement.title} type="text" name="title" placeholder="Titre de l'annonce" />
           </label>
         </div>
-        <label htmlFor="mainCategory">Choisir une categorie*
-          <select name="mainCategory" onChange={handleChangeSelect}>
-            <option value="">liste des catégories</option>
-            <option value="1">Maison</option>
-            <option value="2">Mode</option>
-            <option value="3">Multimedia</option>
-            <option value="4">Loisirs</option>
-            <option value="5">Divers</option>
-          </select>
+        <label>Choisir une categorie*
+          {addOrEditAnnoucement.categories
+            ? (
+              <CustomSelect
+                name="mainCategory"
+                onChange={handleChangeSelect}
+                optionsArray={categoriesArray}
+                value={addOrEditAnnoucement.categories[0]}
+                optionTitle="Liste des catégories"
+              />
+            )
+            : (
+              <CustomSelect
+                name="mainCategory"
+                onChange={handleChangeSelect}
+                optionsArray={categoriesArray}
+                optionTitle="Liste des catégories"
+              />
+            )}
         </label>
         <label htmlFor="picture">Ajouter une photo:
 
@@ -118,19 +131,19 @@ function AddAnnouncement() {
           />
         </label>
         <div>
-              <label htmlFor="test">Permanent
-                <CustomInput className="" value="permanent" name="test" type="radio" onChange={handleChangeInputRadio} />
-              </label>
-              <label htmlFor="test">Temporaire
-                <CustomInput className="" value="temporaire" name="test" type="radio" onChange={handleChangeInputRadio} />
-              </label>
-            </div>
-        <label htmlFor="title">Code Postal*
-          <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" maxLength="5" value={zipcode} type="zipcode" name="zipcode" placeholder="Code postal" />
+          <label>Permanent
+            <CustomInput className="" value="permanent" name="type" type="radio" onChange={handleChangeInputRadioType} checked={addOrEditAnnoucement.type === 'permanent'} defaultValue />
+          </label>
+          <label>Temporaire
+            <CustomInput className="" value="temporaire" name="type" type="radio" onChange={handleChangeInputRadioType} checked={addOrEditAnnoucement.type === 'temporaire'} />
+          </label>
+        </div>
+        <label>Code Postal*
+          <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" maxLength="5" value={addOrEditAnnoucement.zipcode} type="zipcode" name="zipcode" placeholder="Code postal" />
         </label>
         <div>
           <label htmlFor="content">Contenu*
-            <textarea onChange={handleChangeTextArea} value={description} className="addAnnouncement-form-textarea" rows="5" cols="50" name="description" placeholder="Contenu de l'annonce" />
+            <textarea onChange={handleChangeTextArea} value={addOrEditAnnoucement.description || ''} className="addAnnouncement-form-textarea" rows="5" cols="50" name="description" placeholder="Contenu de l'annonce" />
           </label>
         </div>
         <button type="submit">Envoyer</button>
