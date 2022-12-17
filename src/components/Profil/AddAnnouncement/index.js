@@ -89,20 +89,20 @@ function AddAnnouncement() {
         { !modeEdit
         && (
           <div>
-            <label htmlFor="annoucementType">Offre
+            <label>Offre
               <CustomInput className="" value="offer" name="annoucementType" type="radio" onChange={handleChangeInputRadioAnnoucementType} checked={annoucementType === 'offer'} />
             </label>
-            <label htmlFor="annoucementType">Demande
+            <label>Demande
               <CustomInput className="" value="wish" name="annoucementType" type="radio" onChange={handleChangeInputRadioAnnoucementType} checked={annoucementType === 'wish'} />
             </label>
           </div>
         )}
         <div>
-          <label htmlFor="title">Titre*
+          <label>Titre*
             <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" value={addOrEditAnnoucement.title} type="text" name="title" placeholder="Titre de l'annonce" />
           </label>
         </div>
-        <label htmlFor="mainCategory">Choisir une categorie*
+        <label>Choisir une categorie*
           {addOrEditAnnoucement.categories
             ? (
               <CustomSelect
@@ -131,14 +131,14 @@ function AddAnnouncement() {
           />
         </label>
         <div>
-          <label htmlFor="type">Permanent
+          <label>Permanent
             <CustomInput className="" value="permanent" name="type" type="radio" onChange={handleChangeInputRadioType} checked={addOrEditAnnoucement.type === 'permanent'} defaultValue />
           </label>
-          <label htmlFor="type">Temporaire
+          <label>Temporaire
             <CustomInput className="" value="temporaire" name="type" type="radio" onChange={handleChangeInputRadioType} checked={addOrEditAnnoucement.type === 'temporaire'} />
           </label>
         </div>
-        <label htmlFor="title">Code Postal*
+        <label>Code Postal*
           <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" maxLength="5" value={addOrEditAnnoucement.zipcode} type="zipcode" name="zipcode" placeholder="Code postal" />
         </label>
         <div>
