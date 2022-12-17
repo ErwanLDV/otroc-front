@@ -28,7 +28,6 @@ function Nav({ categoriesArray, navBarRerender }) {
               <li className="menu-item" key={`${mainCategory.id}`}>
                 <NavLink
                   to={mainCategory.slug}
-                  onClick={() => dispatch(actionGetMainCategoryResults(mainCategory.id))}
                   key={`${mainCategory.id}`}
                 >
                   {mainCategory.name}
@@ -39,7 +38,6 @@ function Nav({ categoriesArray, navBarRerender }) {
                       <li className="menu-item" key={`${mainCategory.id}-${category.id}`}>
                         <NavLink
                           to={`categorie/${category.slug}`}
-                          onClick={() => dispatch(actionGetCategoryResults(category.id))}
                           key={`${mainCategory.id}-${category.id}`}
                         >
                           {category.name}

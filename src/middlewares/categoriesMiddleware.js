@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ALL_CATEGORIES, actionSaveAllCategories, actionCategoriesLoaded, GET_CATEGORY_RESULTS, actionSaveCategoryResults, GET_MAIN_CATEGORY_RESULTS, actionSaveMainCategoriesResultForCards } from '../actions/categories';
+import { GET_ALL_CATEGORIES, actionSaveAllCategories, actionCategoriesLoaded, GET_CATEGORY_RESULTS, actionSaveCategoryResults, GET_MAIN_CATEGORY_RESULTS, actionSaveMainCategoriesResultForCards, actionCategoryResultLoaded } from '../actions/categories';
 
 const baseURL = process.env.BACK_API_BASE_URL;
 

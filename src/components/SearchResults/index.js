@@ -1,28 +1,31 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 import { actionGetCategoryResults } from '../../actions/categories';
 import './style.scss';
 import AnnoucementCard from '../AnnoucementCard';
-import { Link, useLocation, useParams } from 'react-router-dom';
-import { actionGetOneOfferAnnoucement, actionGetOneWishAnnoucement } from '../../actions/annoucements';
 
 function SearchResult() {
   const dispatch = useDispatch();
+
   const slug = useParams();
-  console.log(slug);
+  console.log(slug.slug);
+
   const categoriesArray = useSelector((state) => state.categories.categoriesArray);
   const categoriesLoaded = useSelector((state) => state.categories.categoriesLoaded);
-  console.log(categoriesArray);
+  console.log('categoriesArray', categoriesArray);
 
-  // console.log('Coucou');
   useEffect(() => {
     if (categoriesLoaded) {
-      const result = categoriesArray.find(
-        (element) => element.categories.find((e) => e.slug === slug.slug),
+      const categoriesArrayResult = categoriesArray.map(
+        (main) => main.categories.find((subcat) => subcat.slug === slug.slug),
       );
-      dispatch(actionGetCategoryResults(result.id));
+      const subCategory = categoriesArrayResult.filter((element) => element !== undefined);
+      const { id } = subCategory[0];
+
+      dispatch(actionGetCategoryResults(id));
     }
-  }, [categoriesLoaded]);
+  }, [categoriesLoaded, slug]);
 
   const categoryResults = useSelector((state) => state.categories.categoryResults);
   // console.log(categoryResults);
