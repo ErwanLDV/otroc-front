@@ -16,7 +16,6 @@ function PersonalInformation() {
 
   const handleChangeInput = (newValue, inputName) => {
     dispatch(actionChangeCustomInputUser(newValue, inputName, 'currentUserProfil'));
-    console.log('change');
   };
 
   const handleSubmit = (event) => {
@@ -49,7 +48,7 @@ function PersonalInformation() {
         </div>
         <div>
           <label htmlFor="phoneNumber">Téléphone</label>
-          <CustomInput onChange={handleChangeInput} className="PersonalInformation-form-input" maxLength="10" value={phoneNumber} type="phone" name="phoneNumber" placeholder="Téléphone" />
+          <CustomInput onChange={handleChangeInput} className="PersonalInformation-form-input" maxLength="10" value={phoneNumber || ''} type="phone" name="phoneNumber" placeholder="Téléphone" />
         </div>
         <div>
           <label htmlFor="mot-de-passe">Mot de passe</label>

@@ -9,6 +9,7 @@ function CustomInput({
   required,
   maxLength,
   className,
+  checked,
 }) {
   /**
    * Function that processes the value of an input according to the custom type: zpicode & phone
@@ -47,6 +48,7 @@ function CustomInput({
       placeholder={placeholder}
       value={value || ''}
       onChange={handleChange}
+      checked={checked}
       maxLength={maxLength}
       required={required}
     />
@@ -65,6 +67,7 @@ CustomInput.propTypes = {
   required: PropTypes.bool,
   maxLength: PropTypes.string,
   className: PropTypes.string,
+  checked: PropTypes.bool,
 };
 
 CustomInput.defaultProps = {
@@ -74,6 +77,7 @@ CustomInput.defaultProps = {
   maxLength: null,
   placeholder: null,
   className: null,
+  checked: false,
 };
 
 export default CustomInput;
