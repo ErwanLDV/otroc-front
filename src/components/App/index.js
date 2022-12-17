@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Home from '../Home';
 import Footer from '../Footer';
 import LegalNotice from '../Footer/LegalNotice';
@@ -22,14 +22,16 @@ import MainCategoriesListPage from '../MainCategoriesListPage';
 import AnnouncementPage from '../AnnoucementPage';
 import UserProfil from '../UserProfil';
 import { actionAuthentSuccess } from '../../actions/user';
+import ProtectedRoute from '../ProtectedRoute';
 
 function App() {
   const dispatch = useDispatch();
+
   const activeSession = localStorage.getItem('activeSession');
 
   if (activeSession) {
-    const authedUser = JSON.parse(activeSession);
-    dispatch(actionAuthentSuccess(authedUser));
+    const userSession = JSON.parse(activeSession);
+    dispatch(actionAuthentSuccess(userSession));
   }
 
   return (
@@ -42,19 +44,84 @@ function App() {
         <Route path="/annonces/offers/:id" element=<AnnouncementPage /> />
         <Route path="/annonces/wishes/:id" element=<AnnouncementPage /> />
         <Route path="/:slug" element=<MainCategoriesListPage /> />
-        <Route path="/utilisateur/:slug" element=<UserProfil /> />
         <Route path="/mentions-legales" element=<LegalNotice /> />
         <Route path="/cgu" element=<GCU /> />
         <Route path="/contact" element=<Contact /> />
         <Route path="/a-propos" element=<About /> />
         <Route path="/inscription" element=<Inscription /> />
-        <Route path="/profil" element=<Profil /> />
+        {/* ------------ Protected Routes --------------- */}
+        <Route
+          path="/profil"
+          element={(
+            <ProtectedRoute redirectPath="/">
+              <Profil />
+            </ProtectedRoute>
+          )}
+        />
+        <Route
+          path="/profil/mes-informations"
+          element={(
+            <ProtectedRoute redirectPath="/">
+              <PersonalInformation />
+            </ProtectedRoute>
+          )}
+        />
+        <Route
+          path="/profil/mes-offres"
+          element={(
+            <ProtectedRoute redirectPath="/">
+              <MyOffers />
+            </ProtectedRoute>
+          )}
+        />
+        <Route
+          path="/profil/mes-demandes"
+          element={(
+            <ProtectedRoute redirectPath="/">
+              <MyRequests />
+            </ProtectedRoute>
+          )}
+        />
+        <Route
+          path="/profil/historique"
+          element={(
+            <ProtectedRoute redirectPath="/">
+              <MyHistory />
+            </ProtectedRoute>
+          )}
+        />
+        <Route
+          path="/annonces/ajouter"
+          element={(
+            <ProtectedRoute redirectPath="/">
+              <AddAnnouncement />
+            </ProtectedRoute>
+          )}
+        />
+        <Route
+          path="/annonces/editer"
+          element={(
+            <ProtectedRoute redirectPath="/">
+              <AddAnnouncement />
+            </ProtectedRoute>
+          )}
+        />
+        <Route
+          path="/utilisateur/:slug"
+          element={(
+            <ProtectedRoute redirectPath="/">
+              <UserProfil />
+            </ProtectedRoute>
+          )}
+        />
+        {/* <Route path="/profil" element=<Profil /> />
         <Route path="/profil/mes-informations" element=<PersonalInformation /> />
         <Route path="/profil/mes-offres" element=<MyOffers /> />
         <Route path="/profil/mes-demandes" element=<MyRequests /> />
         <Route path="/profil/historique" element=<MyHistory /> />
         <Route path="/annonces/ajouter" element=<AddAnnouncement /> />
         <Route path="/annonces/editer" element=<AddAnnouncement /> />
+        <Route path="/utilisateur/:slug" element=<UserProfil /> /> */}
         <Route path="*" element=<Error /> />
       </Routes>
       <Footer />
