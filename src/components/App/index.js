@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Home from '../Home';
 import Footer from '../Footer';
 import LegalNotice from '../Footer/LegalNotice';
