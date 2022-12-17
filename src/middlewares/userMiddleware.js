@@ -27,7 +27,14 @@ const userMiddleware = (store) => (next) => (action) => {
           password: user.password,
         },
       ).then((result) => {
-        store.dispatch(actionAuthentSuccess(result.data.token));
+        const authedUser = {
+          id: result.data.data.id,
+          pseudo: result.data.data.alias,
+          token: result.data.token,
+        };
+        const authedUserJSON = JSON.stringify(authedUser);
+        localStorage.setItem('activeSession', authedUserJSON);
+        store.dispatch(actionAuthentSuccess(authedUser));
       }).catch((error) => {
         store.dispatch(actionAuthentError());
         console.log('Check Login ', error);

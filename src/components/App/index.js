@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Home from '../Home';
 import Footer from '../Footer';
 import LegalNotice from '../Footer/LegalNotice';
@@ -20,8 +21,17 @@ import SearchResults from '../SearchResults';
 import MainCategoriesListPage from '../MainCategoriesListPage';
 import AnnouncementPage from '../AnnoucementPage';
 import UserProfil from '../UserProfil';
+import { actionAuthentSuccess } from '../../actions/user';
 
 function App() {
+  const dispatch = useDispatch();
+  const activeSession = localStorage.getItem('activeSession');
+
+  if (activeSession) {
+    const authedUser = JSON.parse(activeSession);
+    dispatch(actionAuthentSuccess(authedUser));
+  }
+
   return (
     <div className="app">
       <Header />

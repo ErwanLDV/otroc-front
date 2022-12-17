@@ -30,12 +30,10 @@ export function actionCheckLogin() {
   };
 }
 
-export function actionAuthentSuccess(token) {
+export function actionAuthentSuccess(activeSession) {
   return {
     type: AUTHENT_SUCCESS,
-    payload: {
-      token,
-    },
+    payload: activeSession,
   };
 }
 
