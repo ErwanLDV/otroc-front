@@ -5,6 +5,7 @@
   text-align: center;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  position: relative;
 
 
   &-nav {
@@ -13,12 +14,14 @@
     align-items: center;
   }
   &-Link {
-    
+    width: 60%;
+    margin: auto;
   }
   & img {
-    max-width: 40%;
-    height: auto;
-    
+    max-width: 50%;
   }
 }
 
+.toggle-loginForm {
+  z-index: 1;
+}

@@ -21,7 +21,6 @@ function AnnouncementPage() {
   const phoneNumber = useSelector((state) => state.annoucements.currentAnnoucement.user?.phoneNumber);
   const userPicture = useSelector((state) => state.annoucements.currentAnnoucement.user?.picture);
   // A voir pour les categories ! elles sont aussi renvoyer voir si besoin
-console.log(title);
   const location = useLocation();
   useEffect(() => {
     switch (location.pathname) {
@@ -46,22 +45,24 @@ console.log(title);
           <img className="image" src={picture || 'https://www.assuronline.com/wp-content/uploads/2022/01/103948580_l-scaled.jpg'} alt="voiture" />
         </div>
         <div className="annoucementPage-container-user">
-          informations troqueur
           <span>{pseudo}</span>
           <img className="annoucementPage-container-user-image" src={userPicture} alt="userPicture" />
-          <p>{email}</p>
-          <p>{phoneNumber}</p>
-          <Link to={`/utilisateur/${pseudo}`}>
-            <button type="button">Voir le profil</button>
-          </Link>
+          <p className="annoucementPage-container-user-info">{email}</p>
+          <p className="annoucementPage-container-user-info">{phoneNumber}</p>
+          <div className="annoucementPage-container-user-buttons">
+            <button className="annoucementPage-container-user-buttons-button" type="button">Message</button>
+            <Link to={`/utilisateur/${userId}`}>
+              <button className="annoucementPage-container-user-buttons-button" type="button">Profil</button>
+            </Link>
+          </div>
         </div>
       </div>
       <div className="annoucementPage-container-content">
-        {title}
-        {description}
-        {zipcode}
-        {createdAt}
-        {type}
+        <p>{title}</p>
+        <p>{description}</p>
+        <p>{zipcode}</p>
+        <p>{createdAt}</p>
+        <p>{type}</p>
       </div>
     </div>
   );

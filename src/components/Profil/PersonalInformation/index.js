@@ -26,35 +26,35 @@ function PersonalInformation() {
     <section>
       <h2>Mes informations personnelles</h2>
       <form className="PersonalInformation-form" onSubmit={handleSubmit}>
-        <div>
+        <div className="input-container-PersonalForm">
+          <CustomInput onChange={handleChangeInput} className="PersonalInformation-form-input" value={firstname} type="text" name="firstname" required />
           <label htmlFor="firstname">Prénom*</label>
-          <CustomInput onChange={handleChangeInput} className="PersonalInformation-form-input" value={firstname} type="text" name="firstname" placeholder="Prénom" required />
         </div>
-        <div>
+        <div className="input-container-PersonalForm">
+          <CustomInput onChange={handleChangeInput} className="PersonalInformation-form-input" value={lastname} type="text" name="lastname" required />
           <label htmlFor="lastname">Nom*</label>
-          <CustomInput onChange={handleChangeInput} className="PersonalInformation-form-input" value={lastname} type="text" name="lastname" placeholder="Nom" required />
         </div>
-        <div>
+        <div className="input-container-PersonalForm">
+          <CustomInput onChange={handleChangeInput} className="PersonalInformation-form-input" value={email} type="text" name="email" required />
           <label htmlFor="email">Email*</label>
-          <CustomInput onChange={handleChangeInput} className="PersonalInformation-form-input" value={email} type="text" name="email" placeholder="Email" required />
         </div>
-        <div>
+        <div className="input-container-PersonalForm">
+          <CustomInput onChange={handleChangeInput} className="PersonalInformation-form-input" value={pseudo} type="text" name="alias" required />
           <label htmlFor="pseudo">Pseudo*</label>
-          <CustomInput onChange={handleChangeInput} className="PersonalInformation-form-input" value={pseudo} type="text" name="alias" placeholder="Pseudo" required />
         </div>
-        <div>
+        <div className="input-container-PersonalForm">
+          <CustomInput onChange={handleChangeInput} className="PersonalInformation-form-input" maxLength="5" value={zipcode} type="zipcode" name="zipcode" />
           <label htmlFor="zipcode">Code postal*</label>
-          <CustomInput onChange={handleChangeInput} className="PersonalInformation-form-input" maxLength="5" value={zipcode} type="zipcode" name="zipcode" placeholder="Code postal" required />
         </div>
-        <div>
+        <div className="input-container-PersonalForm">
+          <CustomInput onChange={handleChangeInput} className="PersonalInformation-form-input" maxLength="10" value={phoneNumber || ''} type="phone" name="phoneNumber" />
           <label htmlFor="phoneNumber">Téléphone</label>
-          <CustomInput onChange={handleChangeInput} className="PersonalInformation-form-input" maxLength="10" value={phoneNumber || ''} type="phone" name="phoneNumber" placeholder="Téléphone" />
         </div>
         <div>
-          <label htmlFor="mot-de-passe">Mot de passe</label>
-          <button type="button">changer le mot de passe</button>
+          {/* <label htmlFor="mot-de-passe">Mot de passe</label> */}
+          <button className="PersonalInformation-form-button" type="button">changer le mot de passe</button>
         </div>
-        <button type="submit">Valider les changements</button>
+        <button className="PersonalInformation-form-button" type="submit">Valider les changements</button>
       </form>
     </section>
   );

@@ -1,0 +1,31 @@
+@use '../../styles/vars';
+
+.container-userProfil {
+  
+  // justify-content: center;
+  width: 70%;
+  margin: auto;
+  margin-top: 2em;
+
+    &-infos {
+      border: 1px solid vars.$border-color;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      min-height: 5em;
+    }
+    &-cards {
+      display: flex;
+      flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 720px) {
+  
+  .container-userProfil {
+
+
+    &-cards {
+      justify-content: center;
+    }
+  }
+}

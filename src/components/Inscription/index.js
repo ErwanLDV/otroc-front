@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomInput from '../CustomInput';
@@ -34,17 +35,36 @@ function Inscription() {
     <form className="form-inscription" onSubmit={handleSubmit}>
       <p className="form-inscription-p">Créez un compte</p>
       <div>
-        <CustomInput onChange={handleChangeInput} value={firstname} name="firstname" type="text" placeholder="Prénom" required />
-        <CustomInput onChange={handleChangeInput} value={lastname} name="lastname" type="text" placeholder="Nom" required />
+        <div className="input-container-inscriptionForm">
+          <CustomInput className="form-inscription-input" onChange={handleChangeInput} value={firstname} name="firstname" type="text" required />
+          <label htmlFor="Prénom">Prénom*</label>
+        </div>
+        <div className="input-container-inscriptionForm">
+          <CustomInput className="form-inscription-input" onChange={handleChangeInput} value={lastname} name="lastname" type="text" required />
+          <label htmlFor="Nom">Nom*</label>
+        </div>
       </div>
-      <CustomInput onChange={handleChangeInput} value={pseudo} name="pseudo" type="text" placeholder="Pseudo" required />
-      <CustomInput onChange={handleChangeInput} value={email} name="email" type="email" placeholder="Votre adresse email" required />
-      <CustomInput onChange={handleChangeInput} value={password} name="password" type="text" placeholder="Mot de passe" required />
-      <CustomInput onChange={handleChangeInput} value={zipcode} name="zipcode" maxLength="5" type="zipcode" placeholder="Code postal" required />
-      <div>
-        <CustomInput onChange={handleChangeInput} value={phoneNumber} name="phoneNumber" maxLength="10" type="phone" placeholder="Numero de telephone*" />
+      <div className="input-container-inscriptionForm">
+        <CustomInput className="form-inscription-input" onChange={handleChangeInput} value={pseudo} name="pseudo" type="text" required />
+        <label htmlFor="Pseudo">Pseudo*</label>
       </div>
-      <button type="submit">Valider</button>
+      <div className="input-container-inscriptionForm">
+        <CustomInput className="form-inscription-input" onChange={handleChangeInput} value={email} name="email" type="email" required />
+        <label htmlFor="email">Votre adresse email*</label>
+      </div>
+      <div className="input-container-inscriptionForm">
+        <CustomInput className="form-inscription-input" onChange={handleChangeInput} value={password} name="password" type="text" required />
+        <label htmlFor="password">Mot de passe*</label>
+      </div>
+      <div className="input-container-inscriptionForm">
+        <CustomInput className="form-inscription-input" onChange={handleChangeInput} value={zipcode} name="zipcode" maxLength="5" type="zipcode" required />
+        <label htmlFor="zipcode">Code postal*</label>
+      </div>
+      <div className="input-container-inscriptionForm">
+        <CustomInput className="form-inscription-input" onChange={handleChangeInput} value={phoneNumber} name="phoneNumber" maxLength="10" type="phone" />
+        <label htmlFor="phoneNumber">Numero de telephone</label>
+      </div>
+      <button className="form-inscription-button" type="submit">Valider</button>
       <p className="form-inscription-p">*non obligatoire</p>
 
     </form>

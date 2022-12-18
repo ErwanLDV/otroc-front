@@ -24,11 +24,13 @@ function MainCategoriesListPage() {
   return (
     <section>
       <h2> page card des categories</h2>
+      <div className="container-categoriesPage">
       {categories.map((item) => (
         <Link to={`/categorie/${item.slug}`} onClick={() => dispatch(actionGetCategoryResults(item.id))} key={item.id}>
           <CategoryCard key={item.id} title={item.name} />
         </Link>
       ))}
+      </div>
     </section>
 
   );
