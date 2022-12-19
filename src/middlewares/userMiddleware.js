@@ -2,10 +2,12 @@ import axios from 'axios';
 import {
   actionAuthentError,
   actionAuthentSuccess,
+  actionSaveOtherUserProfil,
   actionSaveUserOffers,
   actionSaveUserProfil,
   actionSaveUserWishes,
   CHECK_LOGIN,
+  GET_OTHER_USER_PROFIL,
   GET_USER_HISTORY,
   GET_USER_OFFERS,
   GET_USER_PROFIL,
@@ -130,7 +132,7 @@ const userMiddleware = (store) => (next) => (action) => {
         console.log(result);
         store.dispatch(actionSaveUserWishes(result.data[0].wish));
       }).catch((error) => {
-        console.log('get user offers ', error);
+        console.log('get user wishes ', error);
       });
       break;
     }
@@ -145,10 +147,21 @@ const userMiddleware = (store) => (next) => (action) => {
       ).then((result) => {
         console.log(result);
       }).catch((error) => {
-        console.log('get user offers ', error);
+        console.log('get user history ', error);
       });
       break;
     }
+    case GET_OTHER_USER_PROFIL:
+      axios.get(
+        `${baseURL}/api/users/${action.payload}`,
+      ).then((result) => {
+        console.log(result);
+        store.dispatch(actionSaveOtherUserProfil(result.data));
+      }).catch((error) => {
+        console.log('get other user profil ', error);
+      });
+      break;
+
     default:
       break;
   }

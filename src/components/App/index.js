@@ -107,7 +107,7 @@ function App() {
           )}
         />
         <Route
-          path="/utilisateur/:slug"
+          path="/utilisateur/:id"
           element={(
             <ProtectedRoute redirectPath="/">
               <UserProfil />

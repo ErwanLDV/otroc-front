@@ -4,6 +4,7 @@ import {
   AUTHENT_SUCCESS,
   CHANGE_CUSTOM_INPUT_USER,
   LOGOUT,
+  SAVE_OTHER_USER_PROFIL,
   SAVE_USER_OFFERS,
   SAVE_USER_PROFIL,
   SAVE_USER_WISHES,
@@ -24,6 +25,7 @@ export const initialState = {
   currentUserProfil: {},
   currentUserOffers: [],
   currentUserWishes: [],
+  otherUserProfil: {},
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -82,6 +84,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         currentUserWishes: action.payload,
+      };
+    case SAVE_OTHER_USER_PROFIL:
+      return {
+        ...state,
+        otherUserProfil: action.payload,
       };
     default:
       return state;
