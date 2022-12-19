@@ -28,6 +28,7 @@ function FormLogin({ isLoginOpen }) {
 
   const handleLogout = () => {
     dispatch(actionLogout());
+    localStorage.removeItem('activeSession');
   };
 
   const handleClickProfil = () => {

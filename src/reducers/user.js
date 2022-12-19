@@ -1,3 +1,4 @@
+import { actionChangeTextAreaAnnoucement } from '../actions/annoucements';
 import {
   AUTHENT_ERROR,
   AUTHENT_SUCCESS,
@@ -12,6 +13,7 @@ import {
 export const initialState = {
   email: 'otroc1@oclock.io',
   password: 'otroc',
+  activeSession: null,
   token: null,
   pseudo: '',
   isLogged: false,
@@ -47,8 +49,10 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         isLogged: true,
         password: '',
-        email: '',
+        pseudo: action.payload.pseudo,
         token: action.payload.token,
+        email: '',
+        activeSession: action.payload,
       };
     case AUTHENT_ERROR:
       return {
@@ -61,6 +65,7 @@ const reducer = (state = initialState, action = {}) => {
         email: '',
         password: '',
         token: null,
+        activeSession: null,
         isLogged: false,
         message: '',
         pseudo: '',

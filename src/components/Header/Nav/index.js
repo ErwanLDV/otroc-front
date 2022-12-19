@@ -1,20 +1,11 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './style.scss';
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { actionGetCategoryResults, actionGetMainCategoryResults, actionNavbarRerender } from '../../../actions/categories';
+import { actionNavbarRerender } from '../../../actions/categories';
 
 function Nav({ categoriesArray, navBarRerender }) {
   const dispatch = useDispatch();
-  const location = useLocation();
-
-  useEffect(() => {
-    dispatch(actionNavbarRerender(false));
-    setTimeout(() => {
-      dispatch(actionNavbarRerender(true));
-    }, 100);
-  }, [location]);
 
   return (
     <div>
@@ -39,6 +30,12 @@ function Nav({ categoriesArray, navBarRerender }) {
                         <NavLink
                           to={`categorie/${category.slug}`}
                           key={`${mainCategory.id}-${category.id}`}
+                          onClick={() => {
+                            dispatch(actionNavbarRerender(false));
+                            setTimeout(() => {
+                              dispatch(actionNavbarRerender(true));
+                            }, 100);
+                          }}
                         >
                           {category.name}
                         </NavLink>
