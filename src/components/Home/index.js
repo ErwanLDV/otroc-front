@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 function Home() {
   return (
     <section>
-      <h2>Home</h2>
-
-
+      <div className="home">
+        Home
+      </div>
     </section>
   );
 }

@@ -4,7 +4,7 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-  margin-top: 1em;
+  margin-top: 2em;
 
   &-img {
     display: flex;
@@ -28,11 +28,23 @@
     margin-left: 0.6em;
     border-top-right-radius: 20px;    
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 
       &-image {
         max-width: 15%;
-        // max-height: 10em;
+        // height: 60px;
+        position: absolute;
+        top: 5px;
+        left: 5px;        
       }
+      &-buttons {
+        display: flex;
+        justify-content: space-evenly;
+      }
+      
   }
 
   &-content {
@@ -43,6 +55,9 @@
     border-bottom-right-radius: 20px;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
     margin: 0.55em auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
   
 }
@@ -75,6 +90,24 @@
       border-top-right-radius: 0px;
       margin-top: 0.55em;
       height: 5em;
+      justify-content: center;
+
+        &-image {
+          width: 12%;
+        }
+        &-info {
+          margin-left: 1.5em;
+          font-size: small;
+        }
+        &-buttons {
+          justify-content: center;
+          margin-left: 1em;
+          height: fit-content;
+
+            &-button {
+              height: fit-content;
+            }
+        }
     }
     
 

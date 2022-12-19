@@ -12,6 +12,8 @@ export const SAVE_USER_OFFERS = 'SAVE_USER_OFFERS';
 export const GET_USER_WISHES = 'GET_USER_WISHES';
 export const SAVE_USER_WISHES = 'SAVE_USER_WISHES';
 export const GET_USER_HISTORY = 'GET_USER_HISTORY';
+export const GET_OTHER_USER_PROFIL = 'GET_OTHER_USER_PROFIL';
+export const SAVE_OTHER_USER_PROFIL = 'SAVE_OTHER_USER_PROFIL';
 
 export function actionChangeCustomInputUser(newValue, inputName, parentObject = null) {
   return {
@@ -105,5 +107,19 @@ export function actionSaveUserWishes(arrayDataWishes) {
 export function actionGetUserHistory() {
   return {
     type: GET_USER_HISTORY,
+  };
+}
+
+export function actionGetOtherUserProfil(id) {
+  return {
+    type: GET_OTHER_USER_PROFIL,
+    payload: id,
+  };
+}
+
+export function actionSaveOtherUserProfil(arrayDataUserProfil) {
+  return {
+    type: SAVE_OTHER_USER_PROFIL,
+    payload: arrayDataUserProfil,
   };
 }
