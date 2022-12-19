@@ -10,9 +10,9 @@ function SearchBar() {
     console.log('change');
   };
   return (
-    <form>
-      <CustomInput onChange={handleChangeInput} type="text" name="" placeholder="rechercher un objet" />
-      <button type="button"> rechercher </button>
+    <form className="SearchBar-form">
+      <CustomInput className="SearchBar-form-input" onChange={handleChangeInput} type="text" name="" placeholder="rechercher un objet..." />
+      <button className="SearchBar-form-button" type="button"> rechercher </button>
     </form>
   );
 }

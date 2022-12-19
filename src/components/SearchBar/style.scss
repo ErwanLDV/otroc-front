@@ -1,0 +1,17 @@
+
+.SearchBar-form {
+  margin: 1.5em;
+
+    &-input {
+      border-radius: 5px;
+      border: 1px solid black;
+      height: 2em;
+    }
+
+    &-button {
+      border-radius: 5px;
+      border: 1px solid black;
+      margin-left: 1em;
+      height: 2em;
+    }
+}
