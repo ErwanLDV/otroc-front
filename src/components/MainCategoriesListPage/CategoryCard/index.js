@@ -1,4 +1,5 @@
 import './style.scss';
+import PropTypes from 'prop-types';
 
 function CategoryCard({ title, image }) {
   return (
@@ -14,6 +15,11 @@ function CategoryCard({ title, image }) {
     </div>
   );
 }
+
+CategoryCard.propTypes = {
+  title: PropTypes.string,
+  image: PropTypes.string,
+};
 
 CategoryCard.defaultProps = {
   title: 'Truck',

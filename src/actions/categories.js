@@ -6,6 +6,8 @@ export const GET_CATEGORY_RESULTS = 'GET_CATEGORY_RESULTS';
 export const GET_MAIN_CATEGORY_RESULTS = 'GET_MAIN_CATEGORY_RESULTS';
 export const SAVE_CATEGORY_RESULTS = 'SAVE_CATEGORY_RESULTS';
 export const SAVE_MAIN_CATEGORIES_RESULT_FOR_CARDS = 'SAVE_MAIN_CATEGORIES_RESULT_FOR_CARDS';
+export const GET_TOP_CATEGORIES = 'GET_TOP_CATEGORIES';
+export const SAVE_TOP_CATEGORIES = 'SAVE_TOP_CATEGORIES';
 
 export function actionGetAllCategories() {
   return {
@@ -59,5 +61,18 @@ export function actionSaveMainCategoriesResultForCards(categoriesArray) {
   return {
     type: SAVE_MAIN_CATEGORIES_RESULT_FOR_CARDS,
     payload: categoriesArray,
+  };
+}
+
+export function actionGetTopCategories() {
+  return {
+    type: GET_TOP_CATEGORIES,
+  };
+}
+
+export function actionSaveTopCategories(topCategoriesArray) {
+  return {
+    type: SAVE_TOP_CATEGORIES,
+    payload: topCategoriesArray,
   };
 }

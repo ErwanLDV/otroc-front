@@ -4,6 +4,7 @@ import {
   actionAuthentSuccess,
   actionLogout,
   actionSaveOtherUserProfil,
+  actionSaveUserHistory,
   actionSaveUserOffers,
   actionSaveUserProfil,
   actionSaveUserWishes,
@@ -144,12 +145,13 @@ const userMiddleware = (store) => (next) => (action) => {
         headers: { Authorization: `Bearer ${user.token}` },
       };
       axios.get(
-        `${baseURL}/`,
+        `${baseURL}/api/users/current/advertisements`,
         config,
       ).then((result) => {
         console.log(result);
+        store.dispatch(actionSaveUserHistory(result.data));
       }).catch((error) => {
-        console.log('get user history ', error);
+        console.log('GET_USER_HISTORY', error);
       });
       break;
     }

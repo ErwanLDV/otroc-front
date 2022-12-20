@@ -31,7 +31,7 @@ function Profil() {
           <button className="Profil-container-button" type="button">Mes offres</button>
         </Link>
         <Link to="/profil/historique">
-          <button className="Profil-container-button" type="button">Mon historique</button>
+          <button className="Profil-container-button" type="button">Mes annonces inactives</button>
         </Link>
         <Link to="/profil/mes-demandes">
           <button className="Profil-container-button" type="button">Mes demandes</button>

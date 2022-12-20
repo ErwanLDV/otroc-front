@@ -8,6 +8,7 @@ export const DISABLE_MODE_EDIT = 'DISABLE_MODE_EDIT';
 
 // Function cleanup ------------------------------------------------------
 export const CLEANUP_ANNOUCEMENT_PAGE = 'CLEANUP_ANNOUCEMENT_PAGE';
+
 // OFFERS ----------------------------------------------------------------
 export const GET_OFFERS_ANNOUCEMENTS = 'GET_OFFERS_ANNOUCEMENTS';
 export const SAVE_OFFERS_ANNOUCEMENTS = 'SAVE_OFFERS_ANNOUCEMENTS';
@@ -18,6 +19,8 @@ export const GET_EDIT_OFFER_ANNOUCEMENT = 'GET_EDIT_OFFER_ANNOUCEMENT';
 export const SAVE_EDIT_OFFER_ANNOUCEMENT = 'SAVE_EDIT_OFFER_ANNOUCEMENT';
 export const UPDATE_OFFER_ANNOUCEMENT = 'UPDATE_OFFER_ANNOUCEMENT';
 export const REPORTED_OFFER_ANNOUCEMENT = 'REPORTED_OFFER_ANNOUCEMENT';
+export const DELETE_OFFER_ANNOUCEMENT = 'DELETE_OFFER_ANNOUCEMENT';
+export const TOGGLE_ACTIVE_OFFER_ANNOUCEMENT = 'TOGGLE_ACTIVE_OFFER_ANNOUCEMENT';
 
 // WISHES ----------------------------------------------------------------
 export const GET_WISHES_ANNOUCEMENTS = 'GET_WISHES_ANNOUCEMENTS';
@@ -29,6 +32,8 @@ export const GET_EDIT_WISH_ANNOUCEMENT = 'GET_EDIT_WISH_ANNOUCEMENT';
 export const SAVE_EDIT_WISH_ANNOUCEMENT = 'SAVE_EDIT_WISH_ANNOUCEMENT';
 export const UPDATE_WISH_ANNOUCEMENT = 'UPDATE_WISH_ANNOUCEMENT';
 export const REPORTED_WISH_ANNOUCEMENT = 'REPORTED_OFFER_ANNOUCEMENT';
+export const DELETE_WISH_ANNOUCEMENT = 'DELETE_WISH_ANNOUCEMENT';
+export const TOGGLE_ACTIVE_WISH_ANNOUCEMENT = 'TOGGLE_ACTIVE_WISH_ANNOUCEMENT';
 
 export function actionChangeCustomInputAnnoucement(newValue, inputName, parentObject = null) {
   return {
@@ -131,6 +136,20 @@ export function actionReportedOfferAnnoucement(id) {
   };
 }
 
+export function actionDeleteOfferAnnoucement(id) {
+  return {
+    type: DELETE_OFFER_ANNOUCEMENT,
+    payload: id,
+  };
+}
+
+export function actionToggleActiveOfferAnnoucement(id) {
+  return {
+    type: TOGGLE_ACTIVE_OFFER_ANNOUCEMENT,
+    payload: id,
+  };
+}
+
 // WISHES ----------------------------------------------------------------
 
 export function actionGetWishesAnnoucements() {
@@ -189,6 +208,20 @@ export function actionUpdateWishAnnoucement() {
 export function actionReportedWishAnnoucement(id) {
   return {
     type: REPORTED_WISH_ANNOUCEMENT,
+    payload: id,
+  };
+}
+
+export function actionDeleteWishAnnoucement(id) {
+  return {
+    type: DELETE_WISH_ANNOUCEMENT,
+    payload: id,
+  };
+}
+
+export function actionToggleActiveWishAnnoucement(id) {
+  return {
+    type: TOGGLE_ACTIVE_WISH_ANNOUCEMENT,
     payload: id,
   };
 }

@@ -14,7 +14,6 @@ function MyOffers() {
   useEffect(() => {
     dispatch(actionGetUserOffers());
   }, []);
-
   return (
     <section>
       <h2>Mes offres</h2>
@@ -29,7 +28,7 @@ function MyOffers() {
             content={item.description}
             img={item.picture}
             id={item.id}
-            type="offer"
+            annoucementType="offer"
           />
         ))
       }

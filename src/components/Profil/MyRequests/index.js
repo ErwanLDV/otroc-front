@@ -23,7 +23,7 @@ function MyRequests() {
             content={item.description}
             img={item.picture}
             id={item.id}
-            type="wish"
+            annoucementType="wish"
           />
         ))
       }

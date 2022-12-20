@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ALL_CATEGORIES, actionSaveAllCategories, actionCategoriesLoaded, GET_CATEGORY_RESULTS, actionSaveCategoryResults, GET_MAIN_CATEGORY_RESULTS, actionSaveMainCategoriesResultForCards, actionCategoryResultLoaded } from '../actions/categories';
+import { GET_ALL_CATEGORIES, actionSaveAllCategories, actionCategoriesLoaded, GET_CATEGORY_RESULTS, actionSaveCategoryResults, GET_MAIN_CATEGORY_RESULTS, actionSaveMainCategoriesResultForCards, actionCategoryResultLoaded, GET_TOP_CATEGORIES, actionSaveTopCategories } from '../actions/categories';
 
 const baseURL = process.env.BACK_API_BASE_URL;
 
@@ -37,6 +37,16 @@ const categoriesMiddleware = (store) => (next) => (action) => {
           console.log('GET_MAIN_CATEGORY_RESULTS : ', error);
         });
       break;
+
+    case GET_TOP_CATEGORIES:
+      axios.get(`${baseURL}/api/categories`)
+        .then((result) => {
+          store.dispatch(actionSaveTopCategories(result.data));
+          console.log(result);
+        })
+        .catch((error) => {
+          console.log('GET_TOP_CATEGORIES', error);
+        });
 
     default:
       break;
