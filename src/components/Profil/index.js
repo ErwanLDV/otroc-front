@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import avatarIMG from '../../assets/images/avatar.jpg';
-import { actionSaveUserPicture, actionPutUserPicture } from '../../actions/user';
+import { actionSaveUserPicture, actionPostUserPicture } from '../../actions/user';
 
 function Profil() {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ function Profil() {
 
   const handleSubmitPicture = () => {
     dispatch(actionSaveUserPicture(previewPicture));
-    dispatch(actionPutUserPicture(newPicture));
+    dispatch(actionPostUserPicture(newPicture));
     setPreviewPicture(null);
     setNewPicture(null);
   };

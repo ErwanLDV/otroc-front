@@ -12,7 +12,7 @@ import {
   GET_USER_OFFERS,
   GET_USER_PROFIL,
   GET_USER_WISHES,
-  PUT_USER_PICTURE,
+  POST_USER_PICTURE,
   PUT_USER_PROFIL,
   USER_INSCRIPTION,
 } from '../actions/user';
@@ -107,7 +107,7 @@ const userMiddleware = (store) => (next) => (action) => {
       });
       break;
     }
-    case PUT_USER_PICTURE: {
+    case POST_USER_PICTURE: {
       const { user } = store.getState();
       const formData = new FormData();
 
