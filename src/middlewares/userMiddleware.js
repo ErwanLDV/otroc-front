@@ -2,11 +2,13 @@ import axios from 'axios';
 import {
   actionAuthentError,
   actionAuthentSuccess,
+  actionLogout,
   actionSaveOtherUserProfil,
   actionSaveUserOffers,
   actionSaveUserProfil,
   actionSaveUserWishes,
   CHECK_LOGIN,
+  DELETE_USER,
   GET_OTHER_USER_PROFIL,
   GET_USER_HISTORY,
   GET_USER_OFFERS,
@@ -161,7 +163,22 @@ const userMiddleware = (store) => (next) => (action) => {
         console.log('get other user profil ', error);
       });
       break;
-
+    case DELETE_USER: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.delete(
+        `${baseURL}/api/users/current`,
+        config,
+      ).then((result) => {
+        console.log(result);
+        store.dispatch(actionLogout());
+      }).catch((error) => {
+        console.log('DELETE_USER', error);
+      });
+      break;
+    }
     default:
       break;
   }

@@ -1,8 +1,9 @@
 import './style.scss';
+
 import { Link } from 'react-router-dom';
-import ProfilCard from '../../ProfilCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import ProfilCard from '../../ProfilCard';
 import { actionGetUserOffers } from '../../../actions/user';
 
 function MyOffers() {

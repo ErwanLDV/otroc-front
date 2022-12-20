@@ -1,3 +1,4 @@
+
 export const CHANGE_CUSTOM_INPUT_USER = 'CHANGE_CUSTOM_INPUT_USER';
 export const CHECK_LOGIN = 'CHECK_LOGIN';
 export const AUTHENT_SUCCESS = 'AUTHENT_SUCCESS';
@@ -14,6 +15,7 @@ export const SAVE_USER_WISHES = 'SAVE_USER_WISHES';
 export const GET_USER_HISTORY = 'GET_USER_HISTORY';
 export const GET_OTHER_USER_PROFIL = 'GET_OTHER_USER_PROFIL';
 export const SAVE_OTHER_USER_PROFIL = 'SAVE_OTHER_USER_PROFIL';
+export const DELETE_USER = 'DELETE_USER';
 
 export function actionChangeCustomInputUser(newValue, inputName, parentObject = null) {
   return {
@@ -119,5 +121,11 @@ export function actionSaveOtherUserProfil(arrayDataUserProfil) {
   return {
     type: SAVE_OTHER_USER_PROFIL,
     payload: arrayDataUserProfil,
+  };
+}
+
+export function actionDeleteUser() {
+  return {
+    type: DELETE_USER,
   };
 }

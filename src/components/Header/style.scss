@@ -5,23 +5,60 @@
   text-align: center;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  position: relative;
-
+  
+  &-addAnnoucement {
+    border: 1px solid;
+    border-radius: 8px;
+    height: 3em;
+    width: 22%;
+    background-color: #b0c1f18f;
+    // padding-top: .7em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1em;
+  }
 
   &-nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    position: relative;
   }
   &-Link {
-    width: 60%;
-    margin: auto;
+    width: 25%;
+    // margin-right: 8%;
+    min-width: 25%;
+    
   }
   & img {
-    max-width: 50%;
+    max-width: 100%;
+  }
+  &-span {
+    font-size: 1.2em;
   }
 }
 
 .toggle-loginForm {
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 1em;
+  margin-top: 1em;
+ 
+}
+
+.login{
+  border: none;
+  background: none;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.header-container-login-signUp {
+  display: flex;
+  // width: 9em;
 }

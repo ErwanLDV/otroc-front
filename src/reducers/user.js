@@ -1,4 +1,3 @@
-import { actionChangeTextAreaAnnoucement } from '../actions/annoucements';
 import {
   AUTHENT_ERROR,
   AUTHENT_SUCCESS,

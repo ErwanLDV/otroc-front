@@ -49,7 +49,6 @@ function FormLogin({ isLoginOpen }) {
                 <User size={16} />
                 <button className="formLogin-login-button" type="submit">Connexion</button>
               </div>
-              <p><Link to="/inscription">Inscription ici</Link></p>
             </>
           )
           : (<div className="formLogin-buttons"><Link to="/profil"><button className="formLogin-buttons-myProfil" type="button" onClick={handleClickProfil}>Mon profil</button></Link><button className="formLogin-buttons-disconnect" type="button" onClick={handleLogout}>Déconnexion</button></div>)

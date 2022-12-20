@@ -14,6 +14,8 @@ import {
   GET_ONE_OFFER_ANNOUCEMENT,
   GET_ONE_WISH_ANNOUCEMENT,
   GET_WISHES_ANNOUCEMENTS,
+  REPORTED_OFFER_ANNOUCEMENT,
+  REPORTED_WISH_ANNOUCEMENT,
   UPDATE_OFFER_ANNOUCEMENT,
   UPDATE_WISH_ANNOUCEMENT,
 } from '../actions/annoucements';
@@ -106,6 +108,22 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
       break;
     }
 
+    case REPORTED_OFFER_ANNOUCEMENT: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.put(
+        `${baseURL}/api/offers/${action.payload}/reported`,
+        config,
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('REPORTED_OFFER_ANNOUCEMENT', error);
+      });
+      break;
+    }
+
     // WISHES -------------------------------------------------------------
     case GET_WISHES_ANNOUCEMENTS:
       axios.get(`${baseURL}/api/wishes`)
@@ -185,6 +203,22 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         console.log(result);
       }).catch((error) => {
         console.log('UPDATE_WISH_ANNOUCEMENT ', error);
+      });
+      break;
+    }
+
+    case REPORTED_WISH_ANNOUCEMENT: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.put(
+        `${baseURL}/api/wishes/${action.payload}/reported`,
+        config,
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('REPORTED_WISH_ANNOUCEMENT', error);
       });
       break;
     }

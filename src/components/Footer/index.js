@@ -4,10 +4,12 @@ import './style.scss';
 function Footer() {
   return (
     <footer className="footer">
-      <Link to="/mentions-legales">Mentions Légales</Link>
-      <Link to="/cgu">Conditions Générales d'Utilisation</Link>
-      <Link to="/contact">Nous contacter</Link>
-      <Link to="/a-propos">A propos</Link>
+      <div className="footer-container">
+        <Link className="footer-link" to="/mentions-legales">Mentions Légales</Link>
+        <Link className="footer-link" to="/cgu">Conditions Générales d'Utilisation</Link>
+        <Link className="footer-link" to="/contact">Nous contacter</Link>
+        <Link className="footer-link" to="/a-propos">A propos</Link>
+      </div>
     </footer>
   );
 }

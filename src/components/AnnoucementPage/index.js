@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
+import { AlertTriangle } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { actionCleanupAnnoucementPage, actionGetOneOfferAnnoucement, actionGetOneWishAnnoucement } from '../../actions/annoucements';
+import { actionCleanupAnnoucementPage, actionGetOneOfferAnnoucement, actionGetOneWishAnnoucement, actionReportedOfferAnnoucement, actionReportedWishAnnoucement } from '../../actions/annoucements';
 import './style.scss';
 
 function AnnouncementPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
+  const idAnnoucement = useSelector((state) => state.annoucements.currentAnnoucement.id);
   const title = useSelector((state) => state.annoucements.currentAnnoucement.title);
   const description = useSelector((state) => state.annoucements.currentAnnoucement.description);
   const picture = useSelector((state) => state.annoucements.currentAnnoucement.picture);
@@ -35,6 +37,19 @@ function AnnouncementPage() {
     }
     return () => dispatch(actionCleanupAnnoucementPage());
   }, []);
+
+  const handleClick = () => {
+    switch (location.pathname) {
+      case `/annonces/offers/${id}`:
+        dispatch(actionReportedOfferAnnoucement(idAnnoucement));
+        break;
+      case `/annonces/wishes/${id}`:
+        dispatch(actionReportedWishAnnoucement(idAnnoucement));
+        break;
+      default:
+        break;
+    }
+  };
   return (
     <div className="annoucementPage-container">
       <div>
@@ -63,6 +78,10 @@ function AnnouncementPage() {
         <p>{zipcode}</p>
         <p>{createdAt}</p>
         <p>{type}</p>
+        <div className="report" onClick={handleClick}>
+          <AlertTriangle className="report-logo" />
+          <p>Signaler</p>
+        </div>
       </div>
     </div>
   );

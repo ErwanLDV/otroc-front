@@ -36,6 +36,9 @@ function Profil() {
         <Link to="/profil/mes-demandes">
           <button className="Profil-container-button" type="button">Mes demandes</button>
         </Link>
+        <Link to="/profil/supprimer">
+          <button className="Profil-container-button" type="button">Supprimer mon compte</button>
+        </Link>
       </div>
     </section>
   );
