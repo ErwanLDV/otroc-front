@@ -9,6 +9,9 @@ export const DISABLE_MODE_EDIT = 'DISABLE_MODE_EDIT';
 // Function cleanup ------------------------------------------------------
 export const CLEANUP_ANNOUCEMENT_PAGE = 'CLEANUP_ANNOUCEMENT_PAGE';
 
+// Page Reload -----------------------------------------------------------
+export const PAGE_RELOAD = 'PAGE_RELOAD';
+
 // OFFERS ----------------------------------------------------------------
 export const GET_OFFERS_ANNOUCEMENTS = 'GET_OFFERS_ANNOUCEMENTS';
 export const SAVE_OFFERS_ANNOUCEMENTS = 'SAVE_OFFERS_ANNOUCEMENTS';
@@ -231,5 +234,11 @@ export function actionToggleActiveWishAnnoucement(id) {
 export function actionCleanupAnnoucementPage() {
   return {
     type: CLEANUP_ANNOUCEMENT_PAGE,
+  };
+}
+
+export function actionPageReload() {
+  return {
+    type: PAGE_RELOAD,
   };
 }

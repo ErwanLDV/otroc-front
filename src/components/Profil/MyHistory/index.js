@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { actionPageReload } from '../../../actions/annoucements';
 import { actionGetUserHistory } from '../../../actions/user';
 import ProfilCard from '../../ProfilCard';
 import './style.scss';
@@ -7,12 +8,18 @@ import './style.scss';
 function MyHistory() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(actionGetUserHistory());
-  }, []);
-
   const offersHistory = useSelector((state) => state.user.currentUserHistory.offers);
   const wishesHistory = useSelector((state) => state.user.currentUserHistory.wishes);
+  const pageReload = useSelector((state) => state.annoucements.pageReload);
+  console.log(pageReload);
+
+  useEffect(() => {
+    dispatch(actionGetUserHistory());
+    if (pageReload) {
+      dispatch(actionPageReload());
+    }
+  }, [pageReload]);
+
   console.log(offersHistory);
   return (
     <section>

@@ -11,6 +11,7 @@ import {
   CLEANUP_ANNOUCEMENT_PAGE,
   ENABLE_MODE_EDIT,
   DISABLE_MODE_EDIT,
+  PAGE_RELOAD,
 } from '../actions/annoucements';
 
 export const initialState = {
@@ -19,6 +20,7 @@ export const initialState = {
   currentAnnoucement: {},
   annoucementType: 'offer',
   modeEdit: false,
+  pageReload: false,
   addOrEditAnnoucement: {
     type: 'permanent',
   },
@@ -108,6 +110,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         currentAnnoucement: {},
+      };
+
+    case PAGE_RELOAD:
+      return {
+        ...state,
+        pageReload: !state.pageReload,
       };
 
     default:

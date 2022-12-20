@@ -10,6 +10,7 @@ import {
   actionDeleteWishAnnoucement,
   actionToggleActiveOfferAnnoucement,
   actionToggleActiveWishAnnoucement,
+  actionPageReload,
 } from '../../actions/annoucements';
 
 function ProfilCard({
@@ -40,9 +41,11 @@ function ProfilCard({
     switch (annoucementType) {
       case 'offer':
         dispatch(actionToggleActiveOfferAnnoucement(id));
+        dispatch(actionPageReload());
         break;
       case 'wish':
         dispatch(actionToggleActiveWishAnnoucement(id));
+        dispatch(actionPageReload());
         break;
       default:
         break;
@@ -53,9 +56,11 @@ function ProfilCard({
     switch (annoucementType) {
       case 'offer':
         dispatch(actionDeleteOfferAnnoucement(id));
+        dispatch(actionPageReload());
         break;
       case 'wish':
         dispatch(actionDeleteWishAnnoucement(id));
+        dispatch(actionPageReload());
         break;
       default:
         break;
@@ -76,8 +81,8 @@ function ProfilCard({
               <Link to="/annonces/editer">
                 <button className="Profil-offers-container-button" type="button" onClick={handleEditAnnoucement}>Modifier</button>
               </Link>
-              <button className="Profil-offers-container-button" type="button" onClick={handleDelete}>Supprimmer</button>
-              <button className="Profil-offers-container-button" type="button" onClick={handleToggleActive}>Activer/Désactiver</button>
+              <button className="Profil-offers-container-button" type="button" onClick={handleDelete}>Supprimer</button>
+              <button className="Profil-offers-container-button" type="button" onClick={handleToggleActive}>{!isActive ? 'Activer' : 'Désactiver'}</button>
             </div>
           </div>
         </div>
@@ -93,7 +98,7 @@ ProfilCard.propTypes = {
   id: PropTypes.number.isRequired,
   img: PropTypes.string,
   isLended: PropTypes.bool,
-  // isActive: PropTypes.bool.isRequired,
+  isActive: PropTypes.bool.isRequired,
 };
 
 ProfilCard.defaultProps = {
