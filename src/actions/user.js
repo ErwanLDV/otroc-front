@@ -6,7 +6,9 @@ export const LOGOUT = 'LOGOUT';
 export const USER_INSCRIPTION = 'USER_INSCRIPTION';
 export const GET_USER_PROFIL = 'GET_USER_PROFIL';
 export const SAVE_USER_PROFIL = 'SAVE_USER_PROFIL';
+export const SAVE_USER_PICTURE = 'SAVE_USER_PICTURE';
 export const PUT_USER_PROFIL = 'PUT_USER_PROFIL';
+export const PUT_USER_PICTURE = 'PUT_USER_PICTURE';
 export const GET_USER_OFFERS = 'GET_USER_OFFERS';
 export const SAVE_USER_OFFERS = 'SAVE_USER_OFFERS';
 export const GET_USER_WISHES = 'GET_USER_WISHES';
@@ -70,9 +72,23 @@ export function actionSaveUserProfil(profil) {
   };
 }
 
+export function actionSaveUserPicture(picture) {
+  return {
+    type: SAVE_USER_PICTURE,
+    payload: picture,
+  };
+}
+
 export function actionPutUserProfil() {
   return {
     type: PUT_USER_PROFIL,
+  };
+}
+
+export function actionPutUserPicture(newPicture) {
+  return {
+    type: PUT_USER_PICTURE,
+    payload: newPicture,
   };
 }
 

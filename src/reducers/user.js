@@ -1,4 +1,3 @@
-import { actionChangeTextAreaAnnoucement } from '../actions/annoucements';
 import {
   AUTHENT_ERROR,
   AUTHENT_SUCCESS,
@@ -6,6 +5,7 @@ import {
   LOGOUT,
   SAVE_OTHER_USER_PROFIL,
   SAVE_USER_OFFERS,
+  SAVE_USER_PICTURE,
   SAVE_USER_PROFIL,
   SAVE_USER_WISHES,
 } from '../actions/user';
@@ -74,6 +74,14 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         currentUserProfil: action.payload,
+      };
+    case SAVE_USER_PICTURE:
+      return {
+        ...state,
+        currentUserProfil: {
+          ...state.currentUserProfil,
+          picture: action.payload,
+        },
       };
     case SAVE_USER_OFFERS:
       return {

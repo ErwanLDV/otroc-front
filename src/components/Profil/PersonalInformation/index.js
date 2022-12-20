@@ -22,6 +22,7 @@ function PersonalInformation() {
     event.preventDefault();
     dispatch(actionPutUserProfil());
   };
+
   return (
     <section>
       <h2>Mes informations personnelles</h2>

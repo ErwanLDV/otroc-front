@@ -12,11 +12,12 @@ import {
   GET_USER_OFFERS,
   GET_USER_PROFIL,
   GET_USER_WISHES,
+  PUT_USER_PICTURE,
   PUT_USER_PROFIL,
   USER_INSCRIPTION,
 } from '../actions/user';
 
-const baseURL = process.env.BACK_API_BASE_URL;
+const baseURL = process.env.BACK_API_BASE_URL_DEV;
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -74,6 +75,7 @@ const userMiddleware = (store) => (next) => (action) => {
         config,
       ).then((result) => {
         console.log(result);
+
         store.dispatch(actionSaveUserProfil(result.data));
       }).catch((error) => {
         console.log('get user profil ', error);
@@ -103,6 +105,28 @@ const userMiddleware = (store) => (next) => (action) => {
       }).catch((error) => {
         console.log('put user profil ', error);
       });
+      break;
+    }
+    case PUT_USER_PICTURE: {
+      const { user } = store.getState();
+      const formData = new FormData();
+
+      formData.append('file', action.payload);
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          'content-type': 'multipart/form-data',
+        },
+      };
+      console.log(formData, config, action.payload);
+      axios.post(`${baseURL}/api/users/current/pictures`, formData, config)
+        .then((pictureResult) => {
+          console.log(pictureResult);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
       break;
     }
     case GET_USER_OFFERS: {
