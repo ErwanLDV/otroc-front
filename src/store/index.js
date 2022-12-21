@@ -5,6 +5,7 @@ import reducer from 'src/reducers';
 import userMiddleware from '../middlewares/userMiddleware';
 import annoucementsMiddleware from '../middlewares/annoucementsMiddleware';
 import categoriesMiddleware from '../middlewares/categoriesMiddleware';
+import searchMiddleware from '../middlewares/searchMiddleware';
 
 // import nameMiddleware from '../middlewares/nameMiddleware
 
@@ -13,6 +14,7 @@ const middlewareEnhancer = applyMiddleware(
   userMiddleware,
   annoucementsMiddleware,
   categoriesMiddleware,
+  searchMiddleware,
 );
 
 const composedEnhancers = composeWithDevTools(middlewareEnhancer);
