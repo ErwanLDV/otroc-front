@@ -60,7 +60,7 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         `${baseURL}/api/offers`,
         {
           title: addOrEditAnnoucement.title,
-          zipcode: Number(addOrEditAnnoucement.zipcode),
+          zipcode: addOrEditAnnoucement.zipcode,
           description: addOrEditAnnoucement.description,
           isActive: true,
           type: addOrEditAnnoucement.type,
@@ -97,7 +97,7 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         `${baseURL}/api/offers/${addOrEditAnnoucement.id}`,
         {
           title: addOrEditAnnoucement.title,
-          zipcode: Number(addOrEditAnnoucement.zipcode),
+          zipcode: addOrEditAnnoucement.zipcode,
           description: addOrEditAnnoucement.description,
           isActive: true,
           type: addOrEditAnnoucement.type,
@@ -191,7 +191,7 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         `${baseURL}/api/wishes`,
         {
           title: addOrEditAnnoucement.title,
-          zipcode: Number(addOrEditAnnoucement.zipcode),
+          zipcode: addOrEditAnnoucement.zipcode,
           description: addOrEditAnnoucement.description,
           isActive: true,
           type: addOrEditAnnoucement.type,
@@ -228,7 +228,7 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         `${baseURL}/api/wishes/${addOrEditAnnoucement.id}`,
         {
           title: addOrEditAnnoucement.title,
-          zipcode: Number(addOrEditAnnoucement.zipcode),
+          zipcode: addOrEditAnnoucement.zipcode,
           description: addOrEditAnnoucement.description,
           isActive: true,
           type: addOrEditAnnoucement.type,

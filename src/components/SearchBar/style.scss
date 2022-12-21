@@ -1,11 +1,18 @@
 
 .SearchBar-form {
   margin: 1.5em;
+  display: flex;
+  justify-content: center;
 
+    &-radio {
+      margin-right: 1.25em;
+      padding-top: 0.2em;
+    }
     &-input {
       border-radius: 5px;
       border: 1px solid black;
       height: 2em;
+      margin-left: 1.25em;
     }
 
     &-button {

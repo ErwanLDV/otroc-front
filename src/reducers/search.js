@@ -1,9 +1,10 @@
-import { CHANGE_INPUT_SEARCH_BAR, SAVE_SEARCH_OFFERS_OR_WISHES } from '../actions/search';
+import { CHANGE_INPUT_SEARCH_BAR, SAVE_SEARCH_OFFERS_OR_WISHES, SAVE_TYPE_ANNOUCEMENTS_RESULTS } from '../actions/search';
 
 export const initialState = {
   inputSearchBar: '',
   searchType: 'offer',
   searchAnnoucements: [],
+  searchTypeResult: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -17,6 +18,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         searchAnnoucements: action.payload,
+      };
+    case SAVE_TYPE_ANNOUCEMENTS_RESULTS:
+      return {
+        ...state,
+        searchTypeResult: action.payload,
       };
     default:
       return state;

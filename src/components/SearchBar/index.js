@@ -1,10 +1,12 @@
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import CustomInput from '../CustomInput';
 import { actionChangeInputSearchBar, actionPostSearchOffers, actionPostSearchWishes } from '../../actions/search';
 
 function SearchBar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const inputSearchBar = useSelector((state) => state.search.inputSearchBar);
   const searchType = useSelector((state) => state.search.searchType);
@@ -28,6 +30,7 @@ function SearchBar() {
       default:
         break;
     }
+    navigate('/rechercher/resultat');
   };
   return (
     <form className="SearchBar-form" onSubmit={handleSubmit}>
@@ -39,7 +42,7 @@ function SearchBar() {
           <CustomInput className="" value="wish" name="searchType" type="radio" onChange={handleChangeInput} checked={searchType === 'wish'} />
         </label>
       </div>
-      <CustomInput className="SearchBar-form-input" value={inputSearchBar} onChange={handleChangeInput} type="text" name="inputSearchBar" placeholder="rechercher un objet..." />
+      <CustomInput className="SearchBar-form-input" value={inputSearchBar} onChange={handleChangeInput} type="text" name="inputSearchBar" placeholder="rechercher un objet..." required />
       <button className="SearchBar-form-button" type="submit"> rechercher </button>
     </form>
   );

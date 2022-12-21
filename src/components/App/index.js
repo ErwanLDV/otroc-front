@@ -24,6 +24,7 @@ import UserProfil from '../UserProfil';
 import { actionAuthentSuccess } from '../../actions/user';
 import ProtectedRoute from '../ProtectedRoute';
 import DeleteProfil from '../Profil/DeleteProfil';
+import SearchBarResults from '../SearchBar/SearchBarResults';
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ function App() {
       <SearchBar />
       <Routes>
         <Route path="/" element=<Home /> />
+        <Route path="/rechercher/resultat" element=<SearchBarResults /> />
         <Route path="/categorie/:slug" element=<SearchResults /> />
         <Route path="/annonces/offers/:id" element=<AnnouncementPage /> />
         <Route path="/annonces/wishes/:id" element=<AnnouncementPage /> />
