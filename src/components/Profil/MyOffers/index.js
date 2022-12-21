@@ -1,25 +1,28 @@
 import './style.scss';
+
 import { Link } from 'react-router-dom';
-import ProfilCard from '../../ProfilCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import ProfilCard from '../../ProfilCard';
 import { actionGetUserOffers } from '../../../actions/user';
+import { actionPageReload } from '../../../actions/annoucements';
 
 function MyOffers() {
   const dispatch = useDispatch();
 
   const offersArray = useSelector((state) => state.user.currentUserOffers);
+  const pageReload = useSelector((state) => state.annoucements.pageReload);
 
   useEffect(() => {
     dispatch(actionGetUserOffers());
-  }, []);
+    if (pageReload) {
+      dispatch(actionPageReload());
+    }
+  }, [pageReload]);
 
   return (
     <section>
       <h2>Mes offres</h2>
-      <Link to="/annonces/ajouter">
-        <button className="add-newOffer" type="button">Ajouter une offre</button>
-      </Link>
       {
         offersArray.map((item) => (
           <ProfilCard
@@ -28,7 +31,8 @@ function MyOffers() {
             content={item.description}
             img={item.picture}
             id={item.id}
-            type="offer"
+            isActive={item.isActive}
+            annoucementType="offer"
           />
         ))
       }

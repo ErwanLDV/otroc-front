@@ -1,4 +1,4 @@
-import { SAVE_ALL_CATEGORIES, CATEGORIES_LOADED, NAVBAR_RERENDER, SAVE_CATEGORY_RESULTS, SAVE_MAIN_CATEGORIES_RESULT_FOR_CARDS, CATEGORY_RESULT_LOADED } from '../actions/categories';
+import { SAVE_ALL_CATEGORIES, CATEGORIES_LOADED, NAVBAR_RERENDER, SAVE_CATEGORY_RESULTS, SAVE_MAIN_CATEGORIES_RESULT_FOR_CARDS, CATEGORY_RESULT_LOADED, SAVE_TOP_CATEGORIES } from '../actions/categories';
 
 export const initialState = {
   categoriesArray: [],
@@ -6,6 +6,7 @@ export const initialState = {
   navBarRerender: true,
   categoryResults: [],
   MainCategoriesListCards: [],
+  topCategories: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -38,6 +39,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         MainCategoriesListCards: action.payload,
+      };
+
+    case SAVE_TOP_CATEGORIES:
+      return {
+        ...state,
+        topCategories: action.payload,
       };
     default:
       return state;

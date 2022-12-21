@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { actionPageReload } from '../../../actions/annoucements';
 import { actionGetUserWishes } from '../../../actions/user';
 import ProfilCard from '../../ProfilCard';
 import './style.scss';
@@ -8,10 +9,14 @@ function MyRequests() {
   const dispatch = useDispatch();
 
   const wishesArray = useSelector((state) => state.user.currentUserWishes);
+  const pageReload = useSelector((state) => state.annoucements.pageReload);
 
   useEffect(() => {
     dispatch(actionGetUserWishes());
-  }, []);
+    if (pageReload) {
+      dispatch(actionPageReload());
+    }
+  }, [pageReload]);
   return (
     <section>
       <h2>Mes demandes</h2>
@@ -23,7 +28,8 @@ function MyRequests() {
             content={item.description}
             img={item.picture}
             id={item.id}
-            type="wish"
+            isActive={item.isActive}
+            annoucementType="wish"
           />
         ))
       }

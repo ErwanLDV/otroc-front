@@ -3,14 +3,25 @@
 .footer {
   background-color: vars.$main-color;
   margin-top: 200px;
-  display: flex;
-  justify-content: space-around;
-  padding: 1em;
+  
+  padding: .4em;
   bottom: 0px;
   position: absolute;
   width: 100%;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-radius: 8px;
+  font-size: .95em;
+
+  &-link:hover {
+    text-decoration: underline;
+    transform: scale(1.05);
+  }
+
+  &-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+  }
 
   &-h1 {
     font-size: 2.3em;

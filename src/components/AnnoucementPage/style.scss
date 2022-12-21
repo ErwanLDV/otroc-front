@@ -58,6 +58,21 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+
+
+      & .report {
+        cursor: pointer;
+        margin-left: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 0.9em;
+        &-logo {
+          color: rgb(178, 178, 52);
+          // align-self: center;
+          margin-left: 1em;
+        }
+      }
   }
   
 }

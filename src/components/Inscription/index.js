@@ -61,7 +61,7 @@ function Inscription() {
         <label htmlFor="zipcode">Code postal*</label>
       </div>
       <div className="input-container-inscriptionForm">
-        <CustomInput className="form-inscription-input" onChange={handleChangeInput} value={phoneNumber} name="phoneNumber" maxLength="10" type="phone" />
+        <CustomInput className="form-inscription-input" onChange={handleChangeInput} value={phoneNumber || ''} name="phoneNumber" maxLength="10" type="phone" />
         <label htmlFor="phoneNumber">Numero de telephone</label>
       </div>
       <button className="form-inscription-button" type="submit">Valider</button>

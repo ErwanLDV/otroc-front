@@ -23,6 +23,7 @@ import AnnouncementPage from '../AnnoucementPage';
 import UserProfil from '../UserProfil';
 import { actionAuthentSuccess } from '../../actions/user';
 import ProtectedRoute from '../ProtectedRoute';
+import DeleteProfil from '../Profil/DeleteProfil';
 
 function App() {
   const dispatch = useDispatch();
@@ -114,14 +115,14 @@ function App() {
             </ProtectedRoute>
           )}
         />
-        {/* <Route path="/profil" element=<Profil /> />
-        <Route path="/profil/mes-informations" element=<PersonalInformation /> />
-        <Route path="/profil/mes-offres" element=<MyOffers /> />
-        <Route path="/profil/mes-demandes" element=<MyRequests /> />
-        <Route path="/profil/historique" element=<MyHistory /> />
-        <Route path="/annonces/ajouter" element=<AddAnnouncement /> />
-        <Route path="/annonces/editer" element=<AddAnnouncement /> />
-        <Route path="/utilisateur/:slug" element=<UserProfil /> /> */}
+        <Route
+          path="/profil/supprimer"
+          element={(
+            <ProtectedRoute redirectPath="/">
+              <DeleteProfil />
+            </ProtectedRoute>
+          )}
+        />
         <Route path="*" element=<Error /> />
       </Routes>
       <Footer />

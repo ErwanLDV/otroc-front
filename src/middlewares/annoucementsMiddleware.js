@@ -14,8 +14,14 @@ import {
   GET_ONE_OFFER_ANNOUCEMENT,
   GET_ONE_WISH_ANNOUCEMENT,
   GET_WISHES_ANNOUCEMENTS,
+  REPORTED_OFFER_ANNOUCEMENT,
+  REPORTED_WISH_ANNOUCEMENT,
   UPDATE_OFFER_ANNOUCEMENT,
   UPDATE_WISH_ANNOUCEMENT,
+  DELETE_OFFER_ANNOUCEMENT,
+  DELETE_WISH_ANNOUCEMENT,
+  TOGGLE_ACTIVE_OFFER_ANNOUCEMENT,
+  TOGGLE_ACTIVE_WISH_ANNOUCEMENT,
 } from '../actions/annoucements';
 
 // For tests
@@ -126,6 +132,54 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
       break;
     }
 
+    case REPORTED_OFFER_ANNOUCEMENT: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.put(
+        `${baseURL}/api/offers/${action.payload}/reported`,
+        config,
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('REPORTED_OFFER_ANNOUCEMENT', error);
+      });
+      break;
+    }
+
+    case DELETE_OFFER_ANNOUCEMENT: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.delete(
+        `${baseURL}/api/offers/${action.payload}`,
+        config,
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('DELETE_OFFER_ANNOUCEMENT ', error);
+      });
+      break;
+    }
+
+    case TOGGLE_ACTIVE_OFFER_ANNOUCEMENT: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.put(
+        `${baseURL}/api/offers/${action.payload}/active`,
+        config,
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('TOGGLE_ACTIVE_OFFER_ANNOUCEMENT ', error);
+      });
+      break;
+    }
+
     // WISHES -------------------------------------------------------------
     case GET_WISHES_ANNOUCEMENTS:
       axios.get(`${baseURL}/api/wishes`)
@@ -228,9 +282,58 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
       break;
     }
 
+    case REPORTED_WISH_ANNOUCEMENT: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.put(
+        `${baseURL}/api/wishes/${action.payload}/reported`,
+        config,
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('REPORTED_WISH_ANNOUCEMENT', error);
+      });
+      break;
+    }
+
+    case DELETE_WISH_ANNOUCEMENT: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.delete(
+        `${baseURL}/api/wishes/${action.payload}`,
+        config,
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('DELETE_WISH_ANNOUCEMENT ', error);
+      });
+      break;
+    }
+
+    case TOGGLE_ACTIVE_WISH_ANNOUCEMENT: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.put(
+        `${baseURL}/api/wishes/${action.payload}/active`,
+        config,
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('TOGGLE_ACTIVE_WISH_ANNOUCEMENT ', error);
+      });
+      break;
+    }
+
     default:
       break;
   }
+
   next(action);
 };
 

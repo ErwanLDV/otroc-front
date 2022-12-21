@@ -8,6 +8,10 @@ export const DISABLE_MODE_EDIT = 'DISABLE_MODE_EDIT';
 
 // Function cleanup ------------------------------------------------------
 export const CLEANUP_ANNOUCEMENT_PAGE = 'CLEANUP_ANNOUCEMENT_PAGE';
+
+// Page Reload -----------------------------------------------------------
+export const PAGE_RELOAD = 'PAGE_RELOAD';
+
 // OFFERS ----------------------------------------------------------------
 export const GET_OFFERS_ANNOUCEMENTS = 'GET_OFFERS_ANNOUCEMENTS';
 export const SAVE_OFFERS_ANNOUCEMENTS = 'SAVE_OFFERS_ANNOUCEMENTS';
@@ -18,6 +22,9 @@ export const GET_EDIT_OFFER_ANNOUCEMENT = 'GET_EDIT_OFFER_ANNOUCEMENT';
 export const SAVE_EDIT_OFFER_ANNOUCEMENT = 'SAVE_EDIT_OFFER_ANNOUCEMENT';
 export const UPDATE_OFFER_ANNOUCEMENT = 'UPDATE_OFFER_ANNOUCEMENT';
 export const SAVE_OFFER_PICTURE = 'SAVE_OFFER_PICTURE';
+export const REPORTED_OFFER_ANNOUCEMENT = 'REPORTED_OFFER_ANNOUCEMENT';
+export const DELETE_OFFER_ANNOUCEMENT = 'DELETE_OFFER_ANNOUCEMENT';
+export const TOGGLE_ACTIVE_OFFER_ANNOUCEMENT = 'TOGGLE_ACTIVE_OFFER_ANNOUCEMENT';
 
 // WISHES ----------------------------------------------------------------
 export const GET_WISHES_ANNOUCEMENTS = 'GET_WISHES_ANNOUCEMENTS';
@@ -29,6 +36,9 @@ export const GET_EDIT_WISH_ANNOUCEMENT = 'GET_EDIT_WISH_ANNOUCEMENT';
 export const SAVE_EDIT_WISH_ANNOUCEMENT = 'SAVE_EDIT_WISH_ANNOUCEMENT';
 export const UPDATE_WISH_ANNOUCEMENT = 'UPDATE_WISH_ANNOUCEMENT';
 export const SAVE_WISH_PICTURE = 'SAVE_WISH_PICTURE';
+export const REPORTED_WISH_ANNOUCEMENT = 'REPORTED_OFFER_ANNOUCEMENT';
+export const DELETE_WISH_ANNOUCEMENT = 'DELETE_WISH_ANNOUCEMENT';
+export const TOGGLE_ACTIVE_WISH_ANNOUCEMENT = 'TOGGLE_ACTIVE_WISH_ANNOUCEMENT';
 
 export function actionChangeCustomInputAnnoucement(newValue, inputName, parentObject = null) {
   return {
@@ -131,6 +141,27 @@ export function actionSaveOfferPicture(picture) {
   };
 }
 
+export function actionReportedOfferAnnoucement(id) {
+  return {
+    type: REPORTED_OFFER_ANNOUCEMENT,
+    payload: id,
+  };
+}
+
+export function actionDeleteOfferAnnoucement(id) {
+  return {
+    type: DELETE_OFFER_ANNOUCEMENT,
+    payload: id,
+  };
+}
+
+export function actionToggleActiveOfferAnnoucement(id) {
+  return {
+    type: TOGGLE_ACTIVE_OFFER_ANNOUCEMENT,
+    payload: id,
+  };
+}
+
 // WISHES ----------------------------------------------------------------
 
 export function actionGetWishesAnnoucements() {
@@ -193,10 +224,37 @@ export function actionSaveWishPicture(picture) {
   };
 }
 
+export function actionReportedWishAnnoucement(id) {
+  return {
+    type: REPORTED_WISH_ANNOUCEMENT,
+    payload: id,
+  };
+}
+
+export function actionDeleteWishAnnoucement(id) {
+  return {
+    type: DELETE_WISH_ANNOUCEMENT,
+    payload: id,
+  };
+}
+
+export function actionToggleActiveWishAnnoucement(id) {
+  return {
+    type: TOGGLE_ACTIVE_WISH_ANNOUCEMENT,
+    payload: id,
+  };
+}
+
 // Function cleanup ------------------------------------------------------
 
 export function actionCleanupAnnoucementPage() {
   return {
     type: CLEANUP_ANNOUCEMENT_PAGE,
+  };
+}
+
+export function actionPageReload() {
+  return {
+    type: PAGE_RELOAD,
   };
 }
