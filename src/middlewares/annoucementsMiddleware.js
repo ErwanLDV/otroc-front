@@ -56,11 +56,12 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
       const config = {
         headers: { Authorization: `Bearer ${user.token}` },
       };
+      console.log(addOrEditAnnoucement);
       axios.post(
         `${baseURL}/api/offers`,
         {
           title: addOrEditAnnoucement.title,
-          zipcode: Number(addOrEditAnnoucement.zipcode),
+          zipcode: addOrEditAnnoucement.zipcode,
           description: addOrEditAnnoucement.description,
           isActive: true,
           type: addOrEditAnnoucement.type,
@@ -69,6 +70,25 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         config,
       ).then((result) => {
         console.log(result);
+        const newOfferId = result.data.id;
+        const formData = new FormData();
+
+        formData.append('file', addOrEditAnnoucement.picture);
+
+        const configImg = {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+            'content-type': 'multipart/form-data',
+          },
+        };
+        console.log(formData, configImg, addOrEditAnnoucement.picture);
+        axios.post(`${baseURL}/api/offers/${newOfferId}/pictures`, formData, configImg)
+          .then((pictureResult) => {
+            console.log(pictureResult);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       }).catch((error) => {
         console.log('add new offer annoucement ', error);
       });
@@ -97,7 +117,7 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         `${baseURL}/api/offers/${addOrEditAnnoucement.id}`,
         {
           title: addOrEditAnnoucement.title,
-          zipcode: Number(addOrEditAnnoucement.zipcode),
+          zipcode: addOrEditAnnoucement.zipcode,
           description: addOrEditAnnoucement.description,
           isActive: true,
           type: addOrEditAnnoucement.type,
@@ -191,7 +211,7 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         `${baseURL}/api/wishes`,
         {
           title: addOrEditAnnoucement.title,
-          zipcode: Number(addOrEditAnnoucement.zipcode),
+          zipcode: addOrEditAnnoucement.zipcode,
           description: addOrEditAnnoucement.description,
           isActive: true,
           type: addOrEditAnnoucement.type,
@@ -200,6 +220,25 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         config,
       ).then((result) => {
         console.log(result);
+        const newWishId = result.data.id;
+        const formData = new FormData();
+
+        formData.append('file', addOrEditAnnoucement.picture);
+
+        const configImg = {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+            'content-type': 'multipart/form-data',
+          },
+        };
+        console.log(formData, configImg, addOrEditAnnoucement.picture);
+        axios.post(`${baseURL}/api/wishes/${newWishId}/pictures`, formData, configImg)
+          .then((pictureResult) => {
+            console.log(pictureResult);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       }).catch((error) => {
         console.log('add new wish annoucement ', error);
       });

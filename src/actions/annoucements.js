@@ -21,6 +21,7 @@ export const ADD_NEW_OFFER_ANNOUCEMENT = 'ADD_NEW_OFFER_ANNOUCEMENT';
 export const GET_EDIT_OFFER_ANNOUCEMENT = 'GET_EDIT_OFFER_ANNOUCEMENT';
 export const SAVE_EDIT_OFFER_ANNOUCEMENT = 'SAVE_EDIT_OFFER_ANNOUCEMENT';
 export const UPDATE_OFFER_ANNOUCEMENT = 'UPDATE_OFFER_ANNOUCEMENT';
+export const SAVE_OFFER_PICTURE = 'SAVE_OFFER_PICTURE';
 export const REPORTED_OFFER_ANNOUCEMENT = 'REPORTED_OFFER_ANNOUCEMENT';
 export const DELETE_OFFER_ANNOUCEMENT = 'DELETE_OFFER_ANNOUCEMENT';
 export const TOGGLE_ACTIVE_OFFER_ANNOUCEMENT = 'TOGGLE_ACTIVE_OFFER_ANNOUCEMENT';
@@ -34,6 +35,7 @@ export const ADD_NEW_WISH_ANNOUCEMENT = 'ADD_NEW_WISH_ANNOUCEMENT';
 export const GET_EDIT_WISH_ANNOUCEMENT = 'GET_EDIT_WISH_ANNOUCEMENT';
 export const SAVE_EDIT_WISH_ANNOUCEMENT = 'SAVE_EDIT_WISH_ANNOUCEMENT';
 export const UPDATE_WISH_ANNOUCEMENT = 'UPDATE_WISH_ANNOUCEMENT';
+export const SAVE_WISH_PICTURE = 'SAVE_WISH_PICTURE';
 export const REPORTED_WISH_ANNOUCEMENT = 'REPORTED_OFFER_ANNOUCEMENT';
 export const DELETE_WISH_ANNOUCEMENT = 'DELETE_WISH_ANNOUCEMENT';
 export const TOGGLE_ACTIVE_WISH_ANNOUCEMENT = 'TOGGLE_ACTIVE_WISH_ANNOUCEMENT';
@@ -132,6 +134,13 @@ export function actionUpdateOfferAnnoucement() {
   };
 }
 
+export function actionSaveOfferPicture(picture) {
+  return {
+    type: SAVE_OFFER_PICTURE,
+    payload: picture,
+  };
+}
+
 export function actionReportedOfferAnnoucement(id) {
   return {
     type: REPORTED_OFFER_ANNOUCEMENT,
@@ -205,6 +214,13 @@ export function actionSaveEditWishAnnoucement(wish) {
 export function actionUpdateWishAnnoucement() {
   return {
     type: UPDATE_WISH_ANNOUCEMENT,
+  };
+}
+
+export function actionSaveWishPicture(picture) {
+  return {
+    type: SAVE_WISH_PICTURE,
+    payload: picture,
   };
 }
 
