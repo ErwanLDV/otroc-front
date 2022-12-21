@@ -1,5 +1,15 @@
 import axios from 'axios';
-import { GET_ALL_CATEGORIES, actionSaveAllCategories, actionCategoriesLoaded, GET_CATEGORY_RESULTS, actionSaveCategoryResults, GET_MAIN_CATEGORY_RESULTS, actionSaveMainCategoriesResultForCards, actionCategoryResultLoaded, GET_TOP_CATEGORIES, actionSaveTopCategories } from '../actions/categories';
+import {
+  GET_ALL_CATEGORIES,
+  actionSaveAllCategories,
+  actionCategoriesLoaded,
+  GET_CATEGORY_RESULTS,
+  actionSaveCategoryResults,
+  GET_MAIN_CATEGORY_RESULTS,
+  actionSaveMainCategoriesResultForCards,
+  GET_TOP_CATEGORIES,
+  actionSaveTopCategories,
+} from '../actions/categories';
 
 const baseURL = process.env.BACK_API_BASE_URL;
 
@@ -47,6 +57,7 @@ const categoriesMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.log('GET_TOP_CATEGORIES', error);
         });
+      break;
 
     default:
       break;
