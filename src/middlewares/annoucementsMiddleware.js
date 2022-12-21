@@ -19,7 +19,7 @@ import {
 } from '../actions/annoucements';
 
 // For tests
-const baseURL = process.env.BACK_API_BASE_URL_DEV;
+const baseURL = process.env.BACK_API_BASE_URL;
 
 const annoucementsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {

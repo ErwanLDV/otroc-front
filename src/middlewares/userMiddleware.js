@@ -17,7 +17,7 @@ import {
   USER_INSCRIPTION,
 } from '../actions/user';
 
-const baseURL = process.env.BACK_API_BASE_URL_DEV;
+const baseURL = process.env.BACK_API_BASE_URL;
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
