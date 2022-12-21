@@ -50,6 +50,7 @@ function SearchResult() {
                   pseudo={item.user.alias}
                   createdAt={item.createdAt}
                   category={item.categories[0].name}
+                  mainCategory={item.categories[0].mainCategory.name}
                   logo="offer"
                 // image={item.picture}
                 />
@@ -64,6 +65,7 @@ function SearchResult() {
                   pseudo={item.user.alias}
                   createdAt={item.createdAt}
                   category={item.categories[0].name}
+                  mainCategory={item.categories[0].mainCategory.name}
                   logo="wish"
                 // image={item.picture}
                 />

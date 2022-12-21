@@ -14,6 +14,7 @@ function AnnoucementCard({
   createdAt,
   logo,
 }) {
+  console.log(mainCategory, category);
   return (
     <div className="card">
       <div className="card-header">
@@ -54,6 +55,7 @@ AnnoucementCard.propTypes = {
   profilImage: PropTypes.string.isRequired,
   pseudo: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
+  logo: PropTypes.string.isRequired,
 };
 
 AnnoucementCard.defaultProps = {
