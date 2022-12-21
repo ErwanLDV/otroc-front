@@ -1,6 +1,6 @@
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import CustomInput from '../../CustomInput';
 import {
@@ -13,16 +13,21 @@ import {
   actionUpdateOfferAnnoucement,
   actionDisableModeEdit,
   actionEnableModeEdit,
+  actionSaveOfferPicture,
+  actionSaveWishPicture,
 } from '../../../actions/annoucements';
 import CustomSelect from '../../CustomSelect';
 
 function AddAnnouncement() {
   const dispatch = useDispatch();
+  const location = useLocation();
   const modeEdit = useSelector((state) => state.annoucements.modeEdit);
   const addOrEditAnnoucement = useSelector((state) => state.annoucements.addOrEditAnnoucement);
   const annoucementType = useSelector((state) => state.annoucements.annoucementType);
   const categoriesArray = useSelector((state) => state.categories.categoriesArray);
-  const location = useLocation();
+  const [previewPicture, setPreviewPicture] = useState(null);
+  const [newPicture, setNewPicture] = useState(null);
+
   useEffect(() => {
     switch (location.pathname) {
       case '/annonces/ajouter':
@@ -33,6 +38,20 @@ function AddAnnouncement() {
         break;
     }
   }, [location]);
+
+  const handleChangePicture = (event) => {
+    setNewPicture(event.target.files[0]);
+  };
+
+  const reader = new FileReader();
+  if (newPicture) {
+    reader.readAsDataURL(newPicture);
+  }
+  reader.onload = (readerEvent) => {
+    if (newPicture.type.includes('image')) {
+      setPreviewPicture(readerEvent.target.result);
+    }
+  };
 
   const handleChangeInput = (newValue, inputName) => {
     dispatch(actionChangeCustomInputAnnoucement(newValue, inputName, 'addOrEditAnnoucement'));
@@ -71,9 +90,11 @@ function AddAnnouncement() {
     else {
       switch (annoucementType) {
         case 'offer':
+          dispatch(actionSaveOfferPicture(newPicture));
           dispatch(actionAddNewOfferAnnoucement());
           break;
         case 'wish':
+          dispatch(actionSaveWishPicture(newPicture));
           dispatch(actionAddNewWishAnnoucement());
           break;
         default:
@@ -122,14 +143,18 @@ function AddAnnouncement() {
               />
             )}
         </label>
-        <label htmlFor="picture">Ajouter une photo:
-
-          <input
-            type="file"
-            name="picture"
-            accept="image/png, image/jpeg"
-          />
+        {!modeEdit && (
+          <label htmlFor="picture"> Ajouter une image :
+            <input
+              name="picture"
+              type="file"
+              accept="image/png, image/jpeg"
+              onChange={handleChangePicture}
+            />
         </label>
+        )}
+        {previewPicture && <img src={previewPicture} width="300" alt="Prévisualisation" />}
+        {addOrEditAnnoucement.picture && <img src={addOrEditAnnoucement.picture} width="300" alt="Prévisualisation" />}
         <div>
           <label>Permanent
             <CustomInput className="" value="permanent" name="type" type="radio" onChange={handleChangeInputRadioType} checked={addOrEditAnnoucement.type === 'permanent'} defaultValue />

@@ -11,6 +11,8 @@ import {
   CLEANUP_ANNOUCEMENT_PAGE,
   ENABLE_MODE_EDIT,
   DISABLE_MODE_EDIT,
+  SAVE_OFFER_PICTURE,
+  SAVE_WISH_PICTURE,
 } from '../actions/annoucements';
 
 export const initialState = {
@@ -102,6 +104,16 @@ const reducer = (state = initialState, action = {}) => {
         modeEdit: true,
         annoucementType: 'offer',
         addOrEditAnnoucement: action.payload,
+      };
+
+    case SAVE_OFFER_PICTURE:
+    case SAVE_WISH_PICTURE:
+      return {
+        ...state,
+        addOrEditAnnoucement: {
+          ...state.addOrEditAnnoucement,
+          picture: action.payload,
+        },
       };
 
     case CLEANUP_ANNOUCEMENT_PAGE:

@@ -138,7 +138,7 @@ const userMiddleware = (store) => (next) => (action) => {
         `${baseURL}/api/users/current/offers`,
         config,
       ).then((result) => {
-        store.dispatch(actionSaveUserOffers(result.data[0].offer));
+        store.dispatch(actionSaveUserOffers(result.data));
       }).catch((error) => {
         console.log('get user offers ', error);
       });
@@ -154,7 +154,7 @@ const userMiddleware = (store) => (next) => (action) => {
         config,
       ).then((result) => {
         console.log(result);
-        store.dispatch(actionSaveUserWishes(result.data[0].wish));
+        store.dispatch(actionSaveUserWishes(result.data));
       }).catch((error) => {
         console.log('get user wishes ', error);
       });

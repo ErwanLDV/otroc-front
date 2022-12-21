@@ -17,6 +17,7 @@ export const ADD_NEW_OFFER_ANNOUCEMENT = 'ADD_NEW_OFFER_ANNOUCEMENT';
 export const GET_EDIT_OFFER_ANNOUCEMENT = 'GET_EDIT_OFFER_ANNOUCEMENT';
 export const SAVE_EDIT_OFFER_ANNOUCEMENT = 'SAVE_EDIT_OFFER_ANNOUCEMENT';
 export const UPDATE_OFFER_ANNOUCEMENT = 'UPDATE_OFFER_ANNOUCEMENT';
+export const SAVE_OFFER_PICTURE = 'SAVE_OFFER_PICTURE';
 
 // WISHES ----------------------------------------------------------------
 export const GET_WISHES_ANNOUCEMENTS = 'GET_WISHES_ANNOUCEMENTS';
@@ -27,6 +28,7 @@ export const ADD_NEW_WISH_ANNOUCEMENT = 'ADD_NEW_WISH_ANNOUCEMENT';
 export const GET_EDIT_WISH_ANNOUCEMENT = 'GET_EDIT_WISH_ANNOUCEMENT';
 export const SAVE_EDIT_WISH_ANNOUCEMENT = 'SAVE_EDIT_WISH_ANNOUCEMENT';
 export const UPDATE_WISH_ANNOUCEMENT = 'UPDATE_WISH_ANNOUCEMENT';
+export const SAVE_WISH_PICTURE = 'SAVE_WISH_PICTURE';
 
 export function actionChangeCustomInputAnnoucement(newValue, inputName, parentObject = null) {
   return {
@@ -122,6 +124,13 @@ export function actionUpdateOfferAnnoucement() {
   };
 }
 
+export function actionSaveOfferPicture(picture) {
+  return {
+    type: SAVE_OFFER_PICTURE,
+    payload: picture,
+  };
+}
+
 // WISHES ----------------------------------------------------------------
 
 export function actionGetWishesAnnoucements() {
@@ -174,6 +183,13 @@ export function actionSaveEditWishAnnoucement(wish) {
 export function actionUpdateWishAnnoucement() {
   return {
     type: UPDATE_WISH_ANNOUCEMENT,
+  };
+}
+
+export function actionSaveWishPicture(picture) {
+  return {
+    type: SAVE_WISH_PICTURE,
+    payload: picture,
   };
 }
 
