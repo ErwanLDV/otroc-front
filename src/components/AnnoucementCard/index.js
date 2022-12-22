@@ -1,5 +1,6 @@
 import './style.scss';
 import PropTypes from 'prop-types';
+import { Watch } from 'react-feather';
 import logoWish from '../../assets/images/logo-wish.png';
 import logoOffer from '../../assets/images/logo-offer.png';
 
@@ -13,11 +14,14 @@ function AnnoucementCard({
   pseudo,
   createdAt,
   logo,
+  isLended,
+  type,
 }) {
   console.log(mainCategory, category);
   return (
     <div className="card">
       <div className="card-header">
+        {type === 'temporaire' && <span className="card-header-span">temporaire</span>}
         <img src={image} alt="rover" />
       </div>
       <div className="card-body">
@@ -25,9 +29,12 @@ function AnnoucementCard({
           <span className="card-tag card-tag-purple">{mainCategory}</span>
           <span className="card-tag card-tag-teal">{category}</span>
         </div>
-        <h4>
-          {title}
-        </h4>
+        <div className="card-title">
+          <h4>
+            {title}
+          </h4>
+          {isLended && <Watch color="rgb(84, 155, 212)" />}
+        </div>
         <p>
           {content}
         </p>
@@ -56,6 +63,8 @@ AnnoucementCard.propTypes = {
   pseudo: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   logo: PropTypes.string.isRequired,
+  isLended: PropTypes.bool,
+  type: PropTypes.string.isRequired,
 };
 
 AnnoucementCard.defaultProps = {
@@ -67,6 +76,7 @@ AnnoucementCard.defaultProps = {
   profilImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0qCXAjYcFT6MfQ_MD7kCHNbQ8smuFnLzESw&usqp=CAU',
   pseudo: 'jean-mich',
   createdAt: '2 décembre 2022',
+  isLended: false,
 };
 
 export default AnnoucementCard;

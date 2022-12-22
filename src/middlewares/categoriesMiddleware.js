@@ -39,8 +39,9 @@ const categoriesMiddleware = (store) => (next) => (action) => {
       break;
 
     case GET_MAIN_CATEGORY_RESULTS:
-      axios.get(`${baseURL}/api/maincategories/${action.payload}/categories/advertisements`)
+      axios.get(`${baseURL}/api/maincategories/${action.payload}/categories`)
         .then((result) => {
+          console.log(result);
           store.dispatch(actionSaveMainCategoriesResultForCards(result.data[0].categories));
         })
         .catch((error) => {

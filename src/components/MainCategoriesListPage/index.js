@@ -35,7 +35,7 @@ function MainCategoriesListPage() {
           <div className="container-categoriesPage">
             {categories.map((item) => (
               <Link to={`/categorie/${item.slug}`} onClick={() => dispatch(actionGetCategoryResults(item.id))} key={item.id}>
-                <CategoryCard key={item.id} title={item.name} />
+                <CategoryCard key={item.id} title={item.name} image={item.picture} />
               </Link>
             ))}
           </div>

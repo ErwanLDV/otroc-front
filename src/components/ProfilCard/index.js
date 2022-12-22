@@ -22,6 +22,7 @@ function ProfilCard({
   annoucementType,
   isActive,
   isLended,
+  type,
 }) {
   const dispatch = useDispatch();
 
@@ -94,7 +95,7 @@ function ProfilCard({
                 <button className="Profil-offers-container-button" type="button" onClick={handleEditAnnoucement}>Modifier</button>
               </Link>
               <button className="Profil-offers-container-button" type="button" onClick={handleDelete}>Supprimer</button>
-              <button className="Profil-offers-container-button" type="button" onClick={handleToggleLend}>{!isLended ? 'Disponible' : 'Indisponible'}</button>
+              {type === 'temporaire' && <button className="Profil-offers-container-button" type="button" onClick={handleToggleLend}>{!isLended ? 'Rendre indisponible' : 'Rendre disponible'}</button>}
               <button className="Profil-offers-container-button" type="button" onClick={handleToggleActive}>{!isActive ? 'Activer' : 'Désactiver'}</button>
             </div>
           </div>
@@ -112,6 +113,7 @@ ProfilCard.propTypes = {
   img: PropTypes.string,
   isLended: PropTypes.bool,
   isActive: PropTypes.bool.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 ProfilCard.defaultProps = {

@@ -142,7 +142,7 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         `${baseURL}/api/offers/${action.payload}/reported`,
         config,
       ).then((result) => {
-        console.log(result.status);
+        console.log(result);
       }).catch((error) => {
         console.log('REPORTED_OFFER_ANNOUCEMENT', error);
       });
