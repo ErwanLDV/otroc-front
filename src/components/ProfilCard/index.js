@@ -11,6 +11,7 @@ import {
   actionToggleActiveOfferAnnoucement,
   actionToggleActiveWishAnnoucement,
   actionPageReload,
+  actionToggleLendOfferAnnoucement,
 } from '../../actions/annoucements';
 
 function ProfilCard({
@@ -52,6 +53,17 @@ function ProfilCard({
     }
   };
 
+  const handleToggleLend = () => {
+    switch (annoucementType) {
+      case 'offer':
+        dispatch(actionToggleLendOfferAnnoucement(id));
+        dispatch(actionPageReload());
+        break;
+      default:
+        break;
+    }
+  };
+
   const handleDelete = () => {
     switch (annoucementType) {
       case 'offer':
@@ -82,6 +94,7 @@ function ProfilCard({
                 <button className="Profil-offers-container-button" type="button" onClick={handleEditAnnoucement}>Modifier</button>
               </Link>
               <button className="Profil-offers-container-button" type="button" onClick={handleDelete}>Supprimer</button>
+              <button className="Profil-offers-container-button" type="button" onClick={handleToggleLend}>{!isLended ? 'Disponible' : 'Indisponible'}</button>
               <button className="Profil-offers-container-button" type="button" onClick={handleToggleActive}>{!isActive ? 'Activer' : 'Désactiver'}</button>
             </div>
           </div>

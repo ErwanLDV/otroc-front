@@ -25,6 +25,7 @@ export const SAVE_OFFER_PICTURE = 'SAVE_OFFER_PICTURE';
 export const REPORTED_OFFER_ANNOUCEMENT = 'REPORTED_OFFER_ANNOUCEMENT';
 export const DELETE_OFFER_ANNOUCEMENT = 'DELETE_OFFER_ANNOUCEMENT';
 export const TOGGLE_ACTIVE_OFFER_ANNOUCEMENT = 'TOGGLE_ACTIVE_OFFER_ANNOUCEMENT';
+export const TOGGLE_LEND_OFFER_ANNOUCEMENT = 'TOGGLE_LEND_OFFER_ANNOUCEMENT';
 
 // WISHES ----------------------------------------------------------------
 export const GET_WISHES_ANNOUCEMENTS = 'GET_WISHES_ANNOUCEMENTS';
@@ -158,6 +159,13 @@ export function actionDeleteOfferAnnoucement(id) {
 export function actionToggleActiveOfferAnnoucement(id) {
   return {
     type: TOGGLE_ACTIVE_OFFER_ANNOUCEMENT,
+    payload: id,
+  };
+}
+
+export function actionToggleLendOfferAnnoucement(id) {
+  return {
+    type: TOGGLE_LEND_OFFER_ANNOUCEMENT,
     payload: id,
   };
 }

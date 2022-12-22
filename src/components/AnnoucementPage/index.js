@@ -16,6 +16,7 @@ function AnnouncementPage() {
   const zipcode = useSelector((state) => state.annoucements.currentAnnoucement.zipcode);
   const type = useSelector((state) => state.annoucements.currentAnnoucement.type);
   const createdAt = useSelector((state) => state.annoucements.currentAnnoucement.createdAt);
+  const isReported = useSelector((state) => state.annoucements.currentAnnoucement.isReported);
 
   const userId = useSelector((state) => state.annoucements.currentAnnoucement.user?.id);
   const email = useSelector((state) => state.annoucements.currentAnnoucement.user?.email);
@@ -78,10 +79,13 @@ function AnnouncementPage() {
         <p>{zipcode}</p>
         <p>{createdAt}</p>
         <p>{type}</p>
-        <div className="report" onClick={handleClick}>
-          <AlertTriangle className="report-logo" />
-          <p>Signaler</p>
-        </div>
+        {!isReported
+        && (
+          <div className="report" onClick={handleClick}>
+            <AlertTriangle className="report-logo" />
+            <p>Signaler</p>
+          </div>
+        )}
       </div>
     </div>
   );
