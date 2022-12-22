@@ -22,6 +22,7 @@ import {
   DELETE_WISH_ANNOUCEMENT,
   TOGGLE_ACTIVE_OFFER_ANNOUCEMENT,
   TOGGLE_ACTIVE_WISH_ANNOUCEMENT,
+  TOGGLE_LEND_OFFER_ANNOUCEMENT,
 } from '../actions/annoucements';
 
 // For tests
@@ -176,6 +177,22 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         console.log(result);
       }).catch((error) => {
         console.log('TOGGLE_ACTIVE_OFFER_ANNOUCEMENT ', error);
+      });
+      break;
+    }
+
+    case TOGGLE_LEND_OFFER_ANNOUCEMENT: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.put(
+        `${baseURL}/api/offers/${action.payload}/lend`,
+        config,
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('TOGGLE_LEND_OFFER_ANNOUCEMENT ', error);
       });
       break;
     }

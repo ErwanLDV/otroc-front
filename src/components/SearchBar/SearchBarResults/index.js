@@ -7,12 +7,15 @@ function SearchBarResults() {
   const searchAnnoucements = useSelector((state) => state.search.searchAnnoucements);
   console.log(searchAnnoucements);
   const searchTypeResult = useSelector((state) => state.search.searchTypeResult);
-
+  let linkApi = 'offers';
+  if (searchTypeResult === 'wish') {
+    linkApi = 'wishes';
+  }
   return (
     <section>
       <div className="searchBarResult">
         {searchAnnoucements && searchAnnoucements.length > 0 ? searchAnnoucements.map((item) => (
-          <Link key={item.id}>
+          <Link to={`/annonces/${linkApi}/${item.id}`} key={item.id}>
             <AnnoucementCard
               key={item.id}
               title={item.title}
@@ -22,7 +25,8 @@ function SearchBarResults() {
               category={item.categories[0].name}
               mainCategory={item.categories[0].mainCategory.name}
               logo={searchTypeResult}
-            // image={item.picture}
+              image={item.picture}
+              isLended={item.isLended}
             />
           </Link>
         )) : <p className="searchBarResult-p">La recherche n'a donné aucun résultats</p>}

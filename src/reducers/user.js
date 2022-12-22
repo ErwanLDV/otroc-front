@@ -12,7 +12,7 @@ import {
 } from '../actions/user';
 
 export const initialState = {
-  email: 'otroc1@oclock.io',
+  email: 'otroc5@oclock.io',
   password: 'otroc',
   activeSession: null,
   token: null,

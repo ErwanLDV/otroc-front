@@ -25,6 +25,7 @@ export const SAVE_OFFER_PICTURE = 'SAVE_OFFER_PICTURE';
 export const REPORTED_OFFER_ANNOUCEMENT = 'REPORTED_OFFER_ANNOUCEMENT';
 export const DELETE_OFFER_ANNOUCEMENT = 'DELETE_OFFER_ANNOUCEMENT';
 export const TOGGLE_ACTIVE_OFFER_ANNOUCEMENT = 'TOGGLE_ACTIVE_OFFER_ANNOUCEMENT';
+export const TOGGLE_LEND_OFFER_ANNOUCEMENT = 'TOGGLE_LEND_OFFER_ANNOUCEMENT';
 
 // WISHES ----------------------------------------------------------------
 export const GET_WISHES_ANNOUCEMENTS = 'GET_WISHES_ANNOUCEMENTS';
@@ -36,7 +37,7 @@ export const GET_EDIT_WISH_ANNOUCEMENT = 'GET_EDIT_WISH_ANNOUCEMENT';
 export const SAVE_EDIT_WISH_ANNOUCEMENT = 'SAVE_EDIT_WISH_ANNOUCEMENT';
 export const UPDATE_WISH_ANNOUCEMENT = 'UPDATE_WISH_ANNOUCEMENT';
 export const SAVE_WISH_PICTURE = 'SAVE_WISH_PICTURE';
-export const REPORTED_WISH_ANNOUCEMENT = 'REPORTED_OFFER_ANNOUCEMENT';
+export const REPORTED_WISH_ANNOUCEMENT = 'REPORTED_WISH_ANNOUCEMENT';
 export const DELETE_WISH_ANNOUCEMENT = 'DELETE_WISH_ANNOUCEMENT';
 export const TOGGLE_ACTIVE_WISH_ANNOUCEMENT = 'TOGGLE_ACTIVE_WISH_ANNOUCEMENT';
 
@@ -158,6 +159,13 @@ export function actionDeleteOfferAnnoucement(id) {
 export function actionToggleActiveOfferAnnoucement(id) {
   return {
     type: TOGGLE_ACTIVE_OFFER_ANNOUCEMENT,
+    payload: id,
+  };
+}
+
+export function actionToggleLendOfferAnnoucement(id) {
+  return {
+    type: TOGGLE_LEND_OFFER_ANNOUCEMENT,
     payload: id,
   };
 }

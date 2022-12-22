@@ -32,6 +32,8 @@ function MyOffers() {
             img={item.picture}
             id={item.id}
             isActive={item.isActive}
+            isLended={item.isLended}
+            type={item.type}
             annoucementType="offer"
           />
         ))

@@ -133,3 +133,14 @@
     border-top-right-radius: 20px;
   }
 }
+
+.annoucementPage-title_watch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 1em;
+
+  &-p {
+    color: blue;
+  }
+}

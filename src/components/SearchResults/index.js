@@ -52,7 +52,9 @@ function SearchResult() {
                   category={item.categories[0].name}
                   mainCategory={item.categories[0].mainCategory.name}
                   logo="offer"
-                // image={item.picture}
+                  image={item.picture}
+                  isLended={item.isLended}
+                  type={item.type}
                 />
               </Link>
             ))}
@@ -67,7 +69,8 @@ function SearchResult() {
                   category={item.categories[0].name}
                   mainCategory={item.categories[0].mainCategory.name}
                   logo="wish"
-                // image={item.picture}
+                  image={item.picture}
+                  type={item.type}
                 />
               </Link>
             ))}

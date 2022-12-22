@@ -1,8 +1,14 @@
 import { useEffect } from 'react';
-import { AlertTriangle } from 'react-feather';
+import { AlertTriangle, Watch } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { actionCleanupAnnoucementPage, actionGetOneOfferAnnoucement, actionGetOneWishAnnoucement, actionReportedOfferAnnoucement, actionReportedWishAnnoucement } from '../../actions/annoucements';
+import {
+  actionCleanupAnnoucementPage,
+  actionGetOneOfferAnnoucement,
+  actionGetOneWishAnnoucement,
+  actionReportedOfferAnnoucement,
+  actionReportedWishAnnoucement,
+} from '../../actions/annoucements';
 import './style.scss';
 
 function AnnouncementPage() {
@@ -16,11 +22,15 @@ function AnnouncementPage() {
   const zipcode = useSelector((state) => state.annoucements.currentAnnoucement.zipcode);
   const type = useSelector((state) => state.annoucements.currentAnnoucement.type);
   const createdAt = useSelector((state) => state.annoucements.currentAnnoucement.createdAt);
+  const isReported = useSelector((state) => state.annoucements.currentAnnoucement.isReported);
+  const isLended = useSelector((state) => state.annoucements.currentAnnoucement.isLended);
 
   const userId = useSelector((state) => state.annoucements.currentAnnoucement.user?.id);
   const email = useSelector((state) => state.annoucements.currentAnnoucement.user?.email);
   const pseudo = useSelector((state) => state.annoucements.currentAnnoucement.user?.alias);
-  const phoneNumber = useSelector((state) => state.annoucements.currentAnnoucement.user?.phoneNumber);
+  const phoneNumber = useSelector(
+    (state) => state.annoucements.currentAnnoucement.user?.phoneNumber,
+  );
   const userPicture = useSelector((state) => state.annoucements.currentAnnoucement.user?.picture);
   // A voir pour les categories ! elles sont aussi renvoyer voir si besoin
   const location = useLocation();
@@ -65,7 +75,7 @@ function AnnouncementPage() {
           <p className="annoucementPage-container-user-info">{email}</p>
           <p className="annoucementPage-container-user-info">{phoneNumber}</p>
           <div className="annoucementPage-container-user-buttons">
-            <button className="annoucementPage-container-user-buttons-button" type="button">Message</button>
+            <button className="annoucementPage-container-user-buttons-button" type="button">Contacter</button>
             <Link to={`/utilisateur/${userId}`}>
               <button className="annoucementPage-container-user-buttons-button" type="button">Profil</button>
             </Link>
@@ -73,15 +83,21 @@ function AnnouncementPage() {
         </div>
       </div>
       <div className="annoucementPage-container-content">
-        <p>{title}</p>
+        <div className="annoucementPage-title_watch">
+          <p>{title}</p>
+          {isLended && <p className="annoucementPage-title_watch-p"><Watch />Actuellement indisponible</p>}
+        </div>
         <p>{description}</p>
         <p>{zipcode}</p>
         <p>{createdAt}</p>
         <p>{type}</p>
-        <div className="report" onClick={handleClick}>
-          <AlertTriangle className="report-logo" />
-          <p>Signaler</p>
-        </div>
+        {!isReported
+          && (
+            <div className="report" onClick={handleClick}>
+              <AlertTriangle className="report-logo" />
+              <p>Signaler</p>
+            </div>
+          )}
       </div>
     </div>
   );
