@@ -35,6 +35,7 @@ function UserProfil() {
                 logo="offer"
                 image={element.picture}
                 type={element.type}
+                isLended={element.isLended}
                 category={element.categories[0].name}
                 mainCategory={element.categories[0].mainCategory.name}
                 pseudo={otherUserProfil.alias}
