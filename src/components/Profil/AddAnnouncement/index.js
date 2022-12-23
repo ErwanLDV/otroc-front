@@ -46,12 +46,12 @@ function AddAnnouncement() {
   const reader = new FileReader();
   if (newPicture) {
     reader.readAsDataURL(newPicture);
+    reader.onload = (readerEvent) => {
+      if (newPicture.type.includes('image')) {
+        setPreviewPicture(readerEvent.target.result);
+      }
+    };
   }
-  reader.onload = (readerEvent) => {
-    if (newPicture.type.includes('image')) {
-      setPreviewPicture(readerEvent.target.result);
-    }
-  };
 
   const handleChangeInput = (newValue, inputName) => {
     dispatch(actionChangeCustomInputAnnoucement(newValue, inputName, 'addOrEditAnnoucement'));
@@ -92,10 +92,14 @@ function AddAnnouncement() {
         case 'offer':
           dispatch(actionSaveOfferPicture(newPicture));
           dispatch(actionAddNewOfferAnnoucement());
+          setNewPicture(null);
+          setPreviewPicture(null);
           break;
         case 'wish':
           dispatch(actionSaveWishPicture(newPicture));
           dispatch(actionAddNewWishAnnoucement());
+          setNewPicture(null);
+          setPreviewPicture(null);
           break;
         default:
           break;
@@ -120,7 +124,7 @@ function AddAnnouncement() {
         )}
         <div>
           <label>Titre*
-            <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" value={addOrEditAnnoucement.title} type="text" name="title" placeholder="Titre de l'annonce" />
+            <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" value={addOrEditAnnoucement.title} type="text" name="title" placeholder="Titre de l'annonce" required />
           </label>
         </div>
         <label>Choisir une categorie*
@@ -164,11 +168,11 @@ function AddAnnouncement() {
           </label>
         </div>
         <label>Code Postal*
-          <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" maxLength="5" value={addOrEditAnnoucement.zipcode} type="zipcode" name="zipcode" placeholder="Code postal" />
+          <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" maxLength="5" value={addOrEditAnnoucement.zipcode} type="zipcode" name="zipcode" placeholder="Code postal" required />
         </label>
         <div>
           <label htmlFor="content">Contenu*
-            <textarea onChange={handleChangeTextArea} value={addOrEditAnnoucement.description || ''} className="addAnnouncement-form-textarea" rows="5" cols="50" name="description" placeholder="Contenu de l'annonce" />
+            <textarea onChange={handleChangeTextArea} value={addOrEditAnnoucement.description || ''} className="addAnnouncement-form-textarea" rows="5" cols="50" name="description" placeholder="Contenu de l'annonce" required />
           </label>
         </div>
         <button type="submit">Envoyer</button>

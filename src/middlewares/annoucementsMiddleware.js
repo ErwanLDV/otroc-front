@@ -73,23 +73,24 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         console.log(result);
         const newOfferId = result.data.id;
         const formData = new FormData();
+        if (addOrEditAnnoucement.picture) {
+          formData.append('file', addOrEditAnnoucement.picture);
 
-        formData.append('file', addOrEditAnnoucement.picture);
-
-        const configImg = {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-            'content-type': 'multipart/form-data',
-          },
-        };
-        console.log(formData, configImg, addOrEditAnnoucement.picture);
-        axios.post(`${baseURL}/api/offers/${newOfferId}/pictures`, formData, configImg)
-          .then((pictureResult) => {
-            console.log(pictureResult);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+          const configImg = {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+              'content-type': 'multipart/form-data',
+            },
+          };
+          console.log(formData, configImg, addOrEditAnnoucement.picture);
+          axios.post(`${baseURL}/api/offers/${newOfferId}/pictures`, formData, configImg)
+            .then((pictureResult) => {
+              console.log(pictureResult);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        }
       }).catch((error) => {
         console.log('add new offer annoucement ', error);
       });
@@ -239,23 +240,24 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         console.log(result);
         const newWishId = result.data.id;
         const formData = new FormData();
+        if (addOrEditAnnoucement.picture) {
+          formData.append('file', addOrEditAnnoucement.picture);
 
-        formData.append('file', addOrEditAnnoucement.picture);
-
-        const configImg = {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-            'content-type': 'multipart/form-data',
-          },
-        };
-        console.log(formData, configImg, addOrEditAnnoucement.picture);
-        axios.post(`${baseURL}/api/wishes/${newWishId}/pictures`, formData, configImg)
-          .then((pictureResult) => {
-            console.log(pictureResult);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+          const configImg = {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+              'content-type': 'multipart/form-data',
+            },
+          };
+          console.log(formData, configImg, addOrEditAnnoucement.picture);
+          axios.post(`${baseURL}/api/wishes/${newWishId}/pictures`, formData, configImg)
+            .then((pictureResult) => {
+              console.log(pictureResult);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        }
       }).catch((error) => {
         console.log('add new wish annoucement ', error);
       });
