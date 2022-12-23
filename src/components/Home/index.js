@@ -16,7 +16,7 @@ function Home() {
   return (
     <section>
       <div className="home">
-        <h2> Nos tops Categories du moment </h2>
+        <h2> En manque d'idées ? Laisser le hasard choisir pour vous : </h2>
         <div className="home-container-cards">
           {topCategoriesArray.map((item) => (
             <Link to={`/categorie/${item.slug}`} key={item.id}>
