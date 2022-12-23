@@ -34,6 +34,7 @@ function MyHistory() {
             id={item.id}
             annoucementType="offer"
             isActive={item.isActive}
+            type={item.type}
           />
         ))}
         {wishesHistory && wishesHistory.map((item) => (
@@ -45,6 +46,7 @@ function MyHistory() {
             id={item.id}
             annoucementType="wish"
             isActive={item.isActive}
+            type={item.type}
           />
         ))}
       </div>

@@ -13,6 +13,7 @@ import {
   actionPageReload,
   actionToggleLendOfferAnnoucement,
 } from '../../actions/annoucements';
+import barter from '../../assets/images/barter.jpg';
 
 function ProfilCard({
   title,
@@ -80,16 +81,28 @@ function ProfilCard({
     }
   };
 
+  let previewContent = content;
+  if (previewContent.length > 60) {
+    previewContent = content.substr(0, 60);
+    previewContent += '... (suite)';
+  }
+
   return (
     <div className="Profil-offers-container">
       <div className="Profil-offers-container-card">
         <div className="Profil-offers-container-img-div">
-          <img className="Profil-offers-container-img" src={img !== null ? img : imgBase} alt="default" />
+          <Link to={`/annonces/${annoucementType === 'offer' ? 'offres' : 'demandes'}/${id}`}>
+            <img className="Profil-offers-container-img" src={img !== null ? img : barter} alt="Objet de l'échange" />
+          </Link>
         </div>
         <div className="Profil-offers-container-centralDiv">
-          <header className="Profil-offers-container-title"> {title}</header>
+          <Link to={`/annonces/${annoucementType === 'offer' ? 'offres' : 'demandes'}/${id}`}>
+            <header className="Profil-offers-container-title"> {title}</header>
+          </Link>
           <div className="Profil-offers-container-content-buttons">
-            <div className="Profil-offers-container-content">{content}</div>
+            <Link to={`/annonces/${annoucementType === 'offer' ? 'offres' : 'demandes'}/${id}`}>
+              <div className="Profil-offers-container-content">{previewContent}</div>
+            </Link>
             <div className="Profil-offers-container-buttons">
               <Link to="/annonces/editer">
                 <button className="Profil-offers-container-button" type="button" onClick={handleEditAnnoucement}>Modifier</button>
@@ -112,13 +125,14 @@ ProfilCard.propTypes = {
   id: PropTypes.number.isRequired,
   img: PropTypes.string,
   isLended: PropTypes.bool,
-  isActive: PropTypes.bool.isRequired,
+  isActive: PropTypes.bool,
   type: PropTypes.string.isRequired,
 };
 
 ProfilCard.defaultProps = {
   img: imgBase,
   isLended: null,
+  isActive: null,
 };
 
 export default ProfilCard;

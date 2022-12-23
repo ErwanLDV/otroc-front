@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Watch } from 'react-feather';
 import logoWish from '../../assets/images/logo-wish.png';
 import logoOffer from '../../assets/images/logo-offer.png';
+import barter from '../../assets/images/barter.jpg';
 
 function AnnoucementCard({
   title,
@@ -17,12 +18,17 @@ function AnnoucementCard({
   isLended,
   type,
 }) {
-  const defaultImage = 'https://thumbs.dreamstime.com/b/vieux-camion-pourri-gradient-de-isol%C3%A9-dans-le-fond-blanc-213098076.jpg';
+  let previewContent = content;
+  if (previewContent.length > 60) {
+    previewContent = content.substr(0, 60);
+    previewContent += '... (suite)';
+  }
+
   return (
     <div className="card">
       <div className="card-header">
         {type === 'temporaire' && <span className="card-header-span">temporaire</span>}
-        <img src={image || defaultImage} alt="rover" />
+        <img src={image || barter} alt="Objet de l'échange" />
       </div>
       <div className="card-body">
         <div>
@@ -35,19 +41,19 @@ function AnnoucementCard({
           </h4>
           {isLended && <Watch color="rgb(84, 155, 212)" />}
         </div>
-        <p>
-          {content}
+        <p className="card-content">
+          {previewContent}
         </p>
         <div className="card-user">
-          <img src={profilImage} alt="user" />
+          <img src={profilImage} alt="utilisateur" />
           <div className="card-user-info">
             <h5>{pseudo}</h5>
             <small>{createdAt}</small>
           </div>
         </div>
         <div className="card-body-logo">
-          {logo === 'wish' && <img src={logoWish} alt="logo-demande" />}
-          {logo === 'offer' && <img src={logoOffer} alt="logo-offre" />}
+          {logo === 'wish' && <img src={logoWish} alt="logo demande" />}
+          {logo === 'offer' && <img src={logoOffer} alt="logo offre" />}
         </div>
       </div>
     </div>
@@ -68,14 +74,7 @@ AnnoucementCard.propTypes = {
 };
 
 AnnoucementCard.defaultProps = {
-  title: 'Truck',
-  mainCategory: 'Véhicule',
-  category: 'Camion',
-  content: 'Vend camion bon etat général, seulement 789 551 km au compteur',
   image: null,
-  // profilImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0qCXAjYcFT6MfQ_MD7kCHNbQ8smuFnLzESw&usqp=CAU',
-  pseudo: 'jean-mich',
-  createdAt: '2 décembre 2022',
   isLended: false,
 };
 

@@ -5,7 +5,7 @@ function CategoryCard({ title, image }) {
   return (
     <div className="categorycard">
       <div className="categorycard-header">
-        <img src={image} alt="rover" />
+        <img src={image} alt="Représentation graphique de la catégorie" />
       </div>
       <div className="categorycard-body">
         <h4>
@@ -17,13 +17,8 @@ function CategoryCard({ title, image }) {
 }
 
 CategoryCard.propTypes = {
-  title: PropTypes.string,
-  image: PropTypes.string,
-};
-
-CategoryCard.defaultProps = {
-  title: 'Truck',
-  image: 'https://thumbs.dreamstime.com/b/vieux-camion-pourri-gradient-de-isol%C3%A9-dans-le-fond-blanc-213098076.jpg',
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
 };
 
 export default CategoryCard;

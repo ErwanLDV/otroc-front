@@ -7,9 +7,9 @@ function SearchBarResults() {
   const searchAnnoucements = useSelector((state) => state.search.searchAnnoucements);
   console.log(searchAnnoucements);
   const searchTypeResult = useSelector((state) => state.search.searchTypeResult);
-  let linkApi = 'offers';
+  let linkApi = 'offres';
   if (searchTypeResult === 'wish') {
-    linkApi = 'wishes';
+    linkApi = 'demandes';
   }
   return (
     <section>
@@ -27,6 +27,8 @@ function SearchBarResults() {
               logo={searchTypeResult}
               image={item.picture}
               isLended={item.isLended}
+              type={item.type}
+              profilImage={item.user.picture}
             />
           </Link>
         )) : <p className="searchBarResult-p">La recherche n'a donné aucun résultats</p>}

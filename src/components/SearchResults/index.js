@@ -42,7 +42,7 @@ function SearchResult() {
           <h2>Résultats de la recherche</h2>
           <div className="container-searchResult">
             {categoryResults && offers && offers.map((item) => (
-              <Link to={`/annonces/offers/${item.id}`} key={item.id}>
+              <Link to={`/annonces/offres/${item.id}`} key={item.id}>
                 <AnnoucementCard
                   key={item.id}
                   title={item.title}
@@ -60,7 +60,7 @@ function SearchResult() {
               </Link>
             ))}
             {wishes && wishes.map((item) => (
-              <Link to={`/annonces/wishes/${item.id}`} key={item.id}>
+              <Link to={`/annonces/demandes/${item.id}`} key={item.id}>
                 <AnnoucementCard
                   key={item.id}
                   title={item.title}

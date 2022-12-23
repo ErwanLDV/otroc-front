@@ -13,7 +13,7 @@ import Inscription from '../Inscription';
 import Profil from '../Profil';
 import PersonalInformation from '../Profil/PersonalInformation';
 import MyOffers from '../Profil/MyOffers';
-import MyRequests from '../Profil/MyRequests';
+import MyWishes from '../Profil/MyWishes';
 import MyHistory from '../Profil/MyHistory';
 import Error from '../Error';
 import AddAnnouncement from '../Profil/AddAnnouncement';
@@ -44,8 +44,8 @@ function App() {
         <Route path="/" element=<Home /> />
         <Route path="/rechercher/resultat" element=<SearchBarResults /> />
         <Route path="/categorie/:slug" element=<SearchResults /> />
-        <Route path="/annonces/offers/:id" element=<AnnouncementPage /> />
-        <Route path="/annonces/wishes/:id" element=<AnnouncementPage /> />
+        <Route path="/annonces/offres/:id" element=<AnnouncementPage /> />
+        <Route path="/annonces/demandes/:id" element=<AnnouncementPage /> />
         <Route path="/:slug" element=<MainCategoriesListPage /> />
         <Route path="/mentions-legales" element=<LegalNotice /> />
         <Route path="/cgu" element=<GCU /> />
@@ -81,7 +81,7 @@ function App() {
           path="/profil/mes-demandes"
           element={(
             <ProtectedRoute redirectPath="/">
-              <MyRequests />
+              <MyWishes />
             </ProtectedRoute>
           )}
         />

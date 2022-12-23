@@ -178,9 +178,14 @@ const userMiddleware = (store) => (next) => (action) => {
       });
       break;
     }
-    case GET_OTHER_USER_PROFIL:
+    case GET_OTHER_USER_PROFIL: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
       axios.get(
         `${baseURL}/api/users/${action.payload}`,
+        config,
       ).then((result) => {
         console.log(result);
         store.dispatch(actionSaveOtherUserProfil(result.data));
@@ -188,6 +193,7 @@ const userMiddleware = (store) => (next) => (action) => {
         console.log('get other user profil ', error);
       });
       break;
+    }
     case DELETE_USER: {
       const { user } = store.getState();
       const config = {

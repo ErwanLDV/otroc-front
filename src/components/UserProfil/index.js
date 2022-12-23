@@ -16,16 +16,47 @@ function UserProfil() {
   console.log(otherUserProfil);
   return (
     <section>
-      <h2>Bienvenue sur la page de PSEUDO user</h2>
+      <h2>Bienvenue sur la page de {otherUserProfil.alias}</h2>
       <div className="container-userProfil">
         <div className="container-userProfil-infos">
-          infos du user
-          <p>{otherUserProfil.email}</p>
+          Infos du troqueur
+          <img src={otherUserProfil.picture} alt={`Avatar de ${otherUserProfil.alias}`} />
+          <p>Email: {otherUserProfil.email}</p>
+          {otherUserProfil.phoneNumber && <p>Téléphone: {otherUserProfil.phoneNumber}</p>}
         </div>
         <div className="container-userProfil-cards">
           {otherUserProfil.offer && otherUserProfil.offer.map((element) => (
-            <Link to={`/annonces/offers/${element.id}`} key={element.id}>
-              <AnnoucementCard key={element.id} title={element.title} />
+            <Link to={`/annonces/offres/${element.id}`} key={element.id}>
+              <AnnoucementCard
+                key={element.id}
+                title={element.title}
+                content={element.description}
+                createdAt={element.createdAt}
+                logo="offer"
+                image={element.picture}
+                type={element.type}
+                category={element.categories[0].name}
+                mainCategory={element.categories[0].mainCategory.name}
+                pseudo={otherUserProfil.alias}
+                profilImage={otherUserProfil.picture}
+              />
+            </Link>
+          ))}
+          {otherUserProfil.wish && otherUserProfil.wish.map((element) => (
+            <Link to={`/annonces/demandes/${element.id}`} key={element.id}>
+              <AnnoucementCard
+                key={element.id}
+                title={element.title}
+                content={element.description}
+                createdAt={element.createdAt}
+                logo="wish"
+                image={element.picture}
+                type={element.type}
+                category={element.categories[0].name}
+                mainCategory={element.categories[0].mainCategory.name}
+                pseudo={otherUserProfil.alias}
+                profilImage={otherUserProfil.picture}
+              />
             </Link>
           ))}
         </div>

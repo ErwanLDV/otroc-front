@@ -5,7 +5,7 @@ import { actionGetUserWishes } from '../../../actions/user';
 import ProfilCard from '../../ProfilCard';
 import './style.scss';
 
-function MyRequests() {
+function MyWishes() {
   const dispatch = useDispatch();
 
   const wishesArray = useSelector((state) => state.user.currentUserWishes);
@@ -30,6 +30,7 @@ function MyRequests() {
             id={item.id}
             isActive={item.isActive}
             annoucementType="wish"
+            type={item.type}
           />
         ))
       }
@@ -37,4 +38,4 @@ function MyRequests() {
     </section>
   );
 }
-export default MyRequests;
+export default MyWishes;

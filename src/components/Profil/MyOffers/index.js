@@ -1,6 +1,4 @@
 import './style.scss';
-
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import ProfilCard from '../../ProfilCard';
