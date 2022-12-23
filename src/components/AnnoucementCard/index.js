@@ -17,12 +17,12 @@ function AnnoucementCard({
   isLended,
   type,
 }) {
-  console.log(mainCategory, category);
+  const defaultImage = 'https://thumbs.dreamstime.com/b/vieux-camion-pourri-gradient-de-isol%C3%A9-dans-le-fond-blanc-213098076.jpg';
   return (
     <div className="card">
       <div className="card-header">
         {type === 'temporaire' && <span className="card-header-span">temporaire</span>}
-        <img src={image} alt="rover" />
+        <img src={image || defaultImage} alt="rover" />
       </div>
       <div className="card-body">
         <div>
@@ -58,7 +58,7 @@ AnnoucementCard.propTypes = {
   category: PropTypes.string.isRequired,
   mainCategory: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   profilImage: PropTypes.string.isRequired,
   pseudo: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
@@ -72,8 +72,8 @@ AnnoucementCard.defaultProps = {
   mainCategory: 'Véhicule',
   category: 'Camion',
   content: 'Vend camion bon etat général, seulement 789 551 km au compteur',
-  image: 'https://thumbs.dreamstime.com/b/vieux-camion-pourri-gradient-de-isol%C3%A9-dans-le-fond-blanc-213098076.jpg',
-  profilImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0qCXAjYcFT6MfQ_MD7kCHNbQ8smuFnLzESw&usqp=CAU',
+  image: null,
+  // profilImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0qCXAjYcFT6MfQ_MD7kCHNbQ8smuFnLzESw&usqp=CAU',
   pseudo: 'jean-mich',
   createdAt: '2 décembre 2022',
   isLended: false,

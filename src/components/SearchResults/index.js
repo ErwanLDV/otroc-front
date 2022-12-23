@@ -55,6 +55,7 @@ function SearchResult() {
                   image={item.picture}
                   isLended={item.isLended}
                   type={item.type}
+                  profilImage={item.user.picture}
                 />
               </Link>
             ))}
@@ -71,6 +72,7 @@ function SearchResult() {
                   logo="wish"
                   image={item.picture}
                   type={item.type}
+                  profilImage={item.user.picture}
                 />
               </Link>
             ))}
