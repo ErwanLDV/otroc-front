@@ -40,6 +40,9 @@ $gradient-start :#ad69ec;
 }
 @media(min-width: 45rem){
   .menu{
+    & li {
+      z-index: 1;
+    }
     > ol{
       justify-content: space-around;
       &:hover{
