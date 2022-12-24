@@ -1,12 +1,17 @@
 import './style.scss';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import avatarIMG from '../../assets/images/avatar.jpg';
-import { actionSaveUserPicture, actionPostUserPicture } from '../../actions/user';
+import { actionSaveUserPicture, actionPostUserPicture, actionGetUserProfil } from '../../actions/user';
 
 function Profil() {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actionGetUserProfil());
+  }, []);
+
   const pseudo = useSelector((state) => state.user.currentUserProfil.alias);
   const picture = useSelector((state) => state.user.currentUserProfil.picture);
   const [previewPicture, setPreviewPicture] = useState(null);

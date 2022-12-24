@@ -1,11 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import CustomInput from '../../CustomInput';
-import { actionChangeCustomInputUser, actionPutUserProfil } from '../../../actions/user';
+import { actionChangeCustomInputUser, actionGetUserProfil, actionPutUserProfil } from '../../../actions/user';
 import './style.scss';
 
 function PersonalInformation() {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actionGetUserProfil());
+  }, []);
 
   const firstname = useSelector((state) => state.user.currentUserProfil.firstname);
   const lastname = useSelector((state) => state.user.currentUserProfil.lastname);
