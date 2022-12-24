@@ -1,7 +1,9 @@
 @use '../../../styles/vars';
 
-$gradient-end :#6e7bed;
-$gradient-start :#ad69ec;
+
+// $gradient-start :#4682B4 ;
+// $gradient-end :#2E8B57 ;
+
 
 // body{
 //     display: flex;
@@ -15,7 +17,7 @@ $gradient-start :#ad69ec;
 //     font-family: 'Open Sans', sans-serif;
 // }
 .menu{
-  background-image: linear-gradient(to right, $gradient-start 0%, $gradient-end 100%);
+  background-image: linear-gradient(to right, vars.$gradient-start 0%, vars.$gradient-end 100%);
   border-radius:0.5rem;
   // text-transform: uppercase;
   box-shadow: inset 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.15);
@@ -81,9 +83,9 @@ $gradient-start :#ad69ec;
                   right: 50% + 100% * ($i - $j);
                 }
                 > ol a{
-                  box-shadow: inset 0 0 0 3rem rgba(0, 0, 0, 0), inset 0 0 0 3rem rgba(237, 110, 160, calc(1 - calc(1/$i)*$j));
+                  box-shadow: inset 0 0 0 3rem rgba(0, 0, 0, 0), inset 0 0 0 3rem rgba(vars.$gradient-start, calc(1 - calc(1/$i)*$j));
                   &:hover{
-                  box-shadow: inset 0 0 0 3rem rgba(0, 0, 0, 0.1), inset 0 0 0 3rem rgba(237, 110, 160, calc(1 - calc(1/$i)*$j));
+                  box-shadow: inset 0 0 0 3rem rgba(0, 0, 0, 0.1), inset 0 0 0 3rem rgba(vars.$gradient-start, calc(1 - calc(1/$i)*$j));
                   }
                 }
               } 
@@ -123,7 +125,7 @@ $gradient-start :#ad69ec;
               border-radius: 0.2rem;
               padding: .5rem 0.5rem;
               font-size: 1rem;
-              background: $gradient-end;
+              background: vars.$gradient-end;
               color: rgba(255,255,255,0.7);
               transition: 250ms ease all;
               &:hover{
@@ -159,7 +161,7 @@ $gradient-start :#ad69ec;
 }
 @media(max-width: 45rem){
   .menu{
-    background-image: linear-gradient(to bottom, $gradient-start 0%, $gradient-end 100%);
+    background-image: linear-gradient(to bottom, vars.$gradient-start 0%, vars.$gradient-end 100%);
     a{
       font-size:1.4rem;
       padding: 1rem 0.5rem;

@@ -23,7 +23,7 @@ function Header() {
     <header className="header">
       <div className="header-nav">
         <Link className="header-addAnnoucement" to="/annonces/ajouter">
-          <p>Deposer une annonce</p>
+          <p>Nouv O'Troc</p>
         </Link>
         <Link className="header-Link" to="/"><img src={logo} alt="Logo OTroc" /></Link>
         {location.pathname === '/inscription' || <FormLogin isLoginOpen={isLoginOpen} />}

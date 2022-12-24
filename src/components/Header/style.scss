@@ -7,16 +7,21 @@
   border-top-right-radius: 20px;
   
   &-addAnnoucement {
-    border: 1px solid;
     border-radius: 8px;
-    height: 3em;
+    height: 2.5em;
     width: 22%;
-    background-color: #b0c1f18f;
+    background-color: #398782 ;
     // padding-top: .7em;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 1em;
+    color: #eee;
+    max-width: 16%;
+
+    &:hover {
+      animation: bounce 1s;
+    }
   }
 
   &-nav {
@@ -27,7 +32,6 @@
   }
   &-Link {
     width: 25%;
-    // margin-right: 8%;
     min-width: 25%;
     
   }
@@ -60,5 +64,21 @@
 
 .header-container-login-signUp {
   display: flex;
-  // width: 9em;
+}
+
+@keyframes bounce {
+	0%, 20%, 60%, 100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+
+	40% {
+		-webkit-transform: translateY(-2px);
+		transform: translateY(-2px);
+	}
+
+	80% {
+		-webkit-transform: translateY(-1px);
+		transform: translateY(-1px);
+	}
 }

@@ -1,7 +1,7 @@
 @use '../../styles/vars';
 
 .footer {
-  background-color: vars.$main-color;
+  background-image: linear-gradient(to right, vars.$gradient-start 0%, vars.$gradient-end 100%);
   margin-top: 200px;
   
   padding: .4em;
@@ -10,6 +10,7 @@
   width: 100%;
   border-radius: 8px;
   font-size: .95em;
+  color: white;
 
   &-link:hover {
     text-decoration: underline;
