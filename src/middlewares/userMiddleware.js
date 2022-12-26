@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
   actionAuthentError,
   actionAuthentSuccess,
+  actionChangeRedirection,
   actionLogout,
   actionSaveOtherUserProfil,
   actionSaveUserHistory,
@@ -63,6 +64,11 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       ).then((result) => {
         console.log(result);
+        if (result.status === 201) {
+          // TODO
+          console.log('Utilisateur créé');
+          store.dispatch(actionChangeRedirection(true, '/connexion'));
+        }
       }).catch((error) => {
         console.log('user inscription ', error);
       });
@@ -205,6 +211,7 @@ const userMiddleware = (store) => (next) => (action) => {
       ).then((result) => {
         console.log(result);
         store.dispatch(actionLogout());
+        localStorage.removeItem('activeSession');
       }).catch((error) => {
         console.log('DELETE_USER', error);
       });

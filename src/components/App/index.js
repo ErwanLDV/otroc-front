@@ -25,6 +25,7 @@ import { actionAuthentSuccess } from '../../actions/user';
 import ProtectedRoute from '../ProtectedRoute';
 import DeleteProfil from '../Profil/DeleteProfil';
 import SearchBarResults from '../SearchBar/SearchBarResults';
+import LoginPage from '../LoginPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +53,7 @@ function App() {
         <Route path="/contact" element=<Contact /> />
         <Route path="/a-propos" element=<About /> />
         <Route path="/inscription" element=<Inscription /> />
+        <Route path="/connexion" element=<LoginPage /> />
         {/* ------------ Protected Routes --------------- */}
         <Route
           path="/profil"

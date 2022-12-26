@@ -1,24 +1,112 @@
+@use '../../styles/vars';
 
-.SearchBar-form {
-  margin: 1.5em;
+.searchBar {
   display: flex;
   justify-content: center;
+  margin-top: 1.5em;
+  align-items: center;
 
-    &-radio {
-      margin-right: 1.25em;
-      padding-top: 0.2em;
-    }
-    &-input {
-      border-radius: 5px;
-      border: 1px solid black;
-      height: 2em;
-      margin-left: 1.25em;
+  &-form {
+    position: relative;
+    width: 40%;
+    background: #FFF;
+    border-radius: .7rem;
+    filter: drop-shadow(0 0 0.2rem #6BA1AC);
+    display: flex;
+    margin-right: 8%;
+
+    & input,
+    button {
+      height: 2rem;
+      font-family: 'Lato', sans-serif;
+      border: 0;
+      color: #272727;
+      font-size: 1.1rem;
     }
 
-    &-button {
-      border-radius: 5px;
-      border: 1px solid black;
-      margin-left: 1em;
-      height: 2em;
+    & input[type="text"] {
+      width: 100%;
+      background: #fff;
+      padding: 0 1.6rem;
+      border-radius: .7rem;
+      appearance: none;
+      transition: all .3s cubic-bezier(0, 0, 0.43, 1.49);
+      transition-property: width, border-radius;
+      z-index: 1;
+      position: relative;
+      transition: width .5s;
     }
+    & button {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 7.5rem;
+      color: rgb(233, 233, 233);
+      background: #4383A7;
+      border-radius: 0 .7rem .7rem 0;
+    }
+    & input:not(:placeholder-shown) {
+      border-radius: .7rem 0 0 .7rem;
+      width: calc(100% - 7.5rem);
+      transition: width .5s;
+    }
+  }
+}
+
+.switch-wrapper {
+  position: relative;
+  display: inline-flex;
+  padding: 4px;
+  border: 1px solid lightgrey;
+  border-radius: 30px;
+  background: #FFF;
+  margin-right: 1%;
+
+  & [type="radio"] {
+    display: none;
+  }
+
+  & [type="radio"]:checked#offer ~ label[for="offer"] {
+    color: #FFF;
+    background-color: vars.$gradient-start;
+  }
+  & [type="radio"]:checked#wish ~ label[for="wish"] {
+    color: #FFF;
+    background-color: vars.$gradient-end;
+  }
+
+  & [type="radio"]:checked#offer
+    + label[for="wish"]
+    ~ .highlighter {
+    transform: none;
+  }
+
+  & [type="radio"]:checked#wish
+    + label[for="offer"]
+    ~ .highlighter {
+    transform: translateX(100%);
+  }
+
+  & label {
+    font-size: .8em;
+    z-index: 1;
+    min-width: 5.6em;
+    line-height: 26px;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: color 0.25s ease-in-out;
+
+  }
+
+  & .highlighter {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    border-radius: 30px;
+    background-image: linear-gradient(to right, vars.$gradient-start 0%, vars.$gradient-end 100%);
+    transition: transform 0.5s ease-in-out;
+  }
 }

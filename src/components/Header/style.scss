@@ -33,7 +33,11 @@
   &-Link {
     width: 25%;
     min-width: 25%;
-    
+    height: 6em;
+    max-height: 6em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   & img {
     max-width: 100%;
@@ -49,7 +53,18 @@
   flex-direction: column;
   margin-right: 1em;
   margin-top: 1em;
+  transition: 1.6s;
+  visibility:visible;
+  opacity:1;
+  transition:visibility 0.6s linear,opacity 0.6s linear;
  
+  &--hidden {
+    visibility: hidden;
+    margin-right: 1em;
+    margin-top: 1em;
+    opacity:0;
+    transition:visibility 0.6s linear,opacity 0.6s linear;
+  }
 }
 
 .login{

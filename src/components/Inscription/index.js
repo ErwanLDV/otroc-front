@@ -1,11 +1,24 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CustomInput from '../CustomInput';
-import { actionChangeCustomInputUser, actionUserIncscription } from '../../actions/user';
+import { actionChangeCustomInputUser, actionChangeRedirection, actionUserIncscription } from '../../actions/user';
 
 function Inscription() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const redirection = useSelector((state) => state.user.redirection);
+
+  useEffect(() => {
+    if (redirection.bool) {
+      navigate(redirection.path);
+      dispatch(actionChangeRedirection(false));
+    }
+  }, [redirection.bool]);
+
   const firstname = useSelector((state) => state.user.firstname);
   const lastname = useSelector((state) => state.user.lastname);
   const pseudo = useSelector((state) => state.user.pseudo);

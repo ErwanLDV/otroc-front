@@ -26,15 +26,15 @@ function Header() {
           <p>Nouv O'Troc</p>
         </Link>
         <Link className="header-Link" to="/"><img src={logo} alt="Logo OTroc" /></Link>
-        {location.pathname === '/inscription' || <FormLogin isLoginOpen={isLoginOpen} />}
+        {location.pathname === '/inscription' || <FormLogin isLoginOpen={isLoginOpen} setIsLoginOpen={setIsLoginOpen} />}
         <div className="header-container-login-signUp">
-          <div className="toggle-loginForm" onClick={() => setIsLoginOpen(!isLoginOpen)}>
+          <div className={isLoginOpen ? 'toggle-loginForm--hidden' : 'toggle-loginForm'} onClick={() => setIsLoginOpen(!isLoginOpen)}>
             <button className="login" type="button">
               <User size={24} />
               <span className="header-span">Se connecter</span>
             </button>
           </div>
-          <div className="toggle-loginForm">
+          <div className={isLoginOpen ? 'toggle-loginForm--hidden' : 'toggle-loginForm'}>
             <Link to="/inscription">
               <button className="login" type="button">
                 <UserPlus size={24} />
