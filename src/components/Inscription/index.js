@@ -78,8 +78,6 @@ function Inscription() {
         <label htmlFor="phoneNumber">Numero de telephone</label>
       </div>
       <button className="form-inscription-button" type="submit">Valider</button>
-      <p className="form-inscription-p">*non obligatoire</p>
-
     </form>
   );
 }

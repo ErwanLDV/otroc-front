@@ -1,7 +1,6 @@
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { User } from 'react-feather';
 import { useEffect } from 'react';
 import {
   actionChangeCustomInputUser,
@@ -31,14 +30,22 @@ function LoginPage() {
     dispatch(actionCheckLogin());
   };
   return (
-    <form className="login-page" onSubmit={handleSubmit}>
-      <div className="login-page-inputs">
-        <CustomInput className="login-page-inputs-input" name="email" type="email" placeholder="email" value={email} onChange={handleChangeInput} />
-        <CustomInput className="login-page-inputs-input" name="password" type="password" placeholder="Mot de passe" value={password} onChange={handleChangeInput} />
-      </div>
-      <div className="login-page-login">
-        <User size={16} />
-        <button className="login-page-login-button" type="submit">Connexion</button>
+    <form className="form-connection" onSubmit={handleSubmit}>
+      <p className="form-connection-p">Connectez-vous</p>
+      <div className="form-connection-container">
+        <div className="form-connection-inputs">
+          <div className="form-connection-container">
+            <CustomInput className="form-connection-input" name="email" type="email" value={email} onChange={handleChangeInput} required />
+            <label htmlFor="email">Votre adresse email</label>
+          </div>
+          <div className="form-connection-container">
+            <CustomInput className="form-connection-input" name="password" type="password" value={password} onChange={handleChangeInput} required />
+            <label htmlFor="password">Mot de passe</label>
+          </div>
+        </div>
+        <div className="form-connection-login">
+          <button className="form-connection-button" type="submit">Connexion</button>
+        </div>
       </div>
     </form>
   );

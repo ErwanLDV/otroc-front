@@ -19,6 +19,7 @@ export const GET_OTHER_USER_PROFIL = 'GET_OTHER_USER_PROFIL';
 export const SAVE_OTHER_USER_PROFIL = 'SAVE_OTHER_USER_PROFIL';
 export const DELETE_USER = 'DELETE_USER';
 export const CHANGE_REDIRECTION = 'CHANGE_REDIRECTION';
+export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 
 export function actionChangeCustomInputUser(newValue, inputName, parentObject = null) {
   return {
@@ -161,5 +162,12 @@ export function actionChangeRedirection(bool, path = '/') {
       bool,
       path,
     },
+  };
+}
+
+export function actionChangePassword(newPassword) {
+  return {
+    type: CHANGE_PASSWORD,
+    payload: newPassword,
   };
 }

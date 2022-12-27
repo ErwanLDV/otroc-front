@@ -25,6 +25,7 @@ function AnnouncementPage() {
   const zipcode = useSelector((state) => state.annoucements.currentAnnoucement.zipcode);
   const type = useSelector((state) => state.annoucements.currentAnnoucement.type);
   const createdAt = useSelector((state) => state.annoucements.currentAnnoucement.createdAt);
+  const dateTime = new Date(createdAt);
   const isReported = useSelector((state) => state.annoucements.currentAnnoucement.isReported);
   const isLended = useSelector((state) => state.annoucements.currentAnnoucement.isLended);
 
@@ -92,7 +93,7 @@ function AnnouncementPage() {
         </div>
         <p>{description}</p>
         <p>{zipcode}</p>
-        <p>{createdAt}</p>
+        <p>{dateTime.toLocaleString()}</p>
         <p>{type}</p>
         {isReported === null
           && (

@@ -9,6 +9,7 @@ import {
   actionSaveUserOffers,
   actionSaveUserProfil,
   actionSaveUserWishes,
+  CHANGE_PASSWORD,
   CHECK_LOGIN,
   DELETE_USER,
   GET_OTHER_USER_PROFIL,
@@ -212,6 +213,23 @@ const userMiddleware = (store) => (next) => (action) => {
         console.log(result);
         store.dispatch(actionLogout());
         localStorage.removeItem('activeSession');
+      }).catch((error) => {
+        console.log('DELETE_USER', error);
+      });
+      break;
+    }
+    case CHANGE_PASSWORD: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      // TODO =============================================================
+      axios.put(
+        `${baseURL}/api/users/current/password`,
+        action.payload, // TODO ===========================================
+        config,
+      ).then((result) => {
+        console.log(result);
       }).catch((error) => {
         console.log('DELETE_USER', error);
       });

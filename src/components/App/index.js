@@ -16,7 +16,7 @@ import MyOffers from '../Profil/MyOffers';
 import MyWishes from '../Profil/MyWishes';
 import MyHistory from '../Profil/MyHistory';
 import Error from '../Error';
-import AddAnnouncement from '../Profil/AddAnnouncement';
+import AddOrEditAnnouncement from '../Profil/AddOrEditAnnouncement';
 import SearchResults from '../SearchResults';
 import MainCategoriesListPage from '../MainCategoriesListPage';
 import AnnouncementPage from '../AnnoucementPage';
@@ -26,6 +26,7 @@ import ProtectedRoute from '../ProtectedRoute';
 import DeleteProfil from '../Profil/DeleteProfil';
 import SearchBarResults from '../SearchBar/SearchBarResults';
 import LoginPage from '../LoginPage';
+import ChangePassword from '../Profil/PersonalInformation/ChangePassword';
 
 function App() {
   const dispatch = useDispatch();
@@ -99,7 +100,7 @@ function App() {
           path="/annonces/ajouter"
           element={(
             <ProtectedRoute redirectPath="/">
-              <AddAnnouncement />
+              <AddOrEditAnnouncement />
             </ProtectedRoute>
           )}
         />
@@ -107,7 +108,7 @@ function App() {
           path="/annonces/editer"
           element={(
             <ProtectedRoute redirectPath="/">
-              <AddAnnouncement />
+              <AddOrEditAnnouncement />
             </ProtectedRoute>
           )}
         />
@@ -124,6 +125,14 @@ function App() {
           element={(
             <ProtectedRoute redirectPath="/">
               <DeleteProfil />
+            </ProtectedRoute>
+          )}
+        />
+        <Route
+          path="/profil/mes-informations/mot-de-passe"
+          element={(
+            <ProtectedRoute redirectPath="/">
+              <ChangePassword />
             </ProtectedRoute>
           )}
         />
