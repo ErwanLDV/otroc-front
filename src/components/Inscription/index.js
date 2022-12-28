@@ -11,6 +11,13 @@ function Inscription() {
   const navigate = useNavigate();
 
   const redirection = useSelector((state) => state.user.redirection);
+  const isLogged = useSelector((state) => state.user.isLogged);
+
+  useEffect(() => {
+    if (isLogged) {
+      navigate('/');
+    }
+  }, [isLogged]);
 
   useEffect(() => {
     if (redirection.bool) {

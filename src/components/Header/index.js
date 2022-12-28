@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './style.scss';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CheckCircle, FileText, User, XCircle } from 'react-feather';
 import logo from '../../assets/images/OTROC Merienda avec logo.png';
 import Nav from './Nav';
@@ -20,7 +20,6 @@ function Header() {
   }, []);
 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const location = useLocation();
 
   const handleLogout = () => {
     dispatch(actionLogout());
@@ -40,7 +39,7 @@ function Header() {
         <div className="header-logo">
           <Link className="header-Link" to="/"><img src={logo} alt="Logo OTroc" /></Link>
         </div>
-        {location.pathname === '/inscription' || <FormLogin isLoginOpen={isLoginOpen} setIsLoginOpen={setIsLoginOpen} />}
+        <FormLogin isLoginOpen={isLoginOpen} setIsLoginOpen={setIsLoginOpen} />
         {!isLogged
           ? (
             <div className="header-container-icon">

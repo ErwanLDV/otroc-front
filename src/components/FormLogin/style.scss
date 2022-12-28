@@ -8,7 +8,7 @@
   align-items: center;
   position: absolute;
   right: 0;
-  top: -14%;
+  top: -12%;
   z-index: 3;
   border-radius: .5em;
   
@@ -22,7 +22,7 @@
   transition: 0.8s;
   
   &--closed {
-    top: -140px;
+    top: -150px;
     transition: 0.8s;
   }
 

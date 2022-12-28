@@ -83,8 +83,8 @@ function ProfilCard({
   };
 
   let previewContent = content;
-  if (previewContent.length > 60) {
-    previewContent = content.substr(0, 60);
+  if (previewContent.length > 250) {
+    previewContent = content.substr(0, 250);
     previewContent += '... (suite)';
   }
 
@@ -100,19 +100,21 @@ function ProfilCard({
           <Link to={`/annonces/${annoucementType === 'offer' ? 'offres' : 'demandes'}/${id}`}>
             <header className="Profil-offers-container-title"> {title}</header>
           </Link>
-          <div className="Profil-offers-container-content-buttons">
+          <div className="Profil-offers-container-content">
             <Link to={`/annonces/${annoucementType === 'offer' ? 'offres' : 'demandes'}/${id}`}>
-              <div className="Profil-offers-container-content">{previewContent}</div>
+              <div>{previewContent}</div>
             </Link>
-            <div className="Profil-offers-container-buttons">
-              <Link to="/annonces/editer">
-                <button className="Profil-offers-container-button" type="button" onClick={handleEditAnnoucement} title="Editer"> <Edit /> </button>
-              </Link>
-              {type === 'temporaire' && <button className="Profil-offers-container-button" type="button" onClick={handleToggleLend} title={!isLended ? 'Rendre indisponible' : 'Rendre disponible'}> <Slash /> </button>}
-              <button className="Profil-offers-container-button" type="button" onClick={handleToggleActive} title={!isActive ? 'Activer' : 'Désactiver'}> <Power /> </button>
-              <button className="Profil-offers-container-button" type="button" onClick={handleDelete} title="Supprimer"> <Trash2 /> </button>
-            </div>
           </div>
+        </div>
+        <div className="Profil-offers-container-buttons">
+          <div>
+            <Link to="/annonces/editer">
+              <button className="Profil-offers-container-button" type="button" onClick={handleEditAnnoucement} title="Editer"> <Edit size={20} /> </button>
+            </Link>
+          </div>
+          {type === 'temporaire' && <button className="Profil-offers-container-button" type="button" onClick={handleToggleLend} title={!isLended ? 'Rendre indisponible' : 'Rendre disponible'}> <Slash size={20} /> </button>}
+          <button className="Profil-offers-container-button" type="button" onClick={handleToggleActive} title={!isActive ? 'Activer' : 'Désactiver'}> <Power size={20} /> </button>
+          <button className="Profil-offers-container-button trash" type="button" onClick={handleDelete} title="Supprimer"> <Trash2 size={20} /> </button>
         </div>
       </div>
     </div>
