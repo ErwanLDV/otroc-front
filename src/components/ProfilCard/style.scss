@@ -2,17 +2,18 @@
 
 .Profil-offers-container {
   width: 50%;
-  border: 1px solid vars.$border-color;
   margin: auto;
   margin-top: 2em;
-  padding: 1em;
-  border-radius: 10px;
-  background-color: vars.$background-color;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   
 
+  &-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: rgb(70, 70, 70);
+    padding-top: .45em;
+  }
   &-card {
-    border-radius: 10px;
+    border-radius: 1em;
     width: 100%;
     border: 1px solid vars.$border-color;
     margin: auto;
@@ -23,8 +24,13 @@
   &-img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+
     &-div {
-      width: 15%;
+      width: 14em;
+      height: 10em;
     }
   }
   &-centralDiv {
@@ -38,17 +44,70 @@
     border-bottom: 2px solid vars.$border-color;
   }
   &-content {
-    width: 80%;
     border-right: 2px solid vars.$border-color;
     word-break: break-all;
+    max-height: 10em;
+    padding: .5em;
+    width: 80%;
+    // min-width: 2em;
+    & a {
+      display: block;
+    }
   }
   &-buttons {
-
+    display: flex;
+    flex-direction: column;
+    margin: 0 1.5em;
   }
   &-button {
     border-radius: 5px;
     border-width: 1px;
+    width: 5em;
+    margin: .3em;
+    color: rgb(70, 70, 70);
+    background-color: #e9e9e9;    
+    font-weight: bold;
+
+    &:hover {
+      background-color: #6ba1ac;
+      transition: 0.5s;
+      color: white;
+    }
   }
 }
 
 
+@media screen and (max-width: 720px){
+
+  .Profil-offers-container {
+    width: 85%;
+
+    &-card {      
+      flex-direction: column;
+      height: 20em;
+    }
+    &-content-buttons {      
+      flex-direction: column;
+    }
+    &-buttons {
+      justify-content: center;
+      flex-direction: row;   
+      margin-top: 1.1em;   
+    }
+    &-content {
+      height: 3em;
+      width: 100%;
+      border-bottom: 2px solid vars.$border-color;
+      border-right: none;
+    }
+    
+    &-img {      
+      border-bottom-left-radius: 0em;
+      border-top-right-radius: 1em;
+  
+      &-div {
+        width: 100%;
+        height: 10em;
+      }
+    }
+}}

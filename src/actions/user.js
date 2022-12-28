@@ -165,9 +165,12 @@ export function actionChangeRedirection(bool, path = '/') {
   };
 }
 
-export function actionChangePassword(newPassword) {
+export function actionChangePassword(oldPassword, newPassword) {
   return {
     type: CHANGE_PASSWORD,
-    payload: newPassword,
+    payload: {
+      oldPassword,
+      newPassword,
+    },
   };
 }

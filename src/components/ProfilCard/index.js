@@ -14,6 +14,7 @@ import {
   actionToggleLendOfferAnnoucement,
 } from '../../actions/annoucements';
 import barter from '../../assets/images/barter.jpg';
+import { Edit, Power, Slash, Trash2 } from 'react-feather';
 
 function ProfilCard({
   title,
@@ -105,11 +106,11 @@ function ProfilCard({
             </Link>
             <div className="Profil-offers-container-buttons">
               <Link to="/annonces/editer">
-                <button className="Profil-offers-container-button" type="button" onClick={handleEditAnnoucement}>Modifier</button>
+                <button className="Profil-offers-container-button" type="button" onClick={handleEditAnnoucement} title="Editer"> <Edit /> </button>
               </Link>
-              <button className="Profil-offers-container-button" type="button" onClick={handleDelete}>Supprimer</button>
-              {type === 'temporaire' && <button className="Profil-offers-container-button" type="button" onClick={handleToggleLend}>{!isLended ? 'Rendre indisponible' : 'Rendre disponible'}</button>}
-              <button className="Profil-offers-container-button" type="button" onClick={handleToggleActive}>{!isActive ? 'Activer' : 'Désactiver'}</button>
+              {type === 'temporaire' && <button className="Profil-offers-container-button" type="button" onClick={handleToggleLend} title={!isLended ? 'Rendre indisponible' : 'Rendre disponible'}> <Slash /> </button>}
+              <button className="Profil-offers-container-button" type="button" onClick={handleToggleActive} title={!isActive ? 'Activer' : 'Désactiver'}> <Power /> </button>
+              <button className="Profil-offers-container-button" type="button" onClick={handleDelete} title="Supprimer"> <Trash2 /> </button>
             </div>
           </div>
         </div>

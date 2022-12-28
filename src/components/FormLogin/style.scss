@@ -12,7 +12,13 @@
   z-index: 3;
   border-radius: .5em;
   
-  background-color: #FAFAFA;
+  background: rgba(85, 150, 150, 0.45);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  
   transition: 0.8s;
   
   &--closed {
@@ -23,13 +29,16 @@
   &-inputs {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 60%;
+    min-width: 8.2em;
+    margin-top: .5em;
 
     &-input {
-      border-radius: 5px;
-      border: 1px solid;
+      border-radius: .8em;
+      border: none;
       margin: 0.2em;
       height: 1.7em;
+      padding: 0 .5em;
       font-size: 1.02em;
     }
 
@@ -61,6 +70,7 @@
     border-radius: 10px;
     padding: 5px;
     margin-top: 0.6em;
+    margin-bottom: .6em;
 
     &:hover {
       background-color: #6ba1ac;
@@ -76,11 +86,12 @@
       // padding-right: 10px;
 
       &-close {
+        padding-top: .2em;
         position: absolute;
-        top: .2em;
-        right: .2em;
+        top: .3em;
+        right: .3em;
         border: none;
-        border-radius: .2em;
+        border-radius: .3em;
 
         &:hover {
           background-color: #6ba1ac;
@@ -89,3 +100,40 @@
     }
   }
 }
+
+@media screen and (max-width: 850px) {
+  
+  .formLogin {
+    width: 40%;
+    background: rgba(85, 150, 150, 0.45);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    
+    &-inputs-input {
+      background: #ffffff;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  
+  .formLogin {
+    width: 80%;
+    right: 10%;
+    background: rgba(85, 150, 150, 0.45);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    
+    &-inputs-input {
+      background: #ffffff;
+    }
+  }
+}
+
+

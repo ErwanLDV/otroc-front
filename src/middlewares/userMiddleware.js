@@ -66,7 +66,6 @@ const userMiddleware = (store) => (next) => (action) => {
       ).then((result) => {
         console.log(result);
         if (result.status === 201) {
-          // TODO
           console.log('Utilisateur créé');
           store.dispatch(actionChangeRedirection(true, '/connexion'));
         }
@@ -223,15 +222,18 @@ const userMiddleware = (store) => (next) => (action) => {
       const config = {
         headers: { Authorization: `Bearer ${user.token}` },
       };
-      // TODO =============================================================
       axios.put(
         `${baseURL}/api/users/current/password`,
-        action.payload, // TODO ===========================================
+        {
+          oldpassword: action.payload.oldPassword,
+          newpassword: action.payload.newPassword,
+          passwordconfirmation: action.payload.newPassword,
+        },
         config,
       ).then((result) => {
         console.log(result);
       }).catch((error) => {
-        console.log('DELETE_USER', error);
+        console.log('CHANGE_PASSWORD', error);
       });
       break;
     }
