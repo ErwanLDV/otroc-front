@@ -33,18 +33,19 @@ function SearchBar() {
     navigate('/rechercher/resultat');
   };
   return (
-    <form className="SearchBar-form" onSubmit={handleSubmit}>
-      <div className="SearchBar-form-radio">
-        <label>Offre
-          <CustomInput className="" value="offer" name="searchType" type="radio" onChange={handleChangeInput} checked={searchType === 'offer'} />
-        </label>
-        <label>Demande
-          <CustomInput className="" value="wish" name="searchType" type="radio" onChange={handleChangeInput} checked={searchType === 'wish'} />
-        </label>
+    <section className="searchBar">
+      <div className="switch-wrapper">
+        <CustomInput id="offer" type="radio" value="offer" name="searchType" onChange={handleChangeInput} checked={searchType === 'offer'} />
+        <CustomInput id="wish" type="radio" value="wish" name="searchType" onChange={handleChangeInput} checked={searchType === 'wish'} />
+        <label htmlFor="offer">Offres</label>
+        <label htmlFor="wish">Demandes</label>
+        <span className="highlighter" />
       </div>
-      <CustomInput className="SearchBar-form-input" value={inputSearchBar} onChange={handleChangeInput} type="text" name="inputSearchBar" placeholder="rechercher un objet..." required />
-      <button className="SearchBar-form-button" type="submit"> rechercher </button>
-    </form>
+      <form className="searchBar-form" onSubmit={handleSubmit}>
+        <CustomInput className="searchBar-form-input" value={inputSearchBar} onChange={handleChangeInput} type="text" name="inputSearchBar" placeholder="rechercher un objet..." required />
+        <button className="searchBar-form-button" type="submit"> Rechercher </button>
+      </form>
+    </section>
   );
 }
 

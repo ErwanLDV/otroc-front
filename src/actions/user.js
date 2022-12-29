@@ -18,6 +18,8 @@ export const SAVE_USER_HISTORY = 'SAVE_USER_HISTORY';
 export const GET_OTHER_USER_PROFIL = 'GET_OTHER_USER_PROFIL';
 export const SAVE_OTHER_USER_PROFIL = 'SAVE_OTHER_USER_PROFIL';
 export const DELETE_USER = 'DELETE_USER';
+export const CHANGE_REDIRECTION = 'CHANGE_REDIRECTION';
+export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 
 export function actionChangeCustomInputUser(newValue, inputName, parentObject = null) {
   return {
@@ -150,5 +152,25 @@ export function actionSaveUserHistory(listAnnoucementArray) {
   return {
     type: SAVE_USER_HISTORY,
     payload: listAnnoucementArray,
+  };
+}
+
+export function actionChangeRedirection(bool, path = '/') {
+  return {
+    type: CHANGE_REDIRECTION,
+    payload: {
+      bool,
+      path,
+    },
+  };
+}
+
+export function actionChangePassword(oldPassword, newPassword) {
+  return {
+    type: CHANGE_PASSWORD,
+    payload: {
+      oldPassword,
+      newPassword,
+    },
   };
 }

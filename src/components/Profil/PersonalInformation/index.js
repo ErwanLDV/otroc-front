@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import CustomInput from '../../CustomInput';
 import { actionChangeCustomInputUser, actionGetUserProfil, actionPutUserProfil } from '../../../actions/user';
 import './style.scss';
+import { Link } from 'react-router-dom';
 
 function PersonalInformation() {
   const dispatch = useDispatch();
@@ -30,8 +31,8 @@ function PersonalInformation() {
 
   return (
     <section>
-      <h2>Mes informations personnelles</h2>
       <form className="PersonalInformation-form" onSubmit={handleSubmit}>
+        <p className="PersonalInformation-form-p">Mes informations personnelles</p>
         <div className="input-container-PersonalForm">
           <CustomInput onChange={handleChangeInput} className="PersonalInformation-form-input" value={firstname} type="text" name="firstname" required />
           <label htmlFor="firstname">Prénom*</label>
@@ -57,8 +58,9 @@ function PersonalInformation() {
           <label htmlFor="phoneNumber">Téléphone</label>
         </div>
         <div>
-          {/* <label htmlFor="mot-de-passe">Mot de passe</label> */}
-          <button className="PersonalInformation-form-button" type="button">changer le mot de passe</button>
+          <Link to="/profil/mes-informations/mot-de-passe">
+            <button className="PersonalInformation-form-button" type="button">changer le mot de passe</button>
+          </Link>
         </div>
         <button className="PersonalInformation-form-button" type="submit">Valider les changements</button>
       </form>

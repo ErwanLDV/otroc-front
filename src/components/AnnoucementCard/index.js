@@ -23,7 +23,7 @@ function AnnoucementCard({
     previewContent = content.substr(0, 60);
     previewContent += '... (suite)';
   }
-
+  const dateTime = new Date(createdAt);
   return (
     <div className="card">
       <div className="card-header">
@@ -48,7 +48,7 @@ function AnnoucementCard({
           <img src={profilImage} alt="utilisateur" />
           <div className="card-user-info">
             <h5>{pseudo}</h5>
-            <small>{createdAt}</small>
+            <small>{dateTime.toLocaleString()}</small>
           </div>
         </div>
         <div className="card-body-logo">

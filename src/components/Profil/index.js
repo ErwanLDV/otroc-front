@@ -2,6 +2,7 @@ import './style.scss';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { Download } from 'react-feather';
 import avatarIMG from '../../assets/images/avatar.jpg';
 import { actionSaveUserPicture, actionPostUserPicture, actionGetUserProfil } from '../../actions/user';
 
@@ -40,23 +41,25 @@ function Profil() {
 
   return (
     <section className="Profil-section">
-      <h2>Profil</h2>
+      <h2>{pseudo}</h2>
       <div className="Profil-container">
         <div className="Profil-container-user">
           <img className="Profil-container-user-img" src={picture || avatarIMG} alt="avatar" />
-          <span className="Profil-container-user-span">{pseudo}</span>
           <div className="Profil-container-user-input">
-            <label htmlFor="picture">
-              <input
-                name="picture"
-                type="file"
-                accept="image/png, image/jpeg"
-                onChange={handleChangePicture}
-              />
-            </label>
+            <input
+              className="input-profil-file"
+              id="profil-picture"
+              name="picture"
+              type="file"
+              accept="image/png, image/jpeg"
+              onChange={handleChangePicture}
+            />
+            <label htmlFor="profil-picture"><Download size={15} /> Changer d'image de profil </label>
           </div>
-          {previewPicture && <img src={previewPicture} width="150" alt="Prévisualisation" />}
-          {previewPicture && <button type="button" onClick={handleSubmitPicture}>Valider</button>}
+          <div className="profil-previewpicture">
+            {previewPicture && <img className="Profil-container-user-img" src={previewPicture} alt="Prévisualisation" />}
+            {previewPicture && <button type="button" onClick={handleSubmitPicture}>Valider</button>}
+          </div>
         </div>
         <Link to="/profil/mes-informations">
           <button className="Profil-container-button" type="button">Mes informations personelles</button>

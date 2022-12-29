@@ -1,15 +1,13 @@
 @use '../../styles/vars';
 
-.form-inscription {
+.form-connection {
  
   margin: auto;
   width: 50%;
   min-width: 350px;
   margin-top: 2em;
-  // background-color: rgb(241, 241, 241);
 	border-radius:15px;
 	padding:70px 0px;
-  // box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   filter: drop-shadow(0 0 0.15rem #6BA1AC);
   background: linear-gradient(0deg, #7ea8a3, #e2ffec);
 	background-size: 100% 100%;
@@ -63,8 +61,8 @@
   }
 }
 
-.form-inscription-input:focus ~ label,
-.form-inscription-input:not([value=""]) ~ label
+.form-connection-input:focus ~ label,
+.form-connection-input:not([value=""]) ~ label
 {
 	top:-5px;
   left: -3px;
@@ -73,7 +71,7 @@
 }
 
 
-.input-container-inscriptionForm {
+.form-connection-container {
 
   position:relative;
 	margin-bottom:25px;
@@ -81,16 +79,5 @@
   min-width: 250px;
   margin: auto;
   padding: 0.5rem;
+ 
 }
-
-// @keyframes gradient {
-// 	0% {
-// 		background-position: 0% 50%;
-// 	}
-// 	50% {
-// 		background-position: 100% 50%;
-// 	}
-// 	100% {
-// 		background-position: 0% 50%;
-// 	}
-// }

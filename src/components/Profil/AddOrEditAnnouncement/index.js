@@ -2,6 +2,7 @@ import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Download } from 'react-feather';
 import CustomInput from '../../CustomInput';
 import {
   actionAddNewOfferAnnoucement,
@@ -18,7 +19,7 @@ import {
 } from '../../../actions/annoucements';
 import CustomSelect from '../../CustomSelect';
 
-function AddAnnouncement() {
+function AddOrEditAnnouncement() {
   const dispatch = useDispatch();
   const location = useLocation();
   const modeEdit = useSelector((state) => state.annoucements.modeEdit);
@@ -109,76 +110,75 @@ function AddAnnouncement() {
 
   return (
     <section>
-      <h2>Nouvelle Annonce</h2>
-      <form className="addAnnouncement-form" onSubmit={handleSubmitFormAddAnnoucement}>
-        { !modeEdit
-        && (
-          <div>
-            <label>Offre
-              <CustomInput className="" value="offer" name="annoucementType" type="radio" onChange={handleChangeInputRadioAnnoucementType} checked={annoucementType === 'offer'} />
-            </label>
-            <label>Demande
-              <CustomInput className="" value="wish" name="annoucementType" type="radio" onChange={handleChangeInputRadioAnnoucementType} checked={annoucementType === 'wish'} />
-            </label>
-          </div>
-        )}
+      <form className={annoucementType === 'offer' ? 'offerAnnouncement-form' : 'wishAnnouncement-form'} onSubmit={handleSubmitFormAddAnnoucement}>
+        {!modeEdit ? <h2>Nouvelle annonce</h2> : <h2>Modifier votre annonce</h2>}
+        {!modeEdit
+          && (
+            <div className="switch-annoucement">
+              <CustomInput id="annoucementOffer" type="radio" value="offer" name="annoucementType" onChange={handleChangeInputRadioAnnoucementType} checked={annoucementType === 'offer'} />
+              <CustomInput id="annoucementWish" type="radio" value="wish" name="annoucementType" onChange={handleChangeInputRadioAnnoucementType} checked={annoucementType === 'wish'} />
+              <label htmlFor="annoucementOffer">Offres</label>
+              <label htmlFor="annoucementWish">Demandes</label>
+              <span className="highlighter" />
+            </div>
+          )}
         <div>
           <label>Titre*
-            <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" value={addOrEditAnnoucement.title} type="text" name="title" placeholder="Titre de l'annonce" required />
+            <CustomInput onChange={handleChangeInput} className={annoucementType === 'offer' ? 'offerAnnouncement-form-input' : 'wishAnnouncement-form-input'} value={addOrEditAnnoucement.title} type="text" name="title" placeholder="Titre de l'annonce" required />
           </label>
         </div>
-        <label>Choisir une categorie*
-          {addOrEditAnnoucement.categories
-            ? (
-              <CustomSelect
-                name="mainCategory"
-                onChange={handleChangeSelect}
-                optionsArray={categoriesArray}
-                value={addOrEditAnnoucement.categories[0]}
-                optionTitle="Liste des catégories"
-              />
-            )
-            : (
-              <CustomSelect
-                name="mainCategory"
-                onChange={handleChangeSelect}
-                optionsArray={categoriesArray}
-                optionTitle="Liste des catégories"
-              />
-            )}
-        </label>
+        {addOrEditAnnoucement.categories
+          ? (
+            <CustomSelect
+              name="mainCategory"
+              onChange={handleChangeSelect}
+              optionsArray={categoriesArray}
+              value={addOrEditAnnoucement.categories[0]}
+              optionTitle="Choisir une catégorie*"
+            />
+          )
+          : (
+            <CustomSelect
+              name="mainCategory"
+              onChange={handleChangeSelect}
+              optionsArray={categoriesArray}
+              optionTitle="Choisir une catégorie*"
+            />
+          )}
         {!modeEdit && (
-          <label htmlFor="picture"> Ajouter une image :
+          <>
             <input
+              className="input-file"
+              id="annoucement-picture"
               name="picture"
               type="file"
               accept="image/png, image/jpeg"
               onChange={handleChangePicture}
             />
-        </label>
+            <label htmlFor="annoucement-picture"><Download size={15} /> Choisir une image</label>
+          </>
         )}
         {previewPicture && <img src={previewPicture} width="300" alt="Prévisualisation" />}
         {addOrEditAnnoucement.picture && <img src={addOrEditAnnoucement.picture} width="300" alt="Prévisualisation" />}
-        <div>
-          <label>Permanent
-            <CustomInput className="" value="permanent" name="type" type="radio" onChange={handleChangeInputRadioType} checked={addOrEditAnnoucement.type === 'permanent'} defaultValue />
-          </label>
-          <label>Temporaire
-            <CustomInput className="" value="temporaire" name="type" type="radio" onChange={handleChangeInputRadioType} checked={addOrEditAnnoucement.type === 'temporaire'} />
-          </label>
+        <div className="switch-type">
+          <CustomInput id="permanent" type="radio" value="permanent" name="type" onChange={handleChangeInputRadioType} checked={addOrEditAnnoucement.type === 'permanent'} />
+          <CustomInput id="tempory" type="radio" value="temporaire" name="type" onChange={handleChangeInputRadioType} checked={addOrEditAnnoucement.type === 'temporaire'} />
+          <label htmlFor="permanent">Permanent</label>
+          <label htmlFor="tempory">Temporaire</label>
+          <span className="highlighter" />
         </div>
         <label>Code Postal*
-          <CustomInput onChange={handleChangeInput} className="addAnnouncement-form-input" maxLength="5" value={addOrEditAnnoucement.zipcode} type="zipcode" name="zipcode" placeholder="Code postal" required />
+          <CustomInput onChange={handleChangeInput} className={annoucementType === 'offer' ? 'offerAnnouncement-form-input' : 'wishAnnouncement-form-input'} maxLength="5" value={addOrEditAnnoucement.zipcode} type="zipcode" name="zipcode" placeholder="Code postal" required />
         </label>
-        <div>
-          <label htmlFor="content">Contenu*
-            <textarea onChange={handleChangeTextArea} value={addOrEditAnnoucement.description || ''} className="addAnnouncement-form-textarea" rows="5" cols="50" name="description" placeholder="Contenu de l'annonce" required />
+        <div className="textArea-container">
+          <label>Description de l'annonce* :
+            <textarea onChange={handleChangeTextArea} value={addOrEditAnnoucement.description || ''} className={annoucementType === 'offer' ? 'offerAnnouncement-form-textarea' : 'wishAnnouncement-form-textarea'} name="description" placeholder="Contenu de l'annonce" required />
           </label>
         </div>
-        <button type="submit">Envoyer</button>
+        <button type="submit">Valider</button>
       </form>
     </section>
   );
 }
 
-export default AddAnnouncement;
+export default AddOrEditAnnouncement;

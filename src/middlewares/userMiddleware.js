@@ -2,12 +2,14 @@ import axios from 'axios';
 import {
   actionAuthentError,
   actionAuthentSuccess,
+  actionChangeRedirection,
   actionLogout,
   actionSaveOtherUserProfil,
   actionSaveUserHistory,
   actionSaveUserOffers,
   actionSaveUserProfil,
   actionSaveUserWishes,
+  CHANGE_PASSWORD,
   CHECK_LOGIN,
   DELETE_USER,
   GET_OTHER_USER_PROFIL,
@@ -63,6 +65,10 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       ).then((result) => {
         console.log(result);
+        if (result.status === 201) {
+          console.log('Utilisateur créé');
+          store.dispatch(actionChangeRedirection(true, '/connexion'));
+        }
       }).catch((error) => {
         console.log('user inscription ', error);
       });
@@ -205,8 +211,29 @@ const userMiddleware = (store) => (next) => (action) => {
       ).then((result) => {
         console.log(result);
         store.dispatch(actionLogout());
+        localStorage.removeItem('activeSession');
       }).catch((error) => {
         console.log('DELETE_USER', error);
+      });
+      break;
+    }
+    case CHANGE_PASSWORD: {
+      const { user } = store.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${user.token}` },
+      };
+      axios.put(
+        `${baseURL}/api/users/current/password`,
+        {
+          oldpassword: action.payload.oldPassword,
+          newpassword: action.payload.newPassword,
+          passwordconfirmation: action.payload.newPassword,
+        },
+        config,
+      ).then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.log('CHANGE_PASSWORD', error);
       });
       break;
     }
