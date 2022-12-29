@@ -12,7 +12,25 @@ function About() {
         <br />
         Proin fermentum leo vel orci porta. Elit at imperdiet dui accumsan sit amet nulla facilisi morbi. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Tempus quam pellentesque nec nam aliquam sem et tortor. Est ullamcorper eget nulla facilisi etiam dignissim diam quis enim. Mi eget mauris pharetra et ultrices neque ornare aenean. Est velit egestas dui id ornare arcu. Nulla facilisi etiam dignissim diam quis enim. Nibh tortor id aliquet lectus proin nibh. Proin libero nunc consequat interdum varius sit. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin. Cras sed felis eget velit aliquet sagittis. Tempus iaculis urna id volutpat. Egestas congue quisque egestas diam in arcu cursus. Sed tempus urna et pharetra. Vel eros donec ac odio tempor orci dapibus ultrices. Elementum facilisis leo vel fringilla est ullamcorper. Elit pellentesque habitant morbi tristique senectus et netus.
       </p>
-
+      <p className="productors-p"> A l'initiative de :</p>
+      <div className="productors">
+        <div className="productors-number">
+          <div className="productors-itembulle" />
+          <span className="productors-span"> Y.Lebouc</span>
+        </div>
+        <div className="productors-number">
+          <div className="productors-itembulle" />
+          <span className="productors-span"> R.Obremé</span>
+        </div>
+        <div className="productors-number">
+          <div className="productors-itembulle" />
+          <span className="productors-span"> E.Lable</span>
+        </div>
+        <div className="productors-number">
+          <div className="productors-itembulle" />
+          <span className="productors-span"> T.Salmon</span>
+        </div>
+      </div>
     </section>
   );
 }

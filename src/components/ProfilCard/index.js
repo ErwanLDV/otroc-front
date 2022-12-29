@@ -2,6 +2,9 @@ import './style.scss';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import {
+  Edit, Power, Slash, Trash2,
+} from 'react-feather';
 import imgBase from '../../assets/images/image-default.png';
 import {
   actionGetEditOfferAnnoucement,
@@ -14,7 +17,6 @@ import {
   actionToggleLendOfferAnnoucement,
 } from '../../actions/annoucements';
 import barter from '../../assets/images/barter.jpg';
-import { Edit, Power, Slash, Trash2 } from 'react-feather';
 
 function ProfilCard({
   title,

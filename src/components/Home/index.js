@@ -12,7 +12,7 @@ function Home() {
   }, []);
 
   const topCategoriesArray = useSelector((state) => state.categories.topCategories);
-  console.log(topCategoriesArray);
+
   return (
     <section>
       <div className="home">

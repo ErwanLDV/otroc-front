@@ -31,7 +31,7 @@ function SearchResult() {
   }, [categoriesLoaded, slug]);
 
   const categoryResults = useSelector((state) => state.categories.categoryResults);
-  // console.log(categoryResults);
+
   const { offers, wishes } = categoryResults;
 
   return (

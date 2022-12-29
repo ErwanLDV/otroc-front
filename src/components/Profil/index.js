@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import './style.scss';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';

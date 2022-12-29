@@ -5,12 +5,13 @@ import './style.scss';
 
 function SearchBarResults() {
   const searchAnnoucements = useSelector((state) => state.search.searchAnnoucements);
-  console.log(searchAnnoucements);
   const searchTypeResult = useSelector((state) => state.search.searchTypeResult);
+
   let linkApi = 'offres';
   if (searchTypeResult === 'wish') {
     linkApi = 'demandes';
   }
+
   return (
     <section>
       <div className="searchBarResult">

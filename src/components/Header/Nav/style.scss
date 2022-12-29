@@ -1,21 +1,5 @@
 @use '../../../styles/vars';
 
-
-// $gradient-start :#4682B4 ;
-// $gradient-end :#2E8B57 ;
-
-
-// body{
-//     display: flex;
-//     height: 100vh;
-//     padding: 0 5rem;
-//     box-sizing: border-box;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-content: center;
-//     background-image: #fff;
-//     font-family: 'Open Sans', sans-serif;
-// }
 .menu{
   background-image: linear-gradient(to right, vars.$gradient-start 0%, vars.$gradient-end 100%);
   border-radius:0.5rem;

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +13,6 @@ function SearchBar() {
   const searchType = useSelector((state) => state.search.searchType);
 
   const handleChangeInput = (newValue, inputName) => {
-    console.log('change');
     dispatch(actionChangeInputSearchBar(newValue, inputName));
   };
 
@@ -20,11 +20,9 @@ function SearchBar() {
     event.preventDefault();
     switch (searchType) {
       case 'offer':
-        console.log('offers');
         dispatch(actionPostSearchOffers(inputSearchBar));
         break;
       case 'wish':
-        console.log('wishes');
         dispatch(actionPostSearchWishes(inputSearchBar));
         break;
       default:

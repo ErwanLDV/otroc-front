@@ -7,10 +7,7 @@ import annoucementsMiddleware from '../middlewares/annoucementsMiddleware';
 import categoriesMiddleware from '../middlewares/categoriesMiddleware';
 import searchMiddleware from '../middlewares/searchMiddleware';
 
-// import nameMiddleware from '../middlewares/nameMiddleware
-
 const middlewareEnhancer = applyMiddleware(
-  // nameMiddleware,
   userMiddleware,
   annoucementsMiddleware,
   categoriesMiddleware,

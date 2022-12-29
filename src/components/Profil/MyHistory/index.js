@@ -11,7 +11,6 @@ function MyHistory() {
   const offersHistory = useSelector((state) => state.user.currentUserHistory.offers);
   const wishesHistory = useSelector((state) => state.user.currentUserHistory.wishes);
   const pageReload = useSelector((state) => state.annoucements.pageReload);
-  console.log(pageReload);
 
   useEffect(() => {
     dispatch(actionGetUserHistory());
@@ -20,7 +19,6 @@ function MyHistory() {
     }
   }, [pageReload]);
 
-  console.log(offersHistory);
   return (
     <section>
       <h2>Mon historique</h2>

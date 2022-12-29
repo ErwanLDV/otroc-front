@@ -13,7 +13,7 @@ function UserProfil() {
   }, []);
 
   const otherUserProfil = useSelector((state) => state.user.otherUserProfil);
-  console.log(otherUserProfil);
+
   return (
     <section>
       <h2>Bienvenue sur la page de {otherUserProfil.alias}</h2>

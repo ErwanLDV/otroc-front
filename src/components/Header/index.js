@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './style.scss';
 import { Link } from 'react-router-dom';
-import { CheckCircle, FileText, User, XCircle } from 'react-feather';
+import {
+  CheckCircle, FileText, User, XCircle,
+} from 'react-feather';
 import logo from '../../assets/images/OTROC Merienda avec logo.png';
 import Nav from './Nav';
 import FormLogin from '../FormLogin';
