@@ -1,6 +1,7 @@
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { User, X } from 'react-feather';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   actionChangeCustomInputUser,
@@ -24,9 +25,11 @@ function FormLogin({ isLoginOpen, setIsLoginOpen }) {
   };
 
   // Close LoginForm when user is logged
-  if (isLogged) {
-    setIsLoginOpen(false);
-  }
+  useEffect(() => {
+    if (isLogged) {
+      setIsLoginOpen(false);
+    }
+  }, [isLogged]);
 
   return (
     !isLogged && (

@@ -46,6 +46,10 @@
       color: rgb(233, 233, 233);
       background: #4383A7;
       border-radius: 0 .7rem .7rem 0;
+
+      &::after {
+        content: "Rechercher";
+      }
     }
     & input:not(:placeholder-shown) {
       border-radius: .7rem 0 0 .7rem;
@@ -109,5 +113,31 @@
     border-radius: 30px;
     background-image: linear-gradient(to right, vars.$gradient-start 0%, vars.$gradient-end 100%);
     transition: transform 0.5s ease-in-out;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .searchBar {
+    flex-direction: column;
+
+    &-form {
+      width: 90%;
+      margin: auto;
+      margin-top: 1em;
+
+      & button {
+        width: 2.5rem;
+        &::after {
+          background-image: url('../../assets/images/search.png');
+          background-repeat: no-repeat;
+          background-size: 100%;
+          content: '__';
+          color: transparent;
+        }
+      }
+      & input:not(:placeholder-shown) {
+        width: calc(100% - 2.5rem);
+      }
+    }
   }
 }

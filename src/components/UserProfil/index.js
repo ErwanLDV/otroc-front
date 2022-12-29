@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { AtSign, Phone } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { actionGetOtherUserProfil } from '../../actions/user';
@@ -16,13 +17,12 @@ function UserProfil() {
 
   return (
     <section>
-      <h2>Bienvenue sur la page de {otherUserProfil.alias}</h2>
+      <h2 className="welcome">Bienvenue sur la page de <span className="pseudo">{otherUserProfil.alias}</span></h2>
       <div className="container-userProfil">
         <div className="container-userProfil-infos">
-          Infos du troqueur
           <img src={otherUserProfil.picture} alt={`Avatar de ${otherUserProfil.alias}`} />
-          <p>Email: {otherUserProfil.email}</p>
-          {otherUserProfil.phoneNumber && <p>Téléphone: {otherUserProfil.phoneNumber}</p>}
+          <p><AtSign size={15} /> {otherUserProfil.email}</p>
+          {otherUserProfil.phoneNumber && <p><Phone size={15} /> {otherUserProfil.phoneNumber}</p>}
         </div>
         <div className="container-userProfil-cards">
           {otherUserProfil.offer && otherUserProfil.offer.map((element) => (

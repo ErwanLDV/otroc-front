@@ -225,7 +225,7 @@ const userMiddleware = (store) => (next) => (action) => {
       axios.put(
         `${baseURL}/api/users/current/password`,
         {
-          oldpassword: action.payload.oldPassword,
+          currentpassword: action.payload.currentPassword,
           newpassword: action.payload.newPassword,
           passwordconfirmation: action.payload.newPassword,
         },

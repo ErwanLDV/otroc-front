@@ -59,7 +59,7 @@ function App() {
         <Route
           path="/profil"
           element={(
-            <ProtectedRoute redirectPath="/">
+            <ProtectedRoute redirectPath="/connexion">
               <Profil />
             </ProtectedRoute>
           )}
@@ -67,7 +67,7 @@ function App() {
         <Route
           path="/profil/mes-informations"
           element={(
-            <ProtectedRoute redirectPath="/">
+            <ProtectedRoute redirectPath="/connexion">
               <PersonalInformation />
             </ProtectedRoute>
           )}
@@ -75,7 +75,7 @@ function App() {
         <Route
           path="/profil/mes-offres"
           element={(
-            <ProtectedRoute redirectPath="/">
+            <ProtectedRoute redirectPath="/connexion">
               <MyOffers />
             </ProtectedRoute>
           )}
@@ -83,7 +83,7 @@ function App() {
         <Route
           path="/profil/mes-demandes"
           element={(
-            <ProtectedRoute redirectPath="/">
+            <ProtectedRoute redirectPath="/connexion">
               <MyWishes />
             </ProtectedRoute>
           )}
@@ -91,7 +91,7 @@ function App() {
         <Route
           path="/profil/historique"
           element={(
-            <ProtectedRoute redirectPath="/">
+            <ProtectedRoute redirectPath="/connexion">
               <MyHistory />
             </ProtectedRoute>
           )}
@@ -99,7 +99,7 @@ function App() {
         <Route
           path="/annonces/ajouter"
           element={(
-            <ProtectedRoute redirectPath="/">
+            <ProtectedRoute redirectPath="/connexion">
               <AddOrEditAnnouncement />
             </ProtectedRoute>
           )}
@@ -107,7 +107,7 @@ function App() {
         <Route
           path="/annonces/editer"
           element={(
-            <ProtectedRoute redirectPath="/">
+            <ProtectedRoute redirectPath="/connexion">
               <AddOrEditAnnouncement />
             </ProtectedRoute>
           )}
@@ -115,7 +115,7 @@ function App() {
         <Route
           path="/utilisateur/:id"
           element={(
-            <ProtectedRoute redirectPath="/">
+            <ProtectedRoute redirectPath="/connexion">
               <UserProfil />
             </ProtectedRoute>
           )}
@@ -123,7 +123,7 @@ function App() {
         <Route
           path="/profil/supprimer"
           element={(
-            <ProtectedRoute redirectPath="/">
+            <ProtectedRoute redirectPath="/connexion">
               <DeleteProfil />
             </ProtectedRoute>
           )}
@@ -131,7 +131,7 @@ function App() {
         <Route
           path="/profil/mes-informations/mot-de-passe"
           element={(
-            <ProtectedRoute redirectPath="/">
+            <ProtectedRoute redirectPath="/connexion">
               <ChangePassword />
             </ProtectedRoute>
           )}

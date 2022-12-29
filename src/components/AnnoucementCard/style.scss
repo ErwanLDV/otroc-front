@@ -71,7 +71,7 @@
       right: 1.2em;
       bottom: 1.2em;
 
-      img{
+      img {
         height: 40px;
       }
     }
@@ -99,19 +99,22 @@
 
   &-user {
     display: flex;
-    margin-top: auto;;
 
     & img {
       border-radius: 50%;
       width: 40px;
       height: 40px;
       margin-right: 10px;
+      object-fit: cover;
+    }
+
+    &-info {
+      margin-left: 1.6em;
     }
 
     &-info h5 {
       font-weight: bold;
       font-size: .9em;
-      margin: 0;
     }
 
     &-info small {

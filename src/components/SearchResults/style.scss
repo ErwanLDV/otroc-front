@@ -1,10 +1,10 @@
 .container-searchResult {
   display: flex;
-  flex-wrap: wrap;
-  // justify-content: center;
+  flex-wrap: wrap;  
   width: 70%;
   margin: auto;
   margin-top: 2em;
+  justify-content: center;
 }
 
 @media screen and (max-width: 720px) {
