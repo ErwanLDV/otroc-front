@@ -2,6 +2,7 @@
 
 .offerAnnouncement-form,
 .wishAnnouncement-form {  
+  position: relative;
   display: flex;
   flex-direction: column;  
   align-items: center;
@@ -44,6 +45,8 @@
       padding: .4em;
       background-color: #e6eefc;
       margin-bottom: 1em;
+      border-radius: .7em;
+      border: 1px rgb(185, 185, 185) solid;
     }
 
     & img {

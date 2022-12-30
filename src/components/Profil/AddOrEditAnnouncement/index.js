@@ -2,7 +2,7 @@
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Download } from 'react-feather';
 import CustomInput from '../../CustomInput';
 import {
@@ -19,16 +19,22 @@ import {
   actionSaveWishPicture,
 } from '../../../actions/annoucements';
 import CustomSelect from '../../CustomSelect';
+import PopUp from '../../PopUp';
+import { actionChangeRedirection } from '../../../actions/user';
 
 function AddOrEditAnnouncement() {
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
+
   const modeEdit = useSelector((state) => state.annoucements.modeEdit);
   const addOrEditAnnoucement = useSelector((state) => state.annoucements.addOrEditAnnoucement);
   const annoucementType = useSelector((state) => state.annoucements.annoucementType);
   const categoriesArray = useSelector((state) => state.categories.categoriesArray);
   const [previewPicture, setPreviewPicture] = useState(null);
   const [newPicture, setNewPicture] = useState(null);
+  const messagePopUp = useSelector((state) => state.utils.messagePopUp);
+  const redirection = useSelector((state) => state.user.redirection);
 
   useEffect(() => {
     switch (location.pathname) {
@@ -40,6 +46,13 @@ function AddOrEditAnnouncement() {
         break;
     }
   }, [location]);
+
+  useEffect(() => {
+    if (redirection.bool) {
+      navigate(redirection.path);
+      dispatch(actionChangeRedirection(false));
+    }
+  }, [redirection.bool]);
 
   const handleChangePicture = (event) => {
     setNewPicture(event.target.files[0]);
@@ -112,6 +125,7 @@ function AddOrEditAnnouncement() {
   return (
     <section>
       <form className={annoucementType === 'offer' ? 'offerAnnouncement-form' : 'wishAnnouncement-form'} onSubmit={handleSubmitFormAddAnnoucement}>
+        <PopUp className={messagePopUp ? 'popup' : 'popup-off'} />
         {!modeEdit ? <h2>Nouvelle annonce</h2> : <h2>Modifier votre annonce</h2>}
         {!modeEdit
           && (

@@ -1,14 +1,19 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './style.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { Download } from 'react-feather';
 import avatarIMG from '../../assets/images/avatar.jpg';
-import { actionSaveUserPicture, actionPostUserPicture, actionGetUserProfil } from '../../actions/user';
+import {
+  actionSaveUserPicture, actionPostUserPicture, actionGetUserProfil, actionChangeRedirection,
+} from '../../actions/user';
+import PopUp from '../PopUp';
 
 function Profil() {
   const dispatch = useDispatch();
+
+  const messagePopUp = useSelector((state) => state.utils.messagePopUp);
 
   useEffect(() => {
     dispatch(actionGetUserProfil());
@@ -16,6 +21,7 @@ function Profil() {
 
   const pseudo = useSelector((state) => state.user.currentUserProfil.alias);
   const picture = useSelector((state) => state.user.currentUserProfil.picture);
+
   const [previewPicture, setPreviewPicture] = useState(null);
   const [newPicture, setNewPicture] = useState(null);
 
@@ -42,6 +48,7 @@ function Profil() {
 
   return (
     <section className="Profil-section">
+      <PopUp className={messagePopUp ? 'popup' : 'popup-off'} />
       <h2>{pseudo}</h2>
       <div className="Profil-container">
         <div className="Profil-container-user">

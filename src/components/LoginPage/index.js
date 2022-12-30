@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import {
   actionChangeCustomInputUser,
@@ -47,6 +47,7 @@ function LoginPage() {
         <div className="form-connection-login">
           <button className="form-connection-button" type="submit">Connexion</button>
         </div>
+        <p className="form-connection-inscription">Pas encore inscrit ? <Link to="/inscription">Rejoignez nous !</Link></p>
       </div>
     </form>
   );

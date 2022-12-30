@@ -8,14 +8,22 @@
   margin-top: 2em;
 	border-radius:15px;
 	padding:70px 0px;
-  filter: drop-shadow(0 0 0.15rem #6BA1AC);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   background: linear-gradient(0deg, #7ea8a3, #e2ffec);
 	background-size: 100% 100%;
-	animation: gradient 25s ease infinite;
+  position: relative;
 
   &-p {
     font-size: 1.4em;
     padding-bottom: 1.5em;
+  }
+
+  &-inscription {
+    font-size: .8em;
+    padding-top: 2em;
+    & a {
+      color: #266394;
+    }
   }
 
   &-button {

@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CustomInput from '../CustomInput';
 import { actionChangeCustomInputUser, actionChangeRedirection, actionUserIncscription } from '../../actions/user';
+import PopUp from '../PopUp';
 
 function Inscription() {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ function Inscription() {
 
   const redirection = useSelector((state) => state.user.redirection);
   const isLogged = useSelector((state) => state.user.isLogged);
+  const messagePopUp = useSelector((state) => state.utils.messagePopUp);
 
   useEffect(() => {
     if (isLogged) {
@@ -73,7 +75,7 @@ function Inscription() {
         <label htmlFor="email">Votre adresse email*</label>
       </div>
       <div className="input-container-inscriptionForm">
-        <CustomInput className="form-inscription-input" onChange={handleChangeInput} value={password} name="password" type="text" required />
+        <CustomInput className="form-inscription-input" onChange={handleChangeInput} value={password} name="password" type="password" required />
         <label htmlFor="password">Mot de passe*</label>
       </div>
       <div className="input-container-inscriptionForm">
@@ -85,6 +87,7 @@ function Inscription() {
         <label htmlFor="phoneNumber">Numero de telephone</label>
       </div>
       <button className="form-inscription-button" type="submit">Valider</button>
+      <PopUp className={messagePopUp ? 'popup' : 'popup-off'} />
     </form>
   );
 }

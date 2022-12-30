@@ -1,6 +1,19 @@
 @use 'reset';
 @use 'vars';
 
-body {
-  font-family: sans-serif;
+@font-face {
+  font-family: 'merienda';
+  src: local('merienda'), url(../assets/fonts/merienda/Merienda-Regular.ttf) format('truetype');
 }
+
+body {
+  font-family: merienda, sans-serif;
+}
+
+
+
+// @font-face {
+//   font-family: 'Lato';
+//   font-weight: 900;
+//   src: local('Lato'), url(./fonts/Lato-Bold.otf) format('opentype');
+// }

@@ -24,6 +24,8 @@ import {
   TOGGLE_ACTIVE_WISH_ANNOUCEMENT,
   TOGGLE_LEND_OFFER_ANNOUCEMENT,
 } from '../actions/annoucements';
+import { actionChangeRedirection } from '../actions/user';
+import { actionMessagePopUp } from '../actions/utils';
 
 // For tests
 const baseURL = process.env.BACK_API_BASE_URL;
@@ -91,6 +93,13 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
               console.error(error);
             });
         }
+        if (result.status === 201) {
+          store.dispatch(actionMessagePopUp('Offre créée avec succès'));
+          setTimeout(() => {
+            store.dispatch(actionChangeRedirection(true, `/annonces/offres/${newOfferId}`));
+            store.dispatch(actionMessagePopUp(''));
+          }, 3000);
+        }
       }).catch((error) => {
         console.log('add new offer annoucement ', error);
       });
@@ -128,6 +137,13 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         config,
       ).then((result) => {
         console.log(result);
+        if (result.status === 206) {
+          store.dispatch(actionMessagePopUp('Offre éditée avec succès'));
+          setTimeout(() => {
+            store.dispatch(actionChangeRedirection(true, '/profil/mes-offres'));
+            store.dispatch(actionMessagePopUp(''));
+          }, 3000);
+        }
       }).catch((error) => {
         console.log('UPDATE_OFFER_ANNOUCEMENT ', error);
       });
@@ -258,6 +274,13 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
               console.error(error);
             });
         }
+        if (result.status === 201) {
+          store.dispatch(actionMessagePopUp('Demande créée avec succès'));
+          setTimeout(() => {
+            store.dispatch(actionChangeRedirection(true, `/annonces/demandes/${newWishId}`));
+            store.dispatch(actionMessagePopUp(''));
+          }, 3000);
+        }
       }).catch((error) => {
         console.log('add new wish annoucement ', error);
       });
@@ -295,6 +318,13 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         config,
       ).then((result) => {
         console.log(result);
+        if (result.status === 206) {
+          store.dispatch(actionMessagePopUp('Demande éditée avec succès'));
+          setTimeout(() => {
+            store.dispatch(actionChangeRedirection(true, '/profil/mes-demandes'));
+            store.dispatch(actionMessagePopUp(''));
+          }, 3000);
+        }
       }).catch((error) => {
         console.log('UPDATE_WISH_ANNOUCEMENT ', error);
       });

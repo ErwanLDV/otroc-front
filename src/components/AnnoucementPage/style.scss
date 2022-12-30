@@ -41,6 +41,10 @@
     flex-direction: column;
     justify-content: space-around;
 
+    & span {
+      text-transform: capitalize;
+    }
+
       &-image {
         width: 60%;
         margin: 0 auto;

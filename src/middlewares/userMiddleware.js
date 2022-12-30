@@ -21,6 +21,7 @@ import {
   PUT_USER_PROFIL,
   USER_INSCRIPTION,
 } from '../actions/user';
+import { actionMessagePopUp } from '../actions/utils';
 
 const baseURL = process.env.BACK_API_BASE_URL;
 
@@ -66,11 +67,15 @@ const userMiddleware = (store) => (next) => (action) => {
       ).then((result) => {
         console.log(result);
         if (result.status === 201) {
-          console.log('Utilisateur créé');
-          store.dispatch(actionChangeRedirection(true, '/connexion'));
+          store.dispatch(actionMessagePopUp("Bienvenue ! O'TROC est heureux de vous accueillir."));
+          setTimeout(() => {
+            store.dispatch(actionChangeRedirection(true, '/connexion'));
+            store.dispatch(actionMessagePopUp(''));
+          }, 3000);
         }
       }).catch((error) => {
         console.log('user inscription ', error);
+        store.dispatch(actionMessagePopUp("L'inscription a échoué."));
       });
       break;
     }
@@ -110,6 +115,13 @@ const userMiddleware = (store) => (next) => (action) => {
         config,
       ).then((result) => {
         console.log(result);
+        if (result.status === 206) {
+          store.dispatch(actionMessagePopUp('Profil édité avec succès'));
+          setTimeout(() => {
+            store.dispatch(actionChangeRedirection(true, '/profil'));
+            store.dispatch(actionMessagePopUp(''));
+          }, 3000);
+        }
         store.dispatch(actionSaveUserProfil(result.data));
       }).catch((error) => {
         console.log('put user profil ', error);
@@ -131,7 +143,12 @@ const userMiddleware = (store) => (next) => (action) => {
       console.log(formData, config, action.payload);
       axios.post(`${baseURL}/api/users/current/pictures`, formData, config)
         .then((pictureResult) => {
-          console.log(pictureResult);
+          if (pictureResult.status === 200) {
+            store.dispatch(actionMessagePopUp('Changement effectué !'));
+            setTimeout(() => {
+              store.dispatch(actionMessagePopUp(''));
+            }, 3000);
+          }
         })
         .catch((error) => {
           console.error(error);
@@ -232,6 +249,13 @@ const userMiddleware = (store) => (next) => (action) => {
         config,
       ).then((result) => {
         console.log(result);
+        if (result.status === 206) {
+          store.dispatch(actionMessagePopUp('Nouveau mot de passe validé !'));
+          setTimeout(() => {
+            store.dispatch(actionChangeRedirection(true, '/profil'));
+            store.dispatch(actionMessagePopUp(''));
+          }, 3000);
+        }
       }).catch((error) => {
         console.log('CHANGE_PASSWORD', error);
       });

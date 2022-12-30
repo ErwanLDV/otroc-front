@@ -1,15 +1,24 @@
-import './style.scss';
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CustomInput from '../../../CustomInput';
-import {
-  actionChangeCustomInputUser,
-  actionChangePassword,
-  actionCheckLogin,
-} from '../../../../actions/user';
-import { useState } from 'react';
+import { actionChangePassword, actionChangeRedirection } from '../../../../actions/user';
+import PopUp from '../../../PopUp';
 
 function ChangePassword() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const redirection = useSelector((state) => state.user.redirection);
+  const messagePopUp = useSelector((state) => state.utils.messagePopUp);
+
+  useEffect(() => {
+    if (redirection.bool) {
+      navigate(redirection.path);
+      dispatch(actionChangeRedirection(false));
+    }
+  }, [redirection.bool]);
 
   const [currentPassword, setCurrentPassword] = useState(null);
   const [newPassword1, setNewPassword1] = useState(null);
@@ -22,11 +31,9 @@ function ChangePassword() {
         break;
       case 'newpassword1':
         setNewPassword1(newValue);
-        console.log(newValue);
         break;
       case 'newpassword2':
         setNewPassword2(newValue);
-        console.log(newValue);
         break;
       default:
         break;
@@ -36,12 +43,12 @@ function ChangePassword() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (newPassword1 === newPassword2) {
-      console.log('Même mot de passe', currentPassword, newPassword1);
       dispatch(actionChangePassword(currentPassword, newPassword1));
     }
   };
   return (
     <form className="form-connection" onSubmit={handleSubmit}>
+      <PopUp className={messagePopUp ? 'popup' : 'popup-off'} />
       <p className="form-connection-p">Changer le mot de passe</p>
       <div className="form-connection-container">
         <div className="form-connection-inputs">
