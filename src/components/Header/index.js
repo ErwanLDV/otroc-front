@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './style.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   CheckCircle, FileText, User, XCircle,
 } from 'react-feather';
@@ -20,6 +20,15 @@ function Header() {
   useEffect(() => {
     dispatch(actionGetAllCategories());
   }, []);
+
+  // Scroll to the top when page changes
+  const route = useLocation();
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+    });
+  }, [route]);
 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 

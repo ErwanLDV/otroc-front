@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import {
   Edit, Power, Slash, Trash2,
 } from 'react-feather';
-import imgBase from '../../assets/images/image-default.png';
 import {
   actionGetEditOfferAnnoucement,
   actionGetEditWishAnnoucement,
@@ -135,7 +134,7 @@ ProfilCard.propTypes = {
 };
 
 ProfilCard.defaultProps = {
-  img: imgBase,
+  img: barter,
   isLended: null,
   isActive: null,
 };
