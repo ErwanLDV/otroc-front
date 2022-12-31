@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import ProfilCard from '../../ProfilCard';
 import { actionGetUserOffers } from '../../../actions/user';
-import { actionPageReload } from '../../../actions/annoucements';
+import { actionPageReload } from '../../../actions/utils';
 
 function MyOffers() {
   const dispatch = useDispatch();
 
   const offersArray = useSelector((state) => state.user.currentUserOffers);
-  const pageReload = useSelector((state) => state.annoucements.pageReload);
+  const pageReload = useSelector((state) => state.utils.pageReload);
 
   useEffect(() => {
     dispatch(actionGetUserOffers());

@@ -4,15 +4,16 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CustomInput from '../../CustomInput';
 import {
-  actionChangeCustomInputUser, actionChangeRedirection, actionGetUserProfil, actionPutUserProfil,
+  actionChangeCustomInputUser, actionGetUserProfil, actionPutUserProfil,
 } from '../../../actions/user';
 import PopUp from '../../PopUp';
+import { actionChangeRedirection } from '../../../actions/utils';
 
 function PersonalInformation() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const redirection = useSelector((state) => state.user.redirection);
+  const redirection = useSelector((state) => state.utils.redirection);
 
   useEffect(() => {
     dispatch(actionGetUserProfil());

@@ -2,7 +2,6 @@ import axios from 'axios';
 import {
   actionAuthentError,
   actionAuthentSuccess,
-  actionChangeRedirection,
   actionLogout,
   actionSaveOtherUserProfil,
   actionSaveUserHistory,
@@ -21,7 +20,7 @@ import {
   PUT_USER_PROFIL,
   USER_INSCRIPTION,
 } from '../actions/user';
-import { actionMessagePopUp } from '../actions/utils';
+import { actionChangeRedirection, actionMessagePopUp } from '../actions/utils';
 
 const baseURL = process.env.BACK_API_BASE_URL;
 

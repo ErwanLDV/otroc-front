@@ -13,7 +13,6 @@ import {
   DISABLE_MODE_EDIT,
   SAVE_OFFER_PICTURE,
   SAVE_WISH_PICTURE,
-  PAGE_RELOAD,
 } from '../actions/annoucements';
 
 export const initialState = {
@@ -21,7 +20,6 @@ export const initialState = {
   currentAnnoucement: {},
   annoucementType: 'offer',
   modeEdit: false,
-  pageReload: false,
   addOrEditAnnoucement: {
     type: 'permanent',
   },
@@ -121,12 +119,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         currentAnnoucement: {},
-      };
-
-    case PAGE_RELOAD:
-      return {
-        ...state,
-        pageReload: !state.pageReload,
       };
 
     default:

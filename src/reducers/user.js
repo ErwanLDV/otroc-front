@@ -9,7 +9,6 @@ import {
   SAVE_USER_PICTURE,
   SAVE_USER_PROFIL,
   SAVE_USER_WISHES,
-  CHANGE_REDIRECTION,
 } from '../actions/user';
 
 export const initialState = {
@@ -29,7 +28,6 @@ export const initialState = {
   currentUserWishes: [],
   currentUserHistory: [],
   otherUserProfil: {},
-  redirection: {},
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -106,11 +104,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         currentUserHistory: action.payload,
-      };
-    case CHANGE_REDIRECTION:
-      return {
-        ...state,
-        redirection: action.payload,
       };
     default:
       return state;
