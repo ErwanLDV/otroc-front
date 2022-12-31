@@ -3,14 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CustomInput from '../../../CustomInput';
-import { actionChangePassword, actionChangeRedirection } from '../../../../actions/user';
+import { actionChangePassword } from '../../../../actions/user';
 import PopUp from '../../../PopUp';
+import { actionChangeRedirection } from '../../../../actions/utils';
 
 function ChangePassword() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const redirection = useSelector((state) => state.user.redirection);
+  const redirection = useSelector((state) => state.utils.redirection);
   const messagePopUp = useSelector((state) => state.utils.messagePopUp);
 
   useEffect(() => {
@@ -62,7 +63,7 @@ function ChangePassword() {
           </div>
           <div className="form-connection-container">
             <CustomInput className="form-connection-input" name="newpassword2" type="password" value={newPassword2} onChange={handleChangeNewPassword} required />
-            <label htmlFor="newpassword2">Confirmer nouveau mot de passe</label>
+            <label htmlFor="newpassword2">Confirmer mot de passe</label>
           </div>
         </div>
         <div className="form-connection-login">

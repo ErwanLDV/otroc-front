@@ -99,7 +99,7 @@ function AnnouncementPage() {
           <p><Clock size={14} color="#458E89" /> {dateTime.toLocaleString()}</p>
           <p><Tag size={14} color="#458E89" /> {type}</p>
         </div>
-        {isReported === null
+        {isLogged && isReported === null
           && (
             <div className="report" onClick={handleClick}>
               <AlertTriangle size={17} className="report-logo" />

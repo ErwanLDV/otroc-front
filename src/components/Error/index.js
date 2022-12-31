@@ -14,10 +14,10 @@ function Error() {
 
               <div className="contant_box_404">
                 <h3 className="h2">
-                  On dirait que tu es perdu
+                  On dirait que vous êtes perdu ?
                 </h3>
 
-                <p>la page que vous recherchez n'est pas disponible !</p>
+                <p>La page que vous recherchez n'est pas disponible !</p>
 
                 <Link to="/" className="link_404">Retour à l'accueil</Link>
               </div>

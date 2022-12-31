@@ -20,7 +20,7 @@ import {
 } from '../../../actions/annoucements';
 import CustomSelect from '../../CustomSelect';
 import PopUp from '../../PopUp';
-import { actionChangeRedirection } from '../../../actions/user';
+import { actionChangeRedirection } from '../../../actions/utils';
 
 function AddOrEditAnnouncement() {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ function AddOrEditAnnouncement() {
   const [previewPicture, setPreviewPicture] = useState(null);
   const [newPicture, setNewPicture] = useState(null);
   const messagePopUp = useSelector((state) => state.utils.messagePopUp);
-  const redirection = useSelector((state) => state.user.redirection);
+  const redirection = useSelector((state) => state.utils.redirection);
 
   useEffect(() => {
     switch (location.pathname) {

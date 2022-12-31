@@ -4,14 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CustomInput from '../CustomInput';
-import { actionChangeCustomInputUser, actionChangeRedirection, actionUserIncscription } from '../../actions/user';
+import { actionChangeCustomInputUser, actionUserIncscription } from '../../actions/user';
 import PopUp from '../PopUp';
+import { actionChangeRedirection } from '../../actions/utils';
 
 function Inscription() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const redirection = useSelector((state) => state.user.redirection);
+  const redirection = useSelector((state) => state.utils.redirection);
   const isLogged = useSelector((state) => state.user.isLogged);
   const messagePopUp = useSelector((state) => state.utils.messagePopUp);
 

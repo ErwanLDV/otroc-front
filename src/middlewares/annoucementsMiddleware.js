@@ -24,8 +24,7 @@ import {
   TOGGLE_ACTIVE_WISH_ANNOUCEMENT,
   TOGGLE_LEND_OFFER_ANNOUCEMENT,
 } from '../actions/annoucements';
-import { actionChangeRedirection } from '../actions/user';
-import { actionMessagePopUp } from '../actions/utils';
+import { actionChangeRedirection, actionMessagePopUp } from '../actions/utils';
 
 // For tests
 const baseURL = process.env.BACK_API_BASE_URL;

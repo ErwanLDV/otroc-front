@@ -1,41 +1,10 @@
-// .popup {
-//   position: fixed;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   top: 0;
-//   right: 0;
-//   background-color: rgba(0, 0, 0, 0.6);
-//   border-radius: 1em;
-  
-//   &::before {
-    
-//   }
-  
-//   & p {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     width: 12em;
-//     background-color: rgb(185, 99, 99);
-//     border-radius: 1em;
-//     height: 4em;
-//   }
-// }
- 
-
-
-
 .popup {
-	// layout
 	position: absolute;
 	max-width: 16em;
-  //width: 50%;
   text-align: left;
   color: #000000;
   top: 1em;
 	right: 1em;
-	// looks
 	background-color: rgb(248, 248, 248);
 	padding: 1em 1.2em;
 	font-size: 1em;
@@ -58,18 +27,16 @@
 }
 
 .popup::before {
-	// layout
 	content: '';
 	position: absolute;
 	width: 0;
 	height: 0;
 	bottom: 100%;
-	left: 1.5em; // offset should move with padding of parent
+	left: 1.5em;
 	border: .75rem solid transparent;
 	border-top: none;
   transition: all 1s;
 
-	// looks
 	border-bottom-color: rgb(248, 248, 248);
 	filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
 }
