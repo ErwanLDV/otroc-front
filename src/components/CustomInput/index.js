@@ -8,6 +8,7 @@ function CustomInput({
   onChange,
   required,
   maxLength,
+  minLength,
   className,
   checked,
   id,
@@ -52,6 +53,7 @@ function CustomInput({
       onChange={handleChange}
       checked={checked}
       maxLength={maxLength}
+      minLength={minLength}
       required={required}
     />
   );
@@ -68,6 +70,7 @@ CustomInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
   maxLength: PropTypes.string,
+  minLength: PropTypes.string,
   className: PropTypes.string,
   checked: PropTypes.bool,
   id: PropTypes.string,
@@ -78,6 +81,7 @@ CustomInput.defaultProps = {
   type: 'text',
   required: false,
   maxLength: null,
+  minLength: null,
   placeholder: null,
   className: null,
   checked: false,

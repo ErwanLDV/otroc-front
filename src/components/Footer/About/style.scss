@@ -13,7 +13,14 @@
     border-radius: 50%;
     background-color: rgb(143, 175, 203);
     margin-bottom: 1em;  
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    
+    & img {
+      width: 100px;
+      height: 100px;
+      border-radius: inherit;
+    }
+
   }
 
   &-span {

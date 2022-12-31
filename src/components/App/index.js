@@ -17,7 +17,7 @@ import MyWishes from '../Profil/MyWishes';
 import MyHistory from '../Profil/MyHistory';
 import Error from '../Error';
 import AddOrEditAnnouncement from '../Profil/AddOrEditAnnouncement';
-import SearchResults from '../SearchResults';
+import CategoryResults from '../CategoryResults';
 import MainCategoriesListPage from '../MainCategoriesListPage';
 import AnnouncementPage from '../AnnoucementPage';
 import UserProfil from '../UserProfil';
@@ -45,7 +45,7 @@ function App() {
       <Routes>
         <Route path="/" element=<Home /> />
         <Route path="/rechercher/resultat" element=<SearchBarResults /> />
-        <Route path="/categorie/:slug" element=<SearchResults /> />
+        <Route path="/categorie/:slug" element=<CategoryResults /> />
         <Route path="/annonces/offres/:id" element=<AnnouncementPage /> />
         <Route path="/annonces/demandes/:id" element=<AnnouncementPage /> />
         <Route path="/:slug" element=<MainCategoriesListPage /> />

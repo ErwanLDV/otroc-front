@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import CustomInput from '../CustomInput';
 import { actionChangeInputSearchBar, actionPostSearchOffers, actionPostSearchWishes } from '../../actions/search';
-import { Search } from 'react-feather';
 
 function SearchBar() {
   const dispatch = useDispatch();
@@ -41,7 +40,7 @@ function SearchBar() {
         <span className="highlighter" />
       </div>
       <form className="searchBar-form" onSubmit={handleSubmit}>
-        <CustomInput className="searchBar-form-input" value={inputSearchBar} onChange={handleChangeInput} type="text" name="inputSearchBar" placeholder="rechercher un objet..." required />
+        <CustomInput className="searchBar-form-input" value={inputSearchBar} onChange={handleChangeInput} minLength="3" type="text" name="inputSearchBar" placeholder="rechercher un objet..." required />
         <button className="searchBar-form-button" type="submit"> </button>
       </form>
     </section>

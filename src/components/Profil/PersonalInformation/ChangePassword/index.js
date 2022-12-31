@@ -63,7 +63,7 @@ function ChangePassword() {
           </div>
           <div className="form-connection-container">
             <CustomInput className="form-connection-input" name="newpassword2" type="password" value={newPassword2} onChange={handleChangeNewPassword} required />
-            <label htmlFor="newpassword2">Confirmer nouveau mot de passe</label>
+            <label htmlFor="newpassword2">Confirmer mot de passe</label>
           </div>
         </div>
         <div className="form-connection-login">

@@ -31,7 +31,6 @@ function MainCategoriesListPage() {
       ? <Error />
       : (
         <section>
-          <h2> page card des categories</h2>
           <div className="container-categoriesPage">
             {categories.map((item) => (
               <Link to={`/categorie/${item.slug}`} onClick={() => dispatch(actionGetCategoryResults(item.id))} key={item.id}>

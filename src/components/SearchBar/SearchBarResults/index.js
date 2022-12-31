@@ -14,6 +14,7 @@ function SearchBarResults() {
 
   return (
     <section>
+      {searchAnnoucements && searchAnnoucements.length > 0 && <h2>Résultats de la recherche :</h2>}
       <div className="searchBarResult">
         {searchAnnoucements && searchAnnoucements.length > 0 ? searchAnnoucements.map((item) => (
           <Link to={`/annonces/${linkApi}/${item.id}`} key={item.id}>

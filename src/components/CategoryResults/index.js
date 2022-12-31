@@ -6,7 +6,7 @@ import './style.scss';
 import AnnoucementCard from '../AnnoucementCard';
 import Error from '../Error';
 
-function SearchResult() {
+function CategoryResult() {
   const dispatch = useDispatch();
   const [is404, setIs404] = useState(false);
   const slug = useParams();
@@ -39,7 +39,6 @@ function SearchResult() {
       ? <Error />
       : (
         <section>
-          <h2>Résultats de la recherche</h2>
           <div className="container-searchResult">
             {categoryResults && offers && offers.map((item) => (
               <Link to={`/annonces/offres/${item.id}`} key={item.id}>
@@ -82,4 +81,4 @@ function SearchResult() {
   );
 }
 
-export default SearchResult;
+export default CategoryResult;
