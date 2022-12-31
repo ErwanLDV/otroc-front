@@ -1,4 +1,4 @@
-export const departments = [
+const departments = [
   {
     num: '01',
     name: 'Ain',
@@ -511,7 +511,7 @@ export const departments = [
   },
 ];
 
-export function departmentsFilter(searchResults) {
+export default function departmentsFilter(searchResults) {
   const numDepartementsResultList = searchResults.map((element) => {
     if (element.zipcode.substr(0, 2) === '97') {
       return element.zipcode.substr(0, 3);
