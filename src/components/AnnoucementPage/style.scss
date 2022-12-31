@@ -76,7 +76,6 @@
 
   &-content {
     width: 100%;
-    // height: 100%;
     border: 1px solid vars.$border-color;    
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -116,7 +115,6 @@
         font-size: 0.8em;
         &-logo {
           color: rgb(178, 178, 52);
-          // align-self: center;
           margin-left: 1em;
         }
       }
@@ -268,4 +266,3 @@
     border-top-right-radius: 20px;
   }
 }
-

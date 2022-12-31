@@ -64,7 +64,6 @@ const userMiddleware = (store) => (next) => (action) => {
           phoneNumber: user.phoneNumber,
         },
       ).then((result) => {
-        console.log(result);
         if (result.status === 201) {
           store.dispatch(actionMessagePopUp("Bienvenue ! O'TROC est heureux de vous accueillir."));
           setTimeout(() => {
@@ -87,8 +86,6 @@ const userMiddleware = (store) => (next) => (action) => {
         `${baseURL}/api/users/current/profile`,
         config,
       ).then((result) => {
-        console.log(result);
-
         store.dispatch(actionSaveUserProfil(result.data));
       }).catch((error) => {
         console.log('get user profil ', error);
@@ -113,7 +110,6 @@ const userMiddleware = (store) => (next) => (action) => {
         },
         config,
       ).then((result) => {
-        console.log(result);
         if (result.status === 206) {
           store.dispatch(actionMessagePopUp('Profil édité avec succès'));
           setTimeout(() => {
@@ -139,7 +135,6 @@ const userMiddleware = (store) => (next) => (action) => {
           'content-type': 'multipart/form-data',
         },
       };
-      console.log(formData, config, action.payload);
       axios.post(`${baseURL}/api/users/current/pictures`, formData, config)
         .then((pictureResult) => {
           if (pictureResult.status === 200) {
@@ -193,7 +188,6 @@ const userMiddleware = (store) => (next) => (action) => {
         `${baseURL}/api/users/current/advertisements`,
         config,
       ).then((result) => {
-        console.log(result);
         store.dispatch(actionSaveUserHistory(result.data));
       }).catch((error) => {
         console.log('GET_USER_HISTORY', error);
@@ -209,7 +203,6 @@ const userMiddleware = (store) => (next) => (action) => {
         `${baseURL}/api/users/${action.payload}`,
         config,
       ).then((result) => {
-        console.log(result);
         store.dispatch(actionSaveOtherUserProfil(result.data));
       }).catch((error) => {
         console.log('get other user profil ', error);
@@ -247,7 +240,6 @@ const userMiddleware = (store) => (next) => (action) => {
         },
         config,
       ).then((result) => {
-        console.log(result);
         if (result.status === 206) {
           store.dispatch(actionMessagePopUp('Nouveau mot de passe validé !'));
           setTimeout(() => {

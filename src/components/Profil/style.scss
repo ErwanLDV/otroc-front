@@ -27,7 +27,6 @@
   &-button {
     border-radius: 10px;
     background-color:rgba(255, 255, 255, 0.377);
-    //border: 1px solid rgba(128,128,128,0.4);
     border: none;
     width: 45%;
     min-width: 15em;
@@ -38,9 +37,6 @@
     color: rgb(66, 66, 66);
 
     &:hover {
-      // background: linear-gradient(0deg, #acc9e3, #e6f1fc);
-      // font-weight: bold;
-      // color: #2f8633;
       filter: drop-shadow(0 0 0.01rem #d6e7f3);
     }
     

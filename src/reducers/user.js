@@ -46,6 +46,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.payload.inputName]: action.payload.newValue,
       };
+
     case AUTHENT_SUCCESS:
       return {
         ...state,
@@ -56,11 +57,13 @@ const reducer = (state = initialState, action = {}) => {
         email: '',
         activeSession: action.payload,
       };
+
     case AUTHENT_ERROR:
       return {
         ...state,
         message: "Erreur lors de l'identification",
       };
+
     case LOGOUT:
       return {
         ...state,
@@ -72,11 +75,13 @@ const reducer = (state = initialState, action = {}) => {
         message: '',
         pseudo: '',
       };
+
     case SAVE_USER_PROFIL:
       return {
         ...state,
         currentUserProfil: action.payload,
       };
+
     case SAVE_USER_PICTURE:
       return {
         ...state,
@@ -85,26 +90,31 @@ const reducer = (state = initialState, action = {}) => {
           picture: action.payload,
         },
       };
+
     case SAVE_USER_OFFERS:
       return {
         ...state,
         currentUserOffers: action.payload,
       };
+
     case SAVE_USER_WISHES:
       return {
         ...state,
         currentUserWishes: action.payload,
       };
+
     case SAVE_OTHER_USER_PROFIL:
       return {
         ...state,
         otherUserProfil: action.payload,
       };
+
     case SAVE_USER_HISTORY:
       return {
         ...state,
         currentUserHistory: action.payload,
       };
+
     default:
       return state;
   }

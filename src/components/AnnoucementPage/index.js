@@ -13,12 +13,14 @@ import {
 } from '../../actions/annoucements';
 import './style.scss';
 import barter from '../../assets/images/barter.jpg';
+import Loader from '../Loader';
 
 function AnnouncementPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
   const isLogged = useSelector((state) => state.user.isLogged);
+  const isLoading = useSelector((state) => state.utils.isLoading);
 
   const idAnnoucement = useSelector((state) => state.annoucements.currentAnnoucement.id);
   const title = useSelector((state) => state.annoucements.currentAnnoucement.title);
@@ -69,48 +71,50 @@ function AnnouncementPage() {
     }
   };
   return (
-    <div className="annoucementPage-container">
-      <div className="annoucementPage-container-header">
-        <div className="annoucementPage-container-header-photo">
-          <img className="image" src={picture || barter} alt="Objet de l'échange" onClick={() => setIsPreview(true)} />
-        </div>
-        <div className="annoucementPage-container-user">
-          <div className="annoucementPage-container-user-image">
-            <img src={userPicture} alt="userPicture" />
+    !isLoading ? (
+      <div className="annoucementPage-container">
+        <div className="annoucementPage-container-header">
+          <div className="annoucementPage-container-header-photo">
+            <img className="image" src={picture || barter} alt="Objet de l'échange" onClick={() => setIsPreview(true)} />
           </div>
-          <span>{pseudo}</span>
-          {isLogged && <p className="annoucementPage-container-user-info"><AtSign size={18} /> {email}</p>}
-          {isLogged && phoneNumber && <p className="annoucementPage-container-user-info"><Phone size={18} /> {phoneNumber}</p>}
-          <div className="annoucementPage-container-user-buttons">
-            <Link to={`/utilisateur/${userId}`}>
-              <button className="annoucementPage-container-user-buttons-button" type="button">Profil</button>
-            </Link>
-          </div>
-        </div>
-      </div>
-      <div className="annoucementPage-container-content">
-        <h2>{title}</h2>
-        <div className="annoucementPage-title_watch">
-          {isLended && <p className="annoucementPage-title-watch-p"><Watch />Actuellement indisponible</p>}
-        </div>
-        <p>{description}</p>
-        <div className="date-type">
-          <p><Globe size={14} color="#458E89" /> {zipcode}</p>
-          <p><Clock size={14} color="#458E89" /> {dateTime.toLocaleString()}</p>
-          <p><Tag size={14} color="#458E89" /> {type}</p>
-        </div>
-        {isLogged && isReported === null
-          && (
-            <div className="report" onClick={handleClick}>
-              <AlertTriangle size={17} className="report-logo" />
-              <span>Signaler</span>
+          <div className="annoucementPage-container-user">
+            <div className="annoucementPage-container-user-image">
+              <img src={userPicture} alt="userPicture" />
             </div>
-          )}
+            <span>{pseudo}</span>
+            {isLogged && <p className="annoucementPage-container-user-info"><AtSign size={18} /> {email}</p>}
+            {isLogged && phoneNumber && <p className="annoucementPage-container-user-info"><Phone size={18} /> {phoneNumber}</p>}
+            <div className="annoucementPage-container-user-buttons">
+              <Link to={`/utilisateur/${userId}`}>
+                <button className="annoucementPage-container-user-buttons-button" type="button">Profil</button>
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="annoucementPage-container-content">
+          <h2>{title}</h2>
+          <div className="annoucementPage-title_watch">
+            {isLended && <p className="annoucementPage-title-watch-p"><Watch />Actuellement indisponible</p>}
+          </div>
+          <p>{description}</p>
+          <div className="date-type">
+            <p><Globe size={14} color="#458E89" /> {zipcode}</p>
+            <p><Clock size={14} color="#458E89" /> {dateTime.toLocaleString()}</p>
+            <p><Tag size={14} color="#458E89" /> {type}</p>
+          </div>
+          {isLogged && isReported === null
+            && (
+              <div className="report" onClick={handleClick}>
+                <AlertTriangle size={17} className="report-logo" />
+                <span>Signaler</span>
+              </div>
+            )}
+        </div>
+        <div className={isPreview ? 'preview--on' : 'preview--off'} onClick={() => setIsPreview(false)}>
+          <img src={picture} alt="Objet de l'échange" />
+        </div>
       </div>
-      <div className={isPreview ? 'preview--on' : 'preview--off'} onClick={() => setIsPreview(false)}>
-        <img src={picture} alt="Objet de l'échange" />
-      </div>
-    </div>
+    ) : <Loader />
   );
 }
 

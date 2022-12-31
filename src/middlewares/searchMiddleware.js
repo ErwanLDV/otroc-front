@@ -12,7 +12,6 @@ const searchMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case POST_SEARCH_OFFERS: {
       const { inputSearchBar } = store.getState().search;
-      console.log(inputSearchBar);
 
       axios.post(`${baseURL}/api/offers/results`, inputSearchBar)
         .then((result) => {

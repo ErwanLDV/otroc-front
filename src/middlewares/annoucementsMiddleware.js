@@ -24,7 +24,7 @@ import {
   TOGGLE_ACTIVE_WISH_ANNOUCEMENT,
   TOGGLE_LEND_OFFER_ANNOUCEMENT,
 } from '../actions/annoucements';
-import { actionChangeRedirection, actionMessagePopUp } from '../actions/utils';
+import { actionChangeIsLoading, actionChangeRedirection, actionMessagePopUp } from '../actions/utils';
 
 // For tests
 const baseURL = process.env.BACK_API_BASE_URL;
@@ -43,9 +43,11 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
       break;
 
     case GET_ONE_OFFER_ANNOUCEMENT:
+      store.dispatch(actionChangeIsLoading());
       axios.get(`${baseURL}/api/offers/${action.payload}`)
         .then((result) => {
           store.dispatch(actionSaveOneOfferAnnoucement(result.data));
+          store.dispatch(actionChangeIsLoading());
         })
         .catch((error) => {
           console.log('GET_ONE_OFFER_ANNOUCEMENT', error);
@@ -58,7 +60,6 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
       const config = {
         headers: { Authorization: `Bearer ${user.token}` },
       };
-      console.log(addOrEditAnnoucement);
       axios.post(
         `${baseURL}/api/offers`,
         {
@@ -71,7 +72,6 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         },
         config,
       ).then((result) => {
-        console.log(result);
         const newOfferId = result.data.id;
         const formData = new FormData();
         if (addOrEditAnnoucement.picture) {
@@ -83,7 +83,6 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
               'content-type': 'multipart/form-data',
             },
           };
-          console.log(formData, configImg, addOrEditAnnoucement.picture);
           axios.post(`${baseURL}/api/offers/${newOfferId}/pictures`, formData, configImg)
             .then((pictureResult) => {
               console.log(pictureResult);
@@ -135,7 +134,6 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         },
         config,
       ).then((result) => {
-        console.log(result);
         if (result.status === 206) {
           store.dispatch(actionMessagePopUp('Offre éditée avec succès'));
           setTimeout(() => {
@@ -252,7 +250,6 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         },
         config,
       ).then((result) => {
-        console.log(result);
         const newWishId = result.data.id;
         const formData = new FormData();
         if (addOrEditAnnoucement.picture) {
@@ -264,7 +261,6 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
               'content-type': 'multipart/form-data',
             },
           };
-          console.log(formData, configImg, addOrEditAnnoucement.picture);
           axios.post(`${baseURL}/api/wishes/${newWishId}/pictures`, formData, configImg)
             .then((pictureResult) => {
               console.log(pictureResult);
@@ -316,7 +312,6 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         },
         config,
       ).then((result) => {
-        console.log(result);
         if (result.status === 206) {
           store.dispatch(actionMessagePopUp('Demande éditée avec succès'));
           setTimeout(() => {

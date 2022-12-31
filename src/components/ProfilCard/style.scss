@@ -13,13 +13,11 @@
     padding-top: .45em;
     height: 2em;
     border-bottom: 2px solid rgb(182, 182, 182);
-    //border-right: 2px solid rgb(0, 0, 0);
     border-bottom-right-radius: 7em;
   }
   &-card {
     border-radius: 1em;
     width: 100%;
-    //border: 1px solid vars.$border-color;
     margin: auto;
     background-color: rgb(255, 255, 255);
     display: flex;
@@ -52,9 +50,6 @@
     max-height: 10em;
     padding: 1em 2em;
     text-align: left;
-    // border-right: 1px dashed rgb(179, 179, 179);
-    //width: 80%;
-    // min-width: 2em;
     & a {
       display: block;
     }
@@ -65,8 +60,6 @@
     justify-content: center;
     align-items: center;
     width: 9em;
-    // border-left: 1px dashed rgb(179, 179, 179);
-    // border-radius: .6em;
   }
   &-button {
     border: none;
@@ -98,7 +91,6 @@
 
     &-card {      
       flex-direction: column;
-      //height: 20em;
     }
    
     &-buttons {
@@ -109,7 +101,6 @@
       border-left: none;
     }
     &-content {
-      // height: 3em;
       width: 100%;
       border-bottom: 2px solid vars.$border-color;
       border-right: none;

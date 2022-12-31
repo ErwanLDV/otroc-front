@@ -37,7 +37,6 @@ function SearchBarResults() {
 
   return (
     <section>
-      {searchAnnoucements && searchAnnoucements.length > 0 && <h2>Résultats de la recherche :</h2>}
       {currentDepartmentsResult && currentDepartmentsResult.length > 0 && (
         <select className="selectBarResult" name="departmentFilter" onChange={handleDepartmentFilter} value={selectValue}>
           <option value="default">Filtrer par département</option>
@@ -51,6 +50,7 @@ function SearchBarResults() {
           ))}
         </select>
       )}
+      {searchAnnoucements && searchAnnoucements.length > 0 && <h2>Résultats de la recherche :</h2>}
       <div className="searchBarResult">
         {!searchAnnoucementsResultFiltered && searchAnnoucements && searchAnnoucements.length > 0
           ? searchAnnoucements.map((item) => (

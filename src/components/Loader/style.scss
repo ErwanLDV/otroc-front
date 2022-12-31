@@ -1,9 +1,4 @@
 #loader {
-  /* Uncomment this to make it run! */
-  /*
-     animation: loader 5s linear infinite; 
-  */
-  
   position: absolute;
   top: calc(50% - 20px);
   left: calc(50% - 20px);
@@ -48,19 +43,3 @@
     transform: scale(1.2,1);
   }
 }
-
-
-// body {
-//   background: #6997DB; 
-//   overflow: hidden;
-// }
-// h4 {
-//   position: absolute;
-//   bottom: 20px;
-//   left: 20px;
-//   margin: 0;
-//   font-weight: 200;
-//   opacity: .5;
-// 	font-family: sans-serif;
-//   color: #fff;
-// }

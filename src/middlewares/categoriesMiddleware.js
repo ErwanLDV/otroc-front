@@ -41,7 +41,6 @@ const categoriesMiddleware = (store) => (next) => (action) => {
     case GET_MAIN_CATEGORY_RESULTS:
       axios.get(`${baseURL}/api/maincategories/${action.payload}/categories`)
         .then((result) => {
-          console.log(result);
           store.dispatch(actionSaveMainCategoriesResultForCards(result.data[0].categories));
         })
         .catch((error) => {
@@ -53,7 +52,6 @@ const categoriesMiddleware = (store) => (next) => (action) => {
       axios.get(`${baseURL}/api/categories`)
         .then((result) => {
           store.dispatch(actionSaveTopCategories(result.data));
-          console.log(result);
         })
         .catch((error) => {
           console.log('GET_TOP_CATEGORIES', error);

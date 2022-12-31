@@ -1,4 +1,6 @@
-import { CHANGE_REDIRECTION, MESSAGE_POPUP, PAGE_RELOAD } from '../actions/utils';
+import {
+  CHANGE_IS_LOADING, CHANGE_REDIRECTION, MESSAGE_POPUP, PAGE_RELOAD,
+} from '../actions/utils';
 
 export const initialState = {
   pageReload: false,
@@ -25,6 +27,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         messagePopUp: action.payload,
+      };
+
+    case CHANGE_IS_LOADING:
+      return {
+        ...state,
+        isLoading: !state.isLoading,
       };
 
     default:

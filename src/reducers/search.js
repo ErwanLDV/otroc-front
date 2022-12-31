@@ -14,16 +14,19 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.payload.inputName]: action.payload.newValue,
       };
+
     case SAVE_SEARCH_OFFERS_OR_WISHES:
       return {
         ...state,
         searchAnnoucements: action.payload,
       };
+
     case SAVE_TYPE_ANNOUCEMENTS_RESULTS:
       return {
         ...state,
         searchTypeResult: action.payload,
       };
+
     default:
       return state;
   }
