@@ -1,0 +1,17 @@
+.container-categoriesPage {
+  
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2em;
+  justify-content: center;
+}
+
+@media screen and (max-width: 720px) {
+
+  .container-categoriesPage {
+    width: 90%;
+    justify-content: center;
+  }
+}

@@ -2,11 +2,16 @@ import { applyMiddleware, legacy_createStore as createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import reducer from 'src/reducers';
-
-// import nameMiddleware from '../middlewares/nameMiddleware
+import userMiddleware from '../middlewares/userMiddleware';
+import annoucementsMiddleware from '../middlewares/annoucementsMiddleware';
+import categoriesMiddleware from '../middlewares/categoriesMiddleware';
+import searchMiddleware from '../middlewares/searchMiddleware';
 
 const middlewareEnhancer = applyMiddleware(
-  // nameMiddleware,
+  userMiddleware,
+  annoucementsMiddleware,
+  categoriesMiddleware,
+  searchMiddleware,
 );
 
 const composedEnhancers = composeWithDevTools(middlewareEnhancer);

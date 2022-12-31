@@ -1,0 +1,13 @@
+.home {
+
+  &-container-cards {
+    display: flex;
+    flex-wrap: wrap;
+   justify-content: center;
+   margin-top: 2em;
+  }
+
+  & h2 {
+    font-size: 1.3em;
+  }
+}

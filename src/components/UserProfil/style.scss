@@ -1,0 +1,59 @@
+@use '../../styles/vars';
+
+.container-userProfil {
+  width: 70%;
+  margin: auto;
+  margin-top: 2em;
+
+    &-infos {
+      border: 1px solid vars.$border-color;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      min-height: 5em;
+      width: 60%;
+      margin: auto;
+      padding: 1em;
+
+      & img {
+        max-width: 25em;
+        max-height: 15em;
+        border-radius: 20px;
+      }
+
+      & p {
+        font-weight: bold;
+        padding: .8em;
+      }
+    }
+    &-cards {
+      width: 100%;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 2em;
+      justify-content: center;
+    }
+}
+
+.welcome {
+  font-size: 1.4em;
+    & .pseudo {
+      text-transform: capitalize;
+      font-weight: bold;
+    }
+}
+
+@media screen and (max-width: 720px) {
+  .container-userProfil {
+    width: 100%;
+
+    &-infos {
+      width: 85%;
+      & img {
+        max-width: 90%;
+        max-height: 15em;
+        border-radius: 20px;
+      }
+    }
+  }
+}

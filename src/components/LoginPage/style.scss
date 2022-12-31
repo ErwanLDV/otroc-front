@@ -1,0 +1,91 @@
+@use '../../styles/vars';
+
+.form-connection {
+ 
+  margin: auto;
+  width: 50%;
+  min-width: 350px;
+  margin-top: 2em;
+	border-radius:15px;
+	padding:70px 0px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(0deg, #7ea8a3, #e2ffec);
+	background-size: 100% 100%;
+  position: relative;
+
+  &-p {
+    font-size: 1.4em;
+    padding-bottom: 1.5em;
+  }
+
+  &-inscription {
+    font-size: .8em;
+    padding-top: 2em;
+    & a {
+      color: #266394;
+    }
+  }
+
+  &-button {
+    border-radius: 20px;
+    padding:12px 25px;
+    border: none;
+    background-color:#d5dadd;
+    margin-top: 1.5em;
+
+      &:hover {
+        background-color: #6ba1ac;
+        transition: 0.5s;
+      }
+  }
+
+  & label {
+
+    position:absolute;
+    top:12px;
+    left:5px;
+    font-size:16px;
+    color:rgb(100, 100, 100);
+    pointer-events:none;
+	  transition: all 0.5s ease-in-out;
+  }
+
+
+  &-input {
+
+    border:0;
+    border-bottom:1px solid #555;  
+    background:transparent;
+    width:100%;
+    padding:8px 0 5px 0;
+    font-size:16px;
+    color:rgb(7, 45, 88);
+
+      &:focus {
+        border:none;	
+        outline:none;
+        border-bottom:1px solid #4682B3;
+      }
+  }
+}
+
+.form-connection-input:focus ~ label,
+.form-connection-input:not([value=""]) ~ label
+{
+	top:-5px;
+  left: -3px;
+	font-size:13px;
+  color: black;
+}
+
+
+.form-connection-container {
+
+  position:relative;
+	margin-bottom:25px;
+  width: 40%;
+  min-width: 250px;
+  margin: auto;
+  padding: 0.5rem;
+ 
+}

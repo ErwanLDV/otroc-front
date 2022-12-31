@@ -1,0 +1,20 @@
+.searchBarResult {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 70%;
+  margin: auto;
+  margin-top: 2em;
+
+    &-p {
+      margin: auto;
+    }
+}
+
+.selectBarResult {
+  padding: .4em;
+  background-color: #FFF;
+  border-radius: .7em;
+  border: 1px rgb(185, 185, 185) solid;
+  margin-bottom: 2em;
+}

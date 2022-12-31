@@ -1,0 +1,35 @@
+.categorycard {
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 300px;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.03);
+    transition: 0.3s;
+  }
+
+  & h4 {
+    font-weight: bold;
+    margin: 1em 0;
+  }
+
+  &-header img {
+    width: 100%;
+    height: 14em;
+    object-fit: cover;
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    min-height: 10em;
+    position: relative;
+  }
+}

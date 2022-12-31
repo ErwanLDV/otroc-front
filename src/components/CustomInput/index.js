@@ -6,35 +6,86 @@ function CustomInput({
   name,
   placeholder,
   onChange,
+  required,
+  maxLength,
+  minLength,
+  className,
+  checked,
+  id,
 }) {
+  /**
+   * Function that processes the value of an input according to the custom type: zpicode & phone
+   * Only digit and limit max length
+   * @param {string} inputValue
+   * @returns string processed
+   */
+  const specialType = (inputValue) => {
+    switch (type) {
+      case 'zipcode':
+      case 'phone': {
+        if (!inputValue.match(`^[0-9]{1,${maxLength}}$`)) {
+          return inputValue.replace(/\D+/g, '');
+        }
+        break;
+      }
+      default:
+        break;
+    }
+    return inputValue;
+  };
+
   const handleChange = (event) => {
-    onChange(event.target.value, name);
+    const specialInput = specialType(event.target.value);
+    // If maxLength is set, specialInput cannot exceed it OR maxLength is null
+    if ((specialInput.length <= maxLength && maxLength !== null) || maxLength === null) {
+      onChange(specialInput, name);
+    }
   };
 
   return (
-    <div>
-      <input
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={handleChange}
-      />
-    </div>
+    <input
+      className={className}
+      id={id}
+      name={name}
+      type={type}
+      placeholder={placeholder}
+      value={value || ''}
+      onChange={handleChange}
+      checked={checked}
+      maxLength={maxLength}
+      minLength={minLength}
+      required={required}
+    />
   );
 }
 
 CustomInput.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  required: PropTypes.bool,
+  maxLength: PropTypes.string,
+  minLength: PropTypes.string,
+  className: PropTypes.string,
+  checked: PropTypes.bool,
+  id: PropTypes.string,
 };
 
 CustomInput.defaultProps = {
-  value: '',
+  value: null,
   type: 'text',
+  required: false,
+  maxLength: null,
+  minLength: null,
+  placeholder: null,
+  className: null,
+  checked: false,
+  id: null,
 };
 
 export default CustomInput;
