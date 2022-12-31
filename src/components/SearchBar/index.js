@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import CustomInput from '../CustomInput';
 import { actionChangeInputSearchBar, actionPostSearchOffers, actionPostSearchWishes } from '../../actions/search';
-import { Search } from 'react-feather';
 
 function SearchBar() {
   const dispatch = useDispatch();
