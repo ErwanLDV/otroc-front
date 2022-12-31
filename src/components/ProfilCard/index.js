@@ -12,10 +12,10 @@ import {
   actionDeleteWishAnnoucement,
   actionToggleActiveOfferAnnoucement,
   actionToggleActiveWishAnnoucement,
-  actionPageReload,
   actionToggleLendOfferAnnoucement,
 } from '../../actions/annoucements';
 import barter from '../../assets/images/barter.jpg';
+import { actionPageReload } from '../../actions/utils';
 
 function ProfilCard({
   title,

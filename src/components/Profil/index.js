@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './style.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { Download } from 'react-feather';
 import avatarIMG from '../../assets/images/avatar.jpg';
 import {
-  actionSaveUserPicture, actionPostUserPicture, actionGetUserProfil, actionChangeRedirection,
+  actionSaveUserPicture, actionPostUserPicture, actionGetUserProfil,
 } from '../../actions/user';
 import PopUp from '../PopUp';
 
