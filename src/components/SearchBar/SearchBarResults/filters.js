@@ -534,10 +534,13 @@ export default function departmentsFilter(searchResults) {
   const uniqueNumDepartementsResultList = [...new Set(numDepartementsResultList)];
 
   // associate the department object with the number
-  const departmentsFiltered = uniqueNumDepartementsResultList.map((department) => {
+  const departmentsResult = uniqueNumDepartementsResultList.map((department) => {
     const departmentFound = departments.find((item) => item.num === department);
     return departmentFound;
   });
+
+  // Remove undefined
+  const departmentsFiltered = departmentsResult.filter((element) => element !== undefined);
 
   // sort the array in num order
   departmentsFiltered.sort((a, b) => a.num - b.num);
