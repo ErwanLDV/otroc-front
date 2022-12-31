@@ -511,16 +511,35 @@ const departments = [
   },
 ];
 
+/**
+ * Create an array for the select box with the current departments present in the search result
+ * @param {array} searchResults an array of the search result
+ * @returns {array || null} departmentsFiltered
+ */
 export default function departmentsFilter(searchResults) {
+  // if no searchResults  return null
+  if (!searchResults) {
+    return null;
+  }
+
+  // Create an array with the number's departments of the search result
   const numDepartementsResultList = searchResults.map((element) => {
     if (element.zipcode.substr(0, 2) === '97') {
       return element.zipcode.substr(0, 3);
     }
     return element.zipcode.substr(0, 2);
   });
-  const departmentsFiltered = numDepartementsResultList.map((department) => {
+
+  // remove duplicates values
+  const uniqueNumDepartementsResultList = [...new Set(numDepartementsResultList)];
+
+  // associate the department object with the number
+  const departmentsFiltered = uniqueNumDepartementsResultList.map((department) => {
     const departmentFound = departments.find((item) => item.num === department);
     return departmentFound;
   });
+
+  // sort the array in num order
+  departmentsFiltered.sort((a, b) => a.num - b.num);
   return departmentsFiltered;
 }

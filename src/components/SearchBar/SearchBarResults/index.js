@@ -37,7 +37,7 @@ function SearchBarResults() {
 
   return (
     <section>
-      {currentDepartmentsResult.length > 0 && (
+      {currentDepartmentsResult && currentDepartmentsResult.length > 0 && (
         <select className="selectBarResult" name="departmentFilter" onChange={handleDepartmentFilter} value={selectValue}>
           <option value="default">Filtrer par département</option>
           {currentDepartmentsResult.map((department) => (
