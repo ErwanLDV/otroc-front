@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import AnnoucementCard from '../../AnnoucementCard';
+import { departmentsFilter } from './filters';
 import './style.scss';
 
 function SearchBarResults() {
@@ -11,9 +12,15 @@ function SearchBarResults() {
   if (searchTypeResult === 'wish') {
     linkApi = 'demandes';
   }
-
+  const currentDepartmentsResult = departmentsFilter(searchAnnoucements);
+  console.log(currentDepartmentsResult);
   return (
     <section>
+      {currentDepartmentsResult && (
+        <select name="departmentFilter">
+          re
+        </select>
+      )}
       <div className="searchBarResult">
         {searchAnnoucements && searchAnnoucements.length > 0 ? searchAnnoucements.map((item) => (
           <Link to={`/annonces/${linkApi}/${item.id}`} key={item.id}>
