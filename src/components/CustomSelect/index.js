@@ -7,13 +7,14 @@ function CustomSelect({
   optionTitle,
   optionsArray,
   className,
+  required,
 }) {
   const handleChange = (event) => {
     onChange(event.target.value, name);
   };
   return (
-    <select name={name} onChange={handleChange} value={value || ''} className={className}>
-      <option hidden>{optionTitle}</option>
+    <select name={name} onChange={handleChange} value={value || ''} className={className} required={required}>
+      <option value="" hidden>{optionTitle}</option>
       {optionsArray.map((optgroup) => (
         <optgroup label={optgroup.name} key={optgroup.id} value={optgroup.id}>
           {optgroup.categories.map((option) => (
@@ -40,12 +41,14 @@ CustomSelect.propTypes = {
   optionsArray: PropTypes.array.isRequired,
   optionTitle: PropTypes.string,
   className: PropTypes.string,
+  required: PropTypes.bool,
 };
 
 CustomSelect.defaultProps = {
   value: null,
   className: null,
   optionTitle: '',
+  required: false,
 };
 
 export default CustomSelect;

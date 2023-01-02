@@ -150,6 +150,7 @@ function AddOrEditAnnouncement() {
               optionsArray={categoriesArray}
               value={addOrEditAnnoucement.categories[0]}
               optionTitle="Choisir une catégorie*"
+              required
             />
           )
           : (
@@ -158,6 +159,7 @@ function AddOrEditAnnouncement() {
               onChange={handleChangeSelect}
               optionsArray={categoriesArray}
               optionTitle="Choisir une catégorie*"
+              required
             />
           )}
         {!modeEdit && (
