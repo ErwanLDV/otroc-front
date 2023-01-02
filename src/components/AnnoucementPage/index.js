@@ -3,7 +3,9 @@ import {
   AlertTriangle, Watch, AtSign, Phone, Clock, Globe, Tag,
 } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import {
+  Link, useLocation, useNavigate, useParams,
+} from 'react-router-dom';
 import {
   actionCleanupAnnoucementPage,
   actionGetOneOfferAnnoucement,
@@ -14,10 +16,13 @@ import {
 import './style.scss';
 import barter from '../../assets/images/barter.jpg';
 import Loader from '../Loader';
+import PopUp from '../PopUp';
+import { actionPageReload } from '../../actions/utils';
 
 function AnnouncementPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const isLogged = useSelector((state) => state.user.isLogged);
   const isLoading = useSelector((state) => state.utils.isLoading);
@@ -40,6 +45,8 @@ function AnnouncementPage() {
     (state) => state.annoucements.currentAnnoucement.user?.phoneNumber,
   );
   const userPicture = useSelector((state) => state.annoucements.currentAnnoucement.user?.picture);
+  const pageReload = useSelector((state) => state.utils.pageReload);
+  const messagePopUp = useSelector((state) => state.utils.messagePopUp);
 
   const [isPreview, setIsPreview] = useState(false);
 
@@ -57,6 +64,13 @@ function AnnouncementPage() {
     }
     return () => dispatch(actionCleanupAnnoucementPage());
   }, []);
+
+  useEffect(() => {
+    if (pageReload) {
+      dispatch(actionPageReload());
+      navigate(0);
+    }
+  }, [pageReload]);
 
   const handleClick = () => {
     switch (location.pathname) {
@@ -92,15 +106,16 @@ function AnnouncementPage() {
           </div>
         </div>
         <div className="annoucementPage-container-content">
+          <PopUp className={messagePopUp ? 'popup' : 'popup-off'} />
           <h2>{title}</h2>
           <div className="annoucementPage-title_watch">
             {isLended && <p className="annoucementPage-title-watch-p"><Watch />Actuellement indisponible</p>}
           </div>
-          <p>{description}</p>
+          <p className="annoucementPage-container-content-p">{description}</p>
           <div className="date-type">
-            <p><Globe size={14} color="#458E89" /> {zipcode}</p>
-            <p><Clock size={14} color="#458E89" /> {dateTime.toLocaleString()}</p>
-            <p><Tag size={14} color="#458E89" /> {type}</p>
+            <p className="annoucementPage-container-content-p"><Globe size={14} color="#458E89" /> {zipcode}</p>
+            <p className="annoucementPage-container-content-p"><Clock size={14} color="#458E89" /> {dateTime.toLocaleString()}</p>
+            <p className="annoucementPage-container-content-p"><Tag size={14} color="#458E89" /> {type}</p>
           </div>
           {isLogged && isReported === null
             && (
