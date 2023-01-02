@@ -24,7 +24,9 @@ import {
   TOGGLE_ACTIVE_WISH_ANNOUCEMENT,
   TOGGLE_LEND_OFFER_ANNOUCEMENT,
 } from '../actions/annoucements';
-import { actionChangeIsLoading, actionChangeRedirection, actionMessagePopUp } from '../actions/utils';
+import {
+  actionChangeIsLoading, actionChangeRedirection, actionMessagePopUp, actionPageReload,
+} from '../actions/utils';
 
 // For tests
 const baseURL = process.env.BACK_API_BASE_URL;
@@ -156,7 +158,13 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         `${baseURL}/api/offers/${action.payload}/reported`,
         config,
       ).then((result) => {
-        console.log(result);
+        if (result.status === 206) {
+          store.dispatch(actionMessagePopUp('Votre signalement est pris en compte et sera prochainement traité.'));
+          setTimeout(() => {
+            store.dispatch(actionMessagePopUp(''));
+            store.dispatch(actionPageReload());
+          }, 5000);
+        }
       }).catch((error) => {
         console.log('REPORTED_OFFER_ANNOUCEMENT', error);
       });
@@ -334,7 +342,13 @@ const annoucementsMiddleware = (store) => (next) => (action) => {
         `${baseURL}/api/wishes/${action.payload}/reported`,
         config,
       ).then((result) => {
-        console.log(result);
+        if (result.status === 206) {
+          store.dispatch(actionMessagePopUp('Votre signalement est pris en compte et sera prochainement traité.'));
+          setTimeout(() => {
+            store.dispatch(actionMessagePopUp(''));
+            store.dispatch(actionPageReload());
+          }, 5000);
+        }
       }).catch((error) => {
         console.log('REPORTED_WISH_ANNOUCEMENT', error);
       });

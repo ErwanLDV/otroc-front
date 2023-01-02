@@ -150,6 +150,7 @@ function AddOrEditAnnouncement() {
               optionsArray={categoriesArray}
               value={addOrEditAnnoucement.categories[0]}
               optionTitle="Choisir une catégorie*"
+              required
             />
           )
           : (
@@ -158,6 +159,7 @@ function AddOrEditAnnouncement() {
               onChange={handleChangeSelect}
               optionsArray={categoriesArray}
               optionTitle="Choisir une catégorie*"
+              required
             />
           )}
         {!modeEdit && (
@@ -174,7 +176,7 @@ function AddOrEditAnnouncement() {
           </>
         )}
         {previewPicture && <img src={previewPicture} width="300" alt="Prévisualisation" />}
-        {addOrEditAnnoucement.picture && <img src={addOrEditAnnoucement.picture} width="300" alt="Prévisualisation" />}
+        {modeEdit && addOrEditAnnoucement.picture && <img src={addOrEditAnnoucement.picture} width="300" alt="Prévisualisation" />}
         <div className="switch-type">
           <CustomInput id="permanent" type="radio" value="permanent" name="type" onChange={handleChangeInputRadioType} checked={addOrEditAnnoucement.type === 'permanent'} />
           <CustomInput id="tempory" type="radio" value="temporaire" name="type" onChange={handleChangeInputRadioType} checked={addOrEditAnnoucement.type === 'temporaire'} />
