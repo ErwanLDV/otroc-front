@@ -8,7 +8,7 @@ export const SAVE_TYPE_ANNOUCEMENTS_RESULTS = 'SAVE_TYPE_ANNOUCEMENTS_RESULTS';
  * Change the value of custom input field text controlled in state
  * @param {string} newValue input value
  * @param {string} inputName input name
- * @returns {object} for annoucements reducer
+ * @returns {object} for search reducer
  */
 export function actionChangeInputSearchBar(newValue, inputName) {
   return {
